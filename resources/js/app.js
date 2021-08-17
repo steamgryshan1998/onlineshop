@@ -1,0 +1,186 @@
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+import axios from "axios";
+
+require('./bootstrap');
+import Vue from "vue";
+import MainComponent from "./components/MainComponent";
+import VueRouter from "vue-router";
+import routes from "./routes";
+import Vuex from 'vuex';
+import i18n from './components/plugins/i18n'
+import Cookies from "js-cookie";
+import * as types from './mutation-types';
+
+window.Vue = require('vue').default;
+
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+Vue.use(VueRouter)
+
+Vue.use(Vuex)
+
+
+Vue.component('app', require("./components/MainComponent").default)
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+const store = new Vuex.Store({
+    state: {
+        products: [],
+        product: null,
+        cart: [],
+        user: null,
+        user_role: null,
+        token: Cookies.get('token')
+    },
+    getters: {
+        user: state => state.user,
+        user_role: state => state.user_role,
+        token: state => state.token,
+        check: state => state.user !== null,
+        products: (state) => {
+            return state.products;
+        },
+        product(state) {
+            return state.product
+        },
+    },
+    mutations: {
+        updateProducts(state, products){
+            state.products = products;
+        },
+        SET_PRODUCT (state, payload) {
+            state.product = payload
+        },
+        addToCart(state, product){
+            let productInCartIndex = state.cart.findIndex(item => item.slug === product.slug);
+            if(productInCartIndex !== -1){
+                state.cart[productInCartIndex].quantity++;
+                return;
+            }
+            product.quantity = 1;
+            state.cart.push(product);
+        },
+        removeFromCart(state, index){
+            state.cart.splice(index, 1);
+        },
+        updateOrder(state, order){
+            state.order = order;
+        },
+        updateCart(state, cart){
+            state.cart = cart;
+        },
+        [types.SAVE_TOKEN] (state, { token, remember }) {
+            state.token = token
+            Cookies.set('token', token, { expires: remember ? 365 : null })
+        },
+
+        [types.FETCH_USER_SUCCESS] (state, { user, user_role }) {
+            state.user = user
+            state.user_role = user_role
+        },
+
+        [types.FETCH_USER_FAILURE] (state) {
+            state.token = null
+            Cookies.remove('token')
+        },
+
+        [types.LOGOUT] (state) {
+            state.user = null
+            state.token = null
+            state.user_role = null
+
+            Cookies.remove('token')
+        },
+
+        [types.UPDATE_USER] (state, { user }) {
+            state.user = user
+        }
+    },
+    actions:{
+        getProducts({ commit }) {
+            axios.get('/api/products')
+                .then((response) => {
+                    commit('updateProducts', response.data);
+                })
+                .catch((error) => console.error(error));
+        },
+        async getProductById ({commit}, productId) {
+
+            try {
+                const product = await axios.get('/api/products/' + productId)
+                console.log(product.data.data)
+                commit('SET_PRODUCT', product.data.data)
+            }
+            catch (e) {
+                console.log('Error')
+            }
+        },
+        clearCart({ commit }) {
+            commit('updateCart', []);
+        },
+        saveToken ({ commit, dispatch }, payload) {
+            commit(types.SAVE_TOKEN, payload)
+        },
+
+        async fetchUser ({ commit }) {
+            try {
+                const { data } = await axios.get('/api/user')
+                console.log(data.role)
+                commit(types.FETCH_USER_SUCCESS, { user: data, user_role: data.role })
+            } catch (e) {
+                commit(types.FETCH_USER_FAILURE)
+            }
+        },
+
+        updateUser ({ commit }, payload) {
+            commit(types.UPDATE_USER, payload)
+        },
+
+        async logout ({ commit }) {
+            try {
+                await axios.post('/api/logout')
+            } catch (e) { }
+
+            commit(types.LOGOUT)
+        },
+
+        async fetchOauthUrl (ctx, { provider }) {
+            const { data } = await axios.post(`/api/oauth/${provider}`)
+
+            return data.url
+        }
+    }
+});
+
+const app = new Vue({
+    el: '#app',
+    components: {MainComponent},
+    store,
+    i18n,
+    router: new VueRouter(routes),
+    created() {
+        store.dispatch('fetchUser')
+            .then(_ => {})
+            .catch((error) => console.error(error))
+        store.state.cart
+    }
+})
