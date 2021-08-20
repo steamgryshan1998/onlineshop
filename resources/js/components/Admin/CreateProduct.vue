@@ -7,9 +7,7 @@
                     <h5 v-else class="modal-title">Edit Product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal"></button>
                 </div>
-                <form>
                     <div class="modal-body">
-                        <div class="row">
                             <div class="col-md-8">
                                 <div class="mb-3 row">
                                     <label for="product_name" class="col-sm-4 col-form-label">Name</label>
@@ -17,7 +15,26 @@
                                         <input type="text" class="form-control" v-model="product.name" id="product_name" placeholder="Please enter name of category" />
                                     </div>
                                 </div>
-
+                                <div class="mb-3 row">
+                                    <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Категория</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" v-model="product.category_id">
+                                            <option>Выберите категорию</option>
+                                            <option v-bind:value="category.id" v-for="category in categories">{{ category.name }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Бренд</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" v-model="product.manufacturer_id">
+                                            <option>Выберите бренд</option>
+                                            <option v-bind:value="manufacturer.id" v-for="manufacturer in manufacturers">{{ manufacturer.name }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
 
 
@@ -29,10 +46,9 @@
                         <button v-if="!product.id" type="button" class="btn btn-primary" @click.prevent="addProduct">Create</button>
                         <button v-else type="button" class="btn btn-primary" @click.prevent="editProduct"><i class="fas fa-check"></i>Edit</button>
                     </div>
-                </form>
             </div>
-        </div>
-    </div>
+
+
 </template>
 <script>
 export default {
@@ -44,14 +60,21 @@ export default {
         product: {
             type: Object,
             default: null,
-            id: null
+            id: null,
         }
     },
     name: "CreateProduct",
     data () {
         return {
-            name: '',
+            categories: [],
+            category: [],
+            manufacturers: [],
+            manufacturer: []
         };
+    },
+    mounted() {
+        this.loadCategories();
+        this.loadManufacturers();
     },
     methods: {
         closeModal() {
@@ -59,14 +82,37 @@ export default {
             this.product.id = "";
             this.$emit('close');
         },
+        loadCategories: function () {
+            axios.get('/api/categories', {
+                params: _.omit(this.selected, 'categories')
+            })
+                .then((response) => {
+                    this.categories = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        loadManufacturers: function () {
+            axios.get('/api/manufacturers', {
+                params: _.omit(this.selected, 'manufacturers')
+            })
+                .then((response) => {
+                    this.manufacturers = response.data.data;
+                    this.loading = false;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
         addProduct() {
             axios
-                .post('api/products',  {
-                    name: this.product.name,
-                })
+                .post('api/products',  this.product)
                 .then(response => {
                     this.product.id = ""
                     this.product.name = ""
+                    this.category.id = ""
+                    this.manufacturer.id = ""
                     this.closeModal()
                 })
                 .catch(error => {

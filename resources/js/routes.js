@@ -15,7 +15,7 @@ export default {
         {
             path: '/',
             component: Home,
-            name: 'Home'
+            name: 'Home',
         },
         {
             path: '/collection',
@@ -25,23 +25,23 @@ export default {
         {
             path: '/shop',
             component: Shop,
-            name: 'Shop'
+            name: 'Shop',
         },
         {
             path: '/shop/:productId',
             component: Show,
             props:true,
-            name: 'Show'
+            name: 'Show',
         },
         {
             path: '/about',
             component: About,
-            name: 'About'
+            name: 'About',
         },
         {
             path: '/contact',
             component: Contact,
-            name: 'Contact'
+            name: 'Contact',
         },
         // {
         //     path: '/product',
@@ -51,7 +51,7 @@ export default {
         {
             path: '/basket',
             component: Basket,
-            name: 'Basket'
+            name: 'Basket',
         },
         {
             path: '/login',

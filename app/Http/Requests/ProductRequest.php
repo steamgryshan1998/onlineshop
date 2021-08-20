@@ -25,6 +25,9 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
+//            'description' => 'required',
+            'category_id' => 'required|int',
+            'manufacturer_id' => 'required|int',
         ];
     }
 }

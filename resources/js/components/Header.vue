@@ -36,117 +36,33 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         COLLECTION
                     </button>
-                    <div class="drop dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <div class="row">
-                            <ul>
-                <li class="col-md-3">
-                    <ul>
-                        <li class="dropdown-header">First</li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
+                    <ul class="dropdown mega-dropdown open" >
+                        <ul class="dropdown-menu mega-dropdown-menu row"  style="width: 600px; background-color: rgba(206,121,6,0.65)">
+                            <li class="col-md-1"style="    display: inline-block;
+     solid #000;
+    padding: 30px; ">Tema 11
+                                <ul style="margin: 0px; padding: 0px;"> <div class="tidown" >
+                                    <li class="dropdown-header"></li></div>
+                                    <li>подпункт 1 </li>
+                                    <li>подпункт 1 </li>
+                                    <li>подпункт 1 </li>
+                                </ul>
+                            </li>
+                            <li class="col-md-1"style="    display: inline-block;
+     solid #000;
+    padding: 85px; ">Tema 11
+                                <ul > <div class="tidown">
+                                    <li class="dropdown-header"></li></div>
+                                    <li>подпункт 1 </li>
+                                    <li>подпункт 1 </li>
+                                    <li>подпункт 1 </li>
+                                </ul>
+                            </li>
+
+                        </ul>
                     </ul>
+
                 </li>
-                <li class="col-md-3">
-                    <ul>
-                        <li class="dropdown-header">First</li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="col-md-3">
-                    <ul>
-                        <li class="dropdown-header">First</li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="col-md-3">
-                    <ul>
-                        <li class="dropdown-header">First</li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Item</a>
-                        </li>
-                    </ul>
-                </li>
-                            </ul>
-        </div>
-    </div>
-    </li>
     <li class="nav-item">
         <router-link to="/shop"><a class="nav-link">SHOP</a></router-link>
     </li>
@@ -199,7 +115,23 @@ div {
     padding-left: 0;
     padding-right: 0;
 }
+@media (max-width: 1200px) {
+    .container {
+        max-width: 970px;
+    }
+}
 
+@media (max-width: 992px) {
+    .container {
+        max-width: 750px;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        max-width: none;
+    }
+}
 
 
 .row_1 {
@@ -225,6 +157,8 @@ a {
     background: #FB4251;
     text-decoration: none;
 }
+
+
 
 .drop {
     background-color: #424242;

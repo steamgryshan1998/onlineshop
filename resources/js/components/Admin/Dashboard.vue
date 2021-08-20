@@ -104,6 +104,14 @@
                                 <td scope="col">
                                     <div
                                         style="cursor: pointer">
+                                        Category_name
+                                    </div>
+
+                                </td>
+
+                                <td scope="col">
+                                    <div
+                                        style="cursor: pointer">
                                         Name
                                     </div>
 
@@ -144,6 +152,7 @@
                             <tr v-for="product in products" :key="product.id">
                                 <td>{{product.id}}</td>
                                 <td>{{product.category_id}}</td>
+                                <td>{{product.category_name}}</td>
                                 <td>{{product.name}}</td>
                                 <td>{{product.description}}</td>
                                 <td>{{product.price}}</td>
@@ -311,6 +320,7 @@ export default {
                 .then((response) => {
                     this.products = response.data.data;
                     this.loading = false;
+                    console.log(response.data.data);
                 })
                 .catch(function (error) {
                     console.log(error);

@@ -15,11 +15,13 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained();
             $table->string('name');
             $table->text('description');
             $table->integer('price');
             $table->timestamps();
+            $table->foreignId('category_id')
+                ->references('id')
+                ->on('categories');
         });
     }
 

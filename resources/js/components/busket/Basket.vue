@@ -1,7 +1,7 @@
 <template>
     <div class="w-full">
-        <div class="lg:w-2/3 w-full mx-auto mt-8 overflow-auto">
-            <table class="table-auto w-full text-left whitespace-no-wrap">
+        <div class="lg:w-2/3 w-full mx-auto mt-8 overflow-auto container">
+            <table class="table-auto w-full text-left whitespace-no-wrap table-responsive-sm">
                 <thead>
                 <tr>
                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl">Item</th>
@@ -28,20 +28,56 @@
                     <td class="p-4 font-bold" v-text="cartTotal"></td>
                     <td class="w-10 text-right"></td>
                 </tr>
+                <tr>
+                    <td class="p-4 font-bold"></td>
+                    <td class="p-4 font-bold"></td>
+                    <td class="p-4 font-bold"></td>
+                    <td class="w-10 text-right">
+                        <div class="submit">
+                            <button class="btn btn-success" @click="checkout">
+              <span class="text-nowrap"
+              >Checkout <i class="fa fa-angle-right d-inline"></i
+              ></span>
+                            </button>
+                        </div>
+
+                    </td>
+                </tr>
                 </tbody>
             </table>
-        </div>
+            </div>
     </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
      methods: {
+         ...mapActions([
+             'addMessage',
+             'clearCart',
+         ]),
         cartLineTotal(item) {
             let amount = item.price * item.quantity;
             amount = (amount / 100);
             return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
         },
+        checkout() {
+            if (!this.cart || this.cart.length == 0) {
+                this.addMessage({
+                    messageClass: 'warning',
+                    message: 'Your cart is empty!',
+                })
+                return
+            }
+
+            this.addMessage({
+                messageClass: 'success',
+                message: 'Your order has been successfully processed!',
+            })
+            this.clearCart()
+            this.$router.push('/')
+        }
     },
     computed: {
         cart() {
@@ -60,5 +96,17 @@ export default {
 </script>
 
 <style scoped>
+table{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    color: black;
+}
+.container{
+    padding-top: 200px;
+    align-content: center;
+}
+.submit{
 
+}
 </style>

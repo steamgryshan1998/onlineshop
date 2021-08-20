@@ -49,19 +49,33 @@ const store = new Vuex.Store({
         cart: [],
         user: null,
         user_role: null,
-        token: Cookies.get('token')
+        token: Cookies.get('token'),
+        messageGroup: {
+            // messageClass: 'danger',
+            // message: 'Test'
+            messageClass: '',
+            message: '',
+            timeoutEvent: null,
+        },
     },
     getters: {
         user: state => state.user,
         user_role: state => state.user_role,
         token: state => state.token,
         check: state => state.user !== null,
+        cart: state => state.cart,
         products: (state) => {
             return state.products;
         },
         product(state) {
             return state.product
         },
+        messages: (state) => {
+            return state.messageGroup;
+        },
+        isLoggedIn: (state) => {
+            return state.isLoggedIn;
+        }
     },
     mutations: {
         updateProducts(state, products){
@@ -70,15 +84,55 @@ const store = new Vuex.Store({
         SET_PRODUCT (state, payload) {
             state.product = payload
         },
-        addToCart(state, product){
-            let productInCartIndex = state.cart.findIndex(item => item.slug === product.slug);
-            if(productInCartIndex !== -1){
-                state.cart[productInCartIndex].quantity++;
-                return;
+        'UPDATE_CART' (state, {product, quantity, isAdd}) {
+            const record = state.cart.find(element => element.id == product.id);
+            if (record) {
+                if (isAdd) {
+                    record.quantity += quantity;
+                } else {
+                    record.quantity = quantity;
+                }
+            } else {
+                state.cart.push({
+                    ...product,
+                    quantity
+                });
             }
-            product.quantity = 1;
-            state.cart.push(product);
         },
+        'ADD_MESSAGE' (state, {message, messageClass}) {
+            state.messageGroup = {
+                messageClass,
+                message
+            }
+
+            if (state.timeoutEvent) {
+                clearTimeout(state.timeoutEvent);
+            }
+            state.timeoutEvent = setTimeout(function() {
+                state.messageGroup = {
+                    messageClass: '',
+                    message: ''
+                }
+            }, 5000);
+        },
+        'CLEAR_MESSAGE' (state) {
+            state.messageGroup = {
+                messageClass: '',
+                message: ''
+            }
+        },
+        'AUTH_STATUS_CHANGE' (state, {user}) {
+            state.isLoggedIn = user != null;
+        },
+        // addToCart(state, product){
+        //     let productInCartIndex = state.cart.findIndex(item => item.slug === product.slug);
+        //     if(productInCartIndex !== -1){
+        //         state.cart[productInCartIndex].quantity++;
+        //         return;
+        //     }
+        //     product.quantity = 1;
+        //     state.cart.push(product);
+        // },
         removeFromCart(state, index){
             state.cart.splice(index, 1);
         },
@@ -163,13 +217,48 @@ const store = new Vuex.Store({
             commit(types.LOGOUT)
         },
 
+        updateCart ({ commit }, {product, quantity, isAdd}) {
+            // TODO: Call service
+            commit('UPDATE_CART', {product, quantity, isAdd});
+            if (isAdd) {
+                let message_obj = {
+                    message: `Add ${product.name} to cart successfully`,
+                    messageClass: "success",
+                    autoClose: true
+                }
+                commit('ADD_MESSAGE', message_obj);
+            }
+        },
+
         async fetchOauthUrl (ctx, { provider }) {
             const { data } = await axios.post(`/api/oauth/${provider}`)
 
             return data.url
+        },
+
+        addMessage({commit}, obj) {
+            commit('ADD_MESSAGE', obj);
+        },
+        clearMessage({commit}) {
+            commit('CLEAR_MESSAGE');
+        },
+        getShoppingCart({commit}, {uid, currentCart}) {
+            if (uid) {
+                return ref.child("cart/" + uid).once('value').then((cart) => {
+                    // console.log(cart.val());
+                    if (cart.val() && (!currentCart || currentCart.length == 0)) {
+                        commit('SET_CART', cart.val());
+                    }
+                });
+            } else {
+                // console.log("User has not logged in");
+            }
         }
     }
 });
+
+
+
 
 const app = new Vue({
     el: '#app',
@@ -184,3 +273,6 @@ const app = new Vue({
         store.state.cart
     }
 })
+
+
+

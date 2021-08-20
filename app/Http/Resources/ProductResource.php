@@ -23,6 +23,7 @@ class ProductResource extends JsonResource
             'manufacturer_id' => $this->manufacturer_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'category_name' => $this->category->name,
         ];
     }
 }

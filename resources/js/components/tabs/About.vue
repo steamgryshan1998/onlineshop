@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h4>Small dreams and big plans</h4>
         <p>ONLINESTORE is the largest online retailer in the country. Since 2005, we have been fulfilling the small
             dreams and grandiose plans of millions of people. You can find literally everything here. We sell at a fair
@@ -48,5 +48,8 @@ h1{
 }
 h4{
     text-align: center;
+}
+.container{
+    padding-top: 2rem;
 }
 </style>

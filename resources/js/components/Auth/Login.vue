@@ -1,5 +1,5 @@
 <template>
-    <div class="container brd">
+    <div class="container brd align-middle">
         <h2 align="center">Login</h2>
         <div>
             <div class="form-group">
@@ -72,3 +72,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.container{
+    padding-top: 200px;
+}
+</style>

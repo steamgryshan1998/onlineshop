@@ -1,17 +1,26 @@
 <template>
-<div>
+<div class="flex-fill">
     <Header />
 <!--    <hr>-->
+    <message></message>
     <router-view></router-view>
 </div>
 </template>
 
 <script>
 import Header from "./Header";
+import Message from "./Modal/Message";
 
 export default {
     name: "MainComponent",
-    components: {Header}
+    components: {
+        Header, Message
+    },
+    created() {
+        // cart() {
+            return this.$store.state.cart;
+        // }
+    }
 }
 </script>
 
@@ -22,5 +31,32 @@ div{
 hr{
     border: 1px solid white;
     margin-top: 0;
+}
+.container{
+    color: #58503d;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0px 15px;
+}
+@media (max-width: 1200px) {
+    .container {
+        max-width: 970px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 750px;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        max-width: none;
+    }
+}
+.kartina {
+    max-width: 100%;
+    height: auto;
 }
 </style>

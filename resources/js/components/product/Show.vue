@@ -24,7 +24,7 @@
                         ></span>
                         <button
                             class="flex add ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-                            @click.prevent="$store.commit('addToCart', product)"
+                            @click.prevent="addProduct"
                         ><i class="bi bi-bag-plus"></i>Add To Cart</button>
                     </div>
                 </div>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
     props: {
         productId: {
@@ -43,6 +44,16 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['updateCart']),
+        addProduct() {
+            const order = {
+                product: Object.assign({}, this.product),
+                quantity: 1,
+                isAdd: true
+            };
+            // console.log(order);
+            this.updateCart(order);
+        },
         formatCurrency(amount) {
             amount = (amount / 100);
             return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
