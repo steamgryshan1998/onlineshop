@@ -82,7 +82,7 @@ export default {
                     this.category.id = ""
                     this.category.name = ""
                     this.closeModal()
-                })
+             })
                 .catch(error => {
                     this.validate = error.response.data.errors;
                 })
@@ -98,12 +98,9 @@ export default {
     color: black;
     display: flex;
     position: absolute;
-    align-items: center;
     right: 0;
     left: 0;
     top: 0;
-    bottom: 0;
-    justify-content: center;
-    background: rgba(64, 64, 64, .4);
+
 }
 </style>

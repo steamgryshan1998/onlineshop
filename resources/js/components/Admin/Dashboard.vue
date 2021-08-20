@@ -4,17 +4,15 @@
             <h2>Admin Dashboard</h2>
         </div>
         <div class="row">
-            <div class="col-3">
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="nav nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-categories-tab" data-toggle="pill" href="#v-pills-categories" role="tab" aria-controls="v-pills-categories" aria-selected="true">Categories</a>
                     <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="false">Products</a>
                     <a class="nav-link" id="v-pills-manufacturers-tab" data-toggle="pill" href="#v-pills-manufacturers" role="tab" aria-controls="v-pills-manufacturers" aria-selected="false">Manufacturers</a>
-                </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-categories" role="tabpanel" aria-labelledby="v-pills-categories-tab">
-                        <h4>Categories</h4>
+
                         <div class="col-2">
                             <button type="button" class="btn contact_button btn-primary " @click="showCreateCategory">
                                 <!--                todo font awesome-->
@@ -76,7 +74,6 @@
                         />
                     </div>
                     <div class="tab-pane fade" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-products-tab">
-                        <h4>Products</h4>
                         <div class="col-2">
                             <button type="button" class="btn contact_button btn-primary " @click="showCreateProduct">
                                 <!--                todo font awesome-->
@@ -90,13 +87,6 @@
                                     <div
                                         style="cursor: pointer">
                                         Id
-                                    </div>
-
-                                </td>
-                                <td scope="col">
-                                    <div
-                                        style="cursor: pointer">
-                                        Category_id
                                     </div>
 
                                 </td>
@@ -151,14 +141,13 @@
                             </tr>
                             <tr v-for="product in products" :key="product.id">
                                 <td>{{product.id}}</td>
-                                <td>{{product.category_id}}</td>
                                 <td>{{product.category_name}}</td>
                                 <td>{{product.name}}</td>
                                 <td>{{product.description}}</td>
                                 <td>{{product.price}}</td>
                                 <td>{{product.created_at}}</td>
                                 <td>{{product.updated_at}}</td>
-                                <td>{{product.manufacturer_id}}</td>
+                                <td>{{product.manufacturer}}</td>
                                 <td>
                                     <button type="button" class="btn contact_button btn-warning " @click="editProduct(product)">
                                         Edit
@@ -173,12 +162,11 @@
                                 v-show="isCreateProductVisible"
                                 @close="closeCreateProduct"
                                 :products="products"
-                                :product="product"
+                                :product="mode"
                             />
                         </table>
                     </div>
                     <div class="tab-pane fade" id="v-pills-manufacturers" role="tabpanel" aria-labelledby="v-pills-manufacturers-tab">
-                        <h4>Manufacturers</h4>
                         <div class="col-2">
                             <button type="button" class="btn contact_button btn-primary " @click="showCreateManufacturer">
                                 <!--                todo font awesome-->
@@ -345,6 +333,7 @@ export default {
         closeCreateCategory() {
             this.isCreateCategoryVisible = false;
             this.loadCategories();
+            this.loadProducts();
         },
         showCreateProduct() {
             this.isCreateProductVisible = true;

@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')->withFilters(
+        $products = Product::with('category','manufacturer')->withFilters(
             request()->input('prices', []),
             request()->input('categories', []),
             request()->input('manufacturers', [])

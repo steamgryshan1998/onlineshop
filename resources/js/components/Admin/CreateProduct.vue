@@ -87,6 +87,7 @@ export default {
                 params: _.omit(this.selected, 'categories')
             })
                 .then((response) => {
+                    console.log(response.data.data)
                     this.categories = response.data.data;
                 })
                 .catch(function (error) {
@@ -121,13 +122,20 @@ export default {
                 .finally(this.loading = false)
         },
         editProduct() {
+            console.log(this.category_id)
             axios
                 .put('api/products/' + this.product.id,  {
                     name: this.product.name,
+                    category_id: this.product.category_id,
+                    manufacturer_id: this.product.manufacturer_id,
                 })
                 .then(response => {
                     this.product.id = ""
                     this.product.name = ""
+                    this.product.category_id = "",
+                    this.product.manufacturer_id = ""
+                    this.category.id = ""
+                    this.manufacturer.id = ""
                     this.closeModal()
                 })
                 .catch(error => {
@@ -144,13 +152,10 @@ export default {
 .modal-wrapper {
     color: black;
     display: flex;
-    position: absolute;
-    align-items: center;
+    position: fixed;
     right: 0;
     left: 0;
     top: 0;
-    bottom: 0;
-    justify-content: center;
-    background: rgba(64, 64, 64, .4);
+
 }
 </style>

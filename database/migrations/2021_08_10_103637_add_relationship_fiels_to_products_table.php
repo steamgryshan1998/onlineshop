@@ -16,7 +16,9 @@ class AddRelationshipFielsToProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->foreignId('manufacturer_id')
                 ->references('id')
-                ->on('manufacturers');
+                ->on('manufacturers')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
     }
 

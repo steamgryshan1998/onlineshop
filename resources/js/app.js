@@ -62,7 +62,7 @@ const store = new Vuex.Store({
         user: state => state.user,
         user_role: state => state.user_role,
         token: state => state.token,
-        check: state => state.user !== null,
+        isLoggedIn: state => state.user !== null,
         cart: state => state.cart,
         products: (state) => {
             return state.products;
@@ -73,9 +73,7 @@ const store = new Vuex.Store({
         messages: (state) => {
             return state.messageGroup;
         },
-        isLoggedIn: (state) => {
-            return state.isLoggedIn;
-        }
+
     },
     mutations: {
         updateProducts(state, products){
