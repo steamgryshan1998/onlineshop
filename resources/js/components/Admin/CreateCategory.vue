@@ -14,7 +14,10 @@
                                 <div class="mb-3 row">
                                     <label for="category_name" class="col-sm-4 col-form-label">Name</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" v-model="category.name" id="category_name" placeholder="Please enter name of category" />
+                                        <input type="text" class="form-control" v-model="category.name" :class="validate.name === undefined ? '' : ' is-invalid'" id="category_name" placeholder="Please enter name of category" />
+                                        <div v-for="error in validate.name" v-if="validate.name !== null" class="invalid-feedback">
+                                            {{ error }}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -50,6 +53,9 @@ export default {
     data () {
         return {
             name: '',
+
+            validate:{
+            },
         };
     },
     methods: {

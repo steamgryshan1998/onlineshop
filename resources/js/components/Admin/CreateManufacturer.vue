@@ -14,7 +14,10 @@
                                 <div class="mb-3 row">
                                     <label for="name" class="col-sm-4 col-form-label">Name</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" v-model="manufacturer && manufacturer.name" id="name" placeholder="Please enter name of manufacture" />
+                                        <input type="text" class="form-control" v-model="manufacturer && manufacturer.name" :class="validate.name === undefined ? '' : ' is-invalid'" id="name" placeholder="Please enter name of manufacture" />
+                                        <div v-for="error in validate.name" v-if="validate.name !== null" class="invalid-feedback">
+                                            {{ error }}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -46,6 +49,9 @@ export default {
     data () {
         return {
             name: '',
+
+            validate:{
+            },
         };
     },
     methods: {
@@ -65,6 +71,7 @@ export default {
                     this.closeModal()
                 })
                 .catch(error => {
+                    this.validate = error.response.data.errors;
                 })
                 .finally(this.loading = false)
         },
@@ -79,6 +86,7 @@ export default {
                     this.closeModal()
                 })
                 .catch(error => {
+                    this.validate = error.response.data.errors;
                 })
             // .finally(this.contact.id = null // fixed bug with button add new after edit
             //     )

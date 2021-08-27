@@ -13,49 +13,67 @@
                         <div class="mb-3 row">
                             <label for="product_name" class="col-sm-6 col-form-label">Name</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" v-model="product.name" id="product_name"
+                                <input type="text" class="form-control" v-model="product.name" :class="validate.name === undefined ? '' : ' is-invalid'" id="product_name"
                                        placeholder="Please enter name of category"/>
+                                <div v-for="error in validate.name" v-if="validate.name !== null" class="invalid-feedback">
+                                    {{ error }}
+                                </div>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="product_price" class="col-sm-6 col-form-label">Price</label>
                             <div class="col-sm-6">
-                                <input type="number" class="form-control" v-model="product.price" id="product_price"
+                                <input type="number" class="form-control" v-model="product.price" :class="validate.price === undefined ? '' : ' is-invalid'" id="product_price"
                                        placeholder="Please enter price of product"/>
+                                <div v-for="error in validate.price" v-if="validate.price !== null" class="invalid-feedback">
+                                    {{ error }}
+                                </div>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="product_description" class="col-sm-6 col-form-label">Description</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" v-model="product.description" id="product_description"
+                                <input type="text" class="form-control" v-model="product.description" :class="validate.description === undefined ? '' : ' is-invalid'" id="product_description"
                                        placeholder="Please enter name of category"/>
+                                <div v-for="error in validate.description" v-if="validate.description !== null" class="invalid-feedback">
+                                    {{ error }}
+                                </div>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-sm-6 сol-form-label">Category</label>
                             <div class="col-sm-6">
-                                <select class="form-control" v-model="product.category_id">
+                                <select class="form-control" v-model="product.category_id" :class="validate.category_id === undefined ? '' : ' is-invalid'">
                                     <option v-bind:value="category.id" v-for="category in categories">{{
                                             category.name
                                         }}
                                     </option>
                                 </select>
+                                <div v-for="error in validate.category_id" v-if="validate.category_id !== null" class="invalid-feedback">
+                                    {{ error }}
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-6 сol-form-label">Manufacturer</label>
                             <div class="col-sm-6">
-                                <select class="form-control" v-model="product.manufacturer_id">
+                                <select class="form-control" v-model="product.manufacturer_id" :class="validate.manufacturer_id === undefined ? '' : ' is-invalid'">
                                     <option v-bind:value="manufacturer.id" v-for="manufacturer in manufacturers">
                                         {{ manufacturer.name }}
                                     </option>
                                 </select>
+                                <div v-for="error in validate.manufacturer_id" v-if="validate.manufacturer_id !== null" class="invalid-feedback">
+                                    {{ error }}
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-6 сol-form-label">Image</label>
                             <div class="col-sm-6">
-                                <input type="file" ref="file" @change="handleFileUpload"/>
+                                <input type="file" ref="file" @change="handleFileUpload" :class="validate.image === undefined ? '' : ' is-invalid'"/>
+                                <div v-for="error in validate.image" v-if="validate.image !== null" class="invalid-feedback">
+                                    {{ error }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -99,6 +117,9 @@ export default {
             category: [],
             manufacturer: [],
             file: '',
+
+            validate:{
+            },
         };
     },
     methods: {

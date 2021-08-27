@@ -5,17 +5,29 @@
     </div>
     <div class="container">
         <div class="form-group">
-            <input type="text" class="form-control" v-model="form.name" id="name" placeholder="Name">
+            <input type="text" class="form-control" v-model="form.name" :class="validate.name === undefined ? '' : ' is-invalid'" id="name" placeholder="Name">
+            <div v-for="error in validate.name" v-if="validate.name !== null" class="invalid-feedback">
+                {{ error }}
+            </div>
         </div>
 
         <div class="form-group">
-            <input type="email" class="form-control" v-model="form.email" id="email" placeholder="Email">
+            <input type="email" class="form-control" v-model="form.email" :class="validate.email === undefined ? '' : ' is-invalid'" id="email" placeholder="Email">
+            <div v-for="error in validate.email" v-if="validate.email !== null" class="invalid-feedback">
+                {{ error }}
+            </div>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" v-model="form.password" id="password" placeholder="Password">
+            <input type="password" class="form-control" v-model="form.password" :class="validate.password === undefined ? '' : ' is-invalid'" id="password" placeholder="Password">
+            <div v-for="error in validate.password" v-if="validate.password !== null" class="invalid-feedback">
+                {{ error }}
+            </div>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" v-model="form.conf_password" id="conf_password" placeholder="Confirm password" required>
+            <input type="password" class="form-control" v-model="form.conf_password" :class="validate.password_confirmation === undefined ? '' : ' is-invalid'" id="conf_password" placeholder="Confirm password" required>
+            <div v-for="error in validate.password_confirmation" v-if="validate.password_confirmation !== null" class="invalid-feedback">
+                {{ error }}
+            </div>
         </div>
         <!--            <div class="form-group">-->
         <!--                <div class="form-check">-->
@@ -47,13 +59,15 @@ export default {
             password: '',
             password_confirmation: ''
         }),
+        validate:{
+        },
         mustVerifyEmail: false
     }),
 
     methods: {
         async register () {
             // Register the user.
-            const { data } = await this.form.post('/api/register')
+            const { data } = await this.form.post('/api/register').catch(error => {this.validate = error.response.data.errors;})
                 // Log in the user.
                 const { data: { token } } = await this.form.post('/api/login')
 
