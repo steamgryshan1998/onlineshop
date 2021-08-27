@@ -25,9 +25,11 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-//            'description' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
             'category_id' => 'required|int',
             'manufacturer_id' => 'required|int',
+            'image' => 'required'
         ];
     }
 }

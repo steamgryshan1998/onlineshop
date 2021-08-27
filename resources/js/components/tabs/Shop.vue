@@ -1,5 +1,9 @@
 <template>
     <div class="container" :class="{'loading': loading}">
+        <div class="col-md-12 head">
+            <img :src="require('../../../../public/sh.jpg').default" class="img-fluid" alt="" width="1080px" height="300px">
+
+        </div>
         <div class="row">
             <div class="col-lg-3 mb-4">
                 <h1 class="mt-4">Filters</h1>
@@ -152,3 +156,12 @@ export default {
     // }
 }
 </script>
+<style scoped>
+.card-text{
+    color: black;
+}
+.head{
+    padding-right: 0;
+    padding-left: 0;
+}
+</style>

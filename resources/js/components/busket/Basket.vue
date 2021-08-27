@@ -1,4 +1,8 @@
 <template>
+    <div>
+        <div class="col-md-12">
+            <img :src="require('../../../../public/busket.png').default" class="img-fluid" alt="" width="1080px" height="300px">
+        </div>
     <div class="w-full">
         <div class="lg:w-2/3 w-full mx-auto mt-8 overflow-auto container">
             <table class="table-auto w-full text-left whitespace-no-wrap table-responsive-sm">
@@ -47,6 +51,7 @@
             </table>
             </div>
     </div>
+    </div>
 </template>
 
 <script>
@@ -59,7 +64,7 @@ export default {
          ]),
         cartLineTotal(item) {
             let amount = item.price * item.quantity;
-            amount = (amount / 100);
+            amount = (amount / 1);
             return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
         },
         checkout() {
@@ -88,7 +93,7 @@ export default {
         },
         cartTotal() {
             let amount = this.$store.state.cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-            amount = (amount / 100);
+            amount = (amount / 1);
             return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
         }
     }
@@ -103,7 +108,7 @@ table{
     color: black;
 }
 .container{
-    padding-top: 200px;
+    padding-top: 50px;
     align-content: center;
 }
 .submit{

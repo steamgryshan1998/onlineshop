@@ -24,7 +24,7 @@ const i18n = new VueI18n({
 // }
 
 ;(async function () {
-    await loadMessages(store.getters['lang/locale'])
+    // await loadMessages(store.getters['lang/locale'])
 })()
 
 export default i18n

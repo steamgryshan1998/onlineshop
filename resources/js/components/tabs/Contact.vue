@@ -1,4 +1,8 @@
 <template>
+    <div>
+        <div class="col-md-12">
+            <img :src="require('../../../../public/con.jpg').default" class="img-fluid" alt="" width="1080px" height="300px">
+        </div>
 <div class="container">
     <div class="row">
         <div class="col-4">
@@ -44,6 +48,7 @@
                 <button style="width: 100%" type="button" class="btn btn-primary">Sent</button>
     </div>
 </div>
+    </div>
 </template>
 
 <script>

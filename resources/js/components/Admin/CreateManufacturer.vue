@@ -36,10 +36,6 @@
 <script>
 export default {
     props:{
-        manufacturers: {
-            type: Array,
-            default: [],
-        },
         manufacturer: {
             type: Object,
             default: null,

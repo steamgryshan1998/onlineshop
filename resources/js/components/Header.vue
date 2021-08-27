@@ -33,34 +33,20 @@
                 </li>
                 <li class="nav-item dropdown mega-dropdown">
                     <button class="btn btn-secondary" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            data-toggle="modal" data-target="#staticBackdrop">
                         COLLECTION
                     </button>
-                    <ul class="dropdown mega-dropdown open" >
-                        <ul class="dropdown-menu mega-dropdown-menu row"  style="width: 600px; background-color: rgba(206,121,6,0.65)">
-                            <li class="col-md-1"style="    display: inline-block;
-     solid #000;
-    padding: 30px; ">Tema 11
-                                <ul style="margin: 0px; padding: 0px;"> <div class="tidown" >
-                                    <li class="dropdown-header"></li></div>
-                                    <li>подпункт 1 </li>
-                                    <li>подпункт 1 </li>
-                                    <li>подпункт 1 </li>
-                                </ul>
-                            </li>
-                            <li class="col-md-1"style="    display: inline-block;
-     solid #000;
-    padding: 85px; ">Tema 11
-                                <ul > <div class="tidown">
-                                    <li class="dropdown-header"></li></div>
-                                    <li>подпункт 1 </li>
-                                    <li>подпункт 1 </li>
-                                    <li>подпункт 1 </li>
-                                </ul>
-                            </li>
+                    <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                    <img :src="require('../../../public/coll.jpg').default" class="img-fluid" alt="" width="1080px" height="300px">
 
-                        </ul>
-                    </ul>
+                                <router-link to="/shop" class="btn modal-btn btn-success" data-dismiss="modal">Yes, I'm interested</router-link>
+                                    <button type="button" class="btn modal-btn btn-danger" data-dismiss="modal">No, thanks</button>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </li>
     <li class="nav-item">
@@ -153,6 +139,10 @@ a {
     color: white;
 }
 
+.modal-btn{
+    border-radius: 0 0 0 0;
+}
+
 .row_2 a:hover {
     background: #FB4251;
     text-decoration: none;
@@ -168,6 +158,7 @@ a {
     background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
+    border-radius: 0 0 0 0;
     cursor:pointer;
     overflow: hidden;
     outline:none;

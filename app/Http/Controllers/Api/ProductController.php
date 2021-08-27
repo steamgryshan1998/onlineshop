@@ -10,6 +10,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -27,15 +28,18 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ProductRequest $request
+     * @return ProductResource
      */
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request): ProductResource
     {
-        $created_product = Product::create($request->validated());
+        $filePath = Storage::disk('public')
+            ->put('products', $request->file('image'));
+        $data = $request->validated();
+        $data['image'] = $filePath;
+        $createdProduct = Product::create($data);
 
-
-        return new ProductResource($created_product);
+        return new ProductResource($createdProduct);
     }
 
     /**

@@ -10,7 +10,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category_id', 'name', 'description', 'price', 'manufacturer_id'];
+    protected $fillable = ['category_id', 'name', 'description', 'price', 'manufacturer_id', 'image'];
 
     const PRICES = [
         'Less than 50',

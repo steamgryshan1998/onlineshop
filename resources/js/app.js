@@ -10,7 +10,7 @@ require('./bootstrap');
 import Vue from "vue";
 import MainComponent from "./components/MainComponent";
 import VueRouter from "vue-router";
-import routes from "./routes";
+import { routes } from "./routes";
 import Vuex from 'vuex';
 import i18n from './components/plugins/i18n'
 import Cookies from "js-cookie";
@@ -34,6 +34,10 @@ Vue.component('app', require("./components/MainComponent").default)
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+const router = new VueRouter({
+    mode: 'history',
+    routes
+});
 
 
 /**
@@ -42,7 +46,7 @@ Vue.component('app', require("./components/MainComponent").default)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
     state: {
         products: [],
         product: null,
@@ -50,6 +54,7 @@ const store = new Vuex.Store({
         user: null,
         user_role: null,
         token: Cookies.get('token'),
+        auth: false,
         messageGroup: {
             // messageClass: 'danger',
             // message: 'Test'
@@ -59,6 +64,7 @@ const store = new Vuex.Store({
         },
     },
     getters: {
+        isAuth: state => state.auth,
         user: state => state.user,
         user_role: state => state.user_role,
         token: state => state.token,
@@ -148,6 +154,7 @@ const store = new Vuex.Store({
         [types.FETCH_USER_SUCCESS] (state, { user, user_role }) {
             state.user = user
             state.user_role = user_role
+            state.auth = true
         },
 
         [types.FETCH_USER_FAILURE] (state) {
@@ -156,6 +163,7 @@ const store = new Vuex.Store({
         },
 
         [types.LOGOUT] (state) {
+            console.log('logout');
             state.user = null
             state.token = null
             state.user_role = null
@@ -164,6 +172,7 @@ const store = new Vuex.Store({
         },
 
         [types.UPDATE_USER] (state, { user }) {
+            console.log('update_user');
             state.user = user
         }
     },
@@ -255,22 +264,28 @@ const store = new Vuex.Store({
     }
 });
 
-
-
+router.beforeEach( async(to, from, next) => {
+    if (store.getters.token) {
+        await store.dispatch('fetchUser')
+        if (to.matched.some(record => record.meta.onlyGuest)) {
+            if(store.getters.user !== null) {
+                next('/');
+            }
+        } else if(to.matched.some(record => record.meta.admin)) {
+            if(store.getters.user_role !== 'admin'){
+                next('/');
+            }
+        }
+    } else if (to.matched.some(record => record.meta.admin)) {
+        next('/');
+    }
+    next();
+});
 
 const app = new Vue({
     el: '#app',
     components: {MainComponent},
     store,
     i18n,
-    router: new VueRouter(routes),
-    created() {
-        store.dispatch('fetchUser')
-            .then(_ => {})
-            .catch((error) => console.error(error))
-        store.state.cart
-    }
+    router
 })
-
-
-

@@ -33,7 +33,7 @@ hr{
     margin-top: 0;
 }
 .container{
-    color: #58503d;
+    color: white;
     max-width: 1200px;
     margin: 0px auto;
     padding: 0px 15px;

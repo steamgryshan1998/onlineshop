@@ -8,10 +8,8 @@ import Login from "./components/Auth/Login";
 import Register from './components/Auth/Register';
 import Basket from "./components/busket/Basket";
 import Dashboard from "./components/Admin/Dashboard";
-export default {
-    mode:'history',
 
-    routes: [
+export const routes = [
         {
             path: '/',
             component: Home,
@@ -57,16 +55,24 @@ export default {
             path: '/login',
             name: 'Login',
             component: Login,
+            meta: {
+                onlyGuest: true
+            }
         },
         {
             path: '/register',
             name: 'Register',
             component: Register,
+            meta: {
+                onlyGuest: true
+            }
         },
         {
             path: '/admin',
             name: 'Dashboard',
             component: Dashboard,
+            meta: {
+                admin: true
+            }
         }
-    ]
-}
+]

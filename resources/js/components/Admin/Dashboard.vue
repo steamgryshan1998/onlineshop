@@ -161,7 +161,8 @@
                             <CreateProduct
                                 v-show="isCreateProductVisible"
                                 @close="closeCreateProduct"
-                                :products="products"
+                                :categories="categories"
+                                :manufacturers="manufacturers"
                                 :product="mode"
                             />
                         </table>
@@ -226,7 +227,6 @@
                         <CreateManufacturer
                             v-show="isCreateManufacturerVisible"
                             @close="closeCreateManufacturer"
-                            :manufacturers="manufacturers"
                             :manufacturer="mode"
                         />
                     </div>
@@ -337,6 +337,8 @@ export default {
         },
         showCreateProduct() {
             this.isCreateProductVisible = true;
+            this.loadCategories();
+            this.loadManufacturers()
         },
         closeCreateProduct() {
             this.isCreateProductVisible = false;
@@ -356,7 +358,7 @@ export default {
         },
         deleteCategory(id) {
             axios
-                .post('api/categories/' + id, {
+                .post(`api/categories/${id}`, {
                     _method: 'DELETE'
                 })
                 .then(response => {
@@ -364,6 +366,7 @@ export default {
                     this.loadCategories();
                     this.loadProducts();
                     this.loadManufacturers();
+                    console.log(this.categories, 'aaaaaaaaaaaaaaaaaaaaaaa');
                 })
                 .catch(error => {
                     console.log(error)

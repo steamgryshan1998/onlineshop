@@ -1,6 +1,10 @@
 <template>
+    <div>
+    <div class="col-md-12">
+        <img :src="require('../../../../public/log.png').default" class="img-fluid" alt="" width="1080px" height="300px">
+    </div>
     <div class="container brd align-middle">
-        <h2 align="center">Login</h2>
+
         <div>
             <div class="form-group">
                 <div class="form-group">
@@ -18,11 +22,11 @@
         </div>
 
     </div>
+    </div>
 </template>
 
 <script>
 import Form from 'vform'
-import Cookies from 'js-cookie'
 
 export default {
 
@@ -45,6 +49,7 @@ export default {
         async login () {
             // Submit the form.
             const { data } = await this.form.post('/api/login')
+
 
             // Save the token.
             this.$store.dispatch('saveToken', {
@@ -75,6 +80,6 @@ export default {
 
 <style scoped>
 .container{
-    padding-top: 200px;
+    padding-top: 40px;
 }
 </style>

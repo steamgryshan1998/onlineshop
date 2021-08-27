@@ -1,18 +1,13 @@
 <template>
+<div>
+    <div class="col-md-12">
+        <img :src="require('../../../../public/reg.png').default" class="img-fluid" alt="" width="1080px" height="300px">
+    </div>
     <div class="container">
-        <h2 align="center">Registration</h2>
         <div class="form-group">
             <input type="text" class="form-control" v-model="form.name" id="name" placeholder="Name">
         </div>
-        <div class="form-group">
-            <input type="number" class="form-control" v-model="form.phone_number" id="phone_number" placeholder="Phone number">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" v-model="form.address" id="address" placeholder="Address">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" v-model="form.city" id="city" placeholder="City">
-        </div>
+
         <div class="form-group">
             <input type="email" class="form-control" v-model="form.email" id="email" placeholder="Email">
         </div>
@@ -31,6 +26,7 @@
         <!--            </div>-->
         <button @click.prevent="register" @keydown="form.onKeydown($event)" type="submit" style="width: 100%" class="btn btn-primary">Sign in</button>
     </div>
+</div>
 </template>
 
 <script>
@@ -47,9 +43,6 @@ export default {
     data: () => ({
         form: new Form({
             name: '',
-            phone_number: '',
-            address: '',
-            city: '',
             email: '',
             password: '',
             password_confirmation: ''
@@ -83,7 +76,7 @@ export default {
 
 <style scoped>
 .container{
-    padding-top: 100px;
+    padding-top: 50px;
 }
 </style>
 

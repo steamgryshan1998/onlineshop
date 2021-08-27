@@ -5,55 +5,85 @@
                 <div class="modal-header">
                     <h5 v-if="!product.id" class="modal-title">Create Product</h5>
                     <h5 v-else class="modal-title">Edit Product</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            @click="closeModal"></button>
                 </div>
-                    <div class="modal-body">
-                            <div class="col-md-8">
-                                <div class="mb-3 row">
-                                    <label for="product_name" class="col-sm-4 col-form-label">Name</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" v-model="product.name" id="product_name" placeholder="Please enter name of category" />
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Категория</label>
-                                    <div class="col-lg-8">
-                                        <select class="form-control" v-model="product.category_id">
-                                            <option>Выберите категорию</option>
-                                            <option v-bind:value="category.id" v-for="category in categories">{{ category.name }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Бренд</label>
-                                    <div class="col-lg-8">
-                                        <select class="form-control" v-model="product.manufacturer_id">
-                                            <option>Выберите бренд</option>
-                                            <option v-bind:value="manufacturer.id" v-for="manufacturer in manufacturers">{{ manufacturer.name }}</option>
-                                        </select>
-                                    </div>
-                                </div>
+                <div class="modal-body">
+                    <div class="col-md-8">
+                        <div class="mb-3 row">
+                            <label for="product_name" class="col-sm-6 col-form-label">Name</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" v-model="product.name" id="product_name"
+                                       placeholder="Please enter name of category"/>
                             </div>
-
-
-
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="product_price" class="col-sm-6 col-form-label">Price</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" v-model="product.price" id="product_price"
+                                       placeholder="Please enter price of product"/>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="product_description" class="col-sm-6 col-form-label">Description</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" v-model="product.description" id="product_description"
+                                       placeholder="Please enter name of category"/>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-6 сol-form-label">Category</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" v-model="product.category_id">
+                                    <option v-bind:value="category.id" v-for="category in categories">{{
+                                            category.name
+                                        }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-6 сol-form-label">Manufacturer</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" v-model="product.manufacturer_id">
+                                    <option v-bind:value="manufacturer.id" v-for="manufacturer in manufacturers">
+                                        {{ manufacturer.name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-6 сol-form-label">Image</label>
+                            <div class="col-sm-6">
+                                <input type="file" ref="file" @change="handleFileUpload"/>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
-                        <button v-if="!product.id" type="button" class="btn btn-primary" @click.prevent="addProduct">Create</button>
-                        <button v-else type="button" class="btn btn-primary" @click.prevent="editProduct"><i class="fas fa-check"></i>Edit</button>
-                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
+                    <button v-if="!product.id" type="button" class="btn btn-primary" @click.prevent="addProduct">Create</button>
+                    <button v-else type="button" class="btn btn-primary" @click.prevent="editProduct"><i
+                        class="fas fa-check"></i>Edit
+                    </button>
+                </div>
             </div>
+        </div>
+
+    </div>
 
 
 </template>
 <script>
 export default {
-    props:{
-        products: {
+    props: {
+        categories: {
+            type: Array,
+            default: [],
+        },
+        manufacturers: {
             type: Array,
             default: [],
         },
@@ -64,22 +94,26 @@ export default {
         }
     },
     name: "CreateProduct",
-    data () {
+    data() {
         return {
-            categories: [],
             category: [],
-            manufacturers: [],
-            manufacturer: []
+            manufacturer: [],
+            file: '',
         };
     },
-    mounted() {
-        this.loadCategories();
-        this.loadManufacturers();
-    },
     methods: {
+        handleFileUpload() {
+          this.file = this.$refs.file.files[0];
+        },
         closeModal() {
             this.product.name = "";
             this.product.id = "";
+            this.product.category_id = ""
+            this.product.manufacturer_id = ""
+            this.product.price = ""
+            this.product.description = ""
+            this.category.id = ""
+            this.manufacturer.id = ""
             this.$emit('close');
         },
         loadCategories: function () {
@@ -107,11 +141,23 @@ export default {
                 });
         },
         addProduct() {
+            const formData = new FormData();
+            formData.append('image', this.file);
+            for (const [key, value] of Object.entries(this.product)) {
+                formData.append(key, value);
+            }
+
             axios
-                .post('api/products',  this.product)
+                .post('api/products', formData, {
+                    headers: {
+                        'Content-type': 'multipart/form-data',
+                    }
+                })
                 .then(response => {
                     this.product.id = ""
                     this.product.name = ""
+                    this.product.price = ""
+                    this.product.description = ""
                     this.category.id = ""
                     this.manufacturer.id = ""
                     this.closeModal()
@@ -124,16 +170,20 @@ export default {
         editProduct() {
             console.log(this.category_id)
             axios
-                .put('api/products/' + this.product.id,  {
+                .put('api/products/' + this.product.id, {
                     name: this.product.name,
+                    price: this.product.price,
+                    description: this.product.description,
                     category_id: this.product.category_id,
                     manufacturer_id: this.product.manufacturer_id,
                 })
                 .then(response => {
                     this.product.id = ""
                     this.product.name = ""
-                    this.product.category_id = "",
+                    this.product.category_id = ""
                     this.product.manufacturer_id = ""
+                    this.product.price = ""
+                    this.product.description = ""
                     this.category.id = ""
                     this.manufacturer.id = ""
                     this.closeModal()
