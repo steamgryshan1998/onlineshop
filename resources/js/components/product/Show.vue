@@ -5,7 +5,7 @@
 
         </div>
         <div class="card mx-auto" style="width: 500px;">
-            <img src="https://dummyimage.com/640x640" class="card-img-top" alt="ecommerce">
+            <img :src="product.image" class="card-img-top" alt="ecommerce">
             <div class="card-body">
                 <h5 class="card-title" v-text="product.name">{{product.length}}</h5>
                 <p class="card-text" v-text="product.description"></p>

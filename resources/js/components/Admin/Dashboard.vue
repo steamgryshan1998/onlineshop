@@ -122,7 +122,7 @@
                                 <td scope="col">
                                     <div
                                         style="cursor: pointer">
-                                        Created at
+                                        Image
                                     </div>
                                 </td>
                                 <td scope="col">
@@ -145,7 +145,9 @@
                                 <td>{{product.name}}</td>
                                 <td>{{product.description}}</td>
                                 <td>{{product.price}}</td>
-                                <td>{{product.created_at}}</td>
+                                <td>
+                                    <img :src="product.image" class="card-img-top" alt="ecommerce">
+                                </td>
                                 <td>{{product.updated_at}}</td>
                                 <td>{{product.manufacturer}}</td>
                                 <td>
@@ -161,8 +163,8 @@
                             <CreateProduct
                                 v-show="isCreateProductVisible"
                                 @close="closeCreateProduct"
-                                :categories="categories"
                                 :manufacturers="manufacturers"
+                                :categories="categories"
                                 :product="mode"
                             />
                         </table>

@@ -26,7 +26,7 @@ class ProductResource extends JsonResource
             'updated_at' => $this->updated_at,
             'category_name' => $this->category->name,
             'manufacturer' => $this->manufacturer->name,
-            'category_image' => $this->image
+            'image' => $this->image
                 ? Storage::disk('public')->url($this->image)
                 : null,
         ];

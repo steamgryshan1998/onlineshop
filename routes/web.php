@@ -16,7 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/{any}', function () {  // to allow load tabs via vue-router(allow every URL)
     return view('welcome');
 })->where('any', '.*');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

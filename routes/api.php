@@ -1,15 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ProductController;
-//use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\CategoryController;
-use App\Http\Controllers\Api\ManufacturerController;
-use App\Http\Controllers\Api\PriceController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +15,18 @@ use App\Http\Controllers\Auth\UserController;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
-Route::group(['middleware' => 'api'], function () {
+//*/
+Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [LoginController::class, 'logout']);
     Route::get('user', [UserController::class, 'current']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
-    Route::post('login', [LoginController::class, 'login']);
+    Route::post('login', 'Auth\LoginController@login');
     Route::post('register', [RegisterController::class, 'register']);
 
 });
+
 
 
 
@@ -45,3 +41,7 @@ Route::apiResource('prices', 'Api\PriceController');
 //    'manufacturers' => [ManufacturerController::class, 'index'],
 //    'prices' => [PriceController::class, 'index'],
 //]);
+
+Route::get('/zalupa', function () {
+    return response()->json('privet', 201); //
+})->middleware('my-custom-middleware');

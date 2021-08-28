@@ -7,15 +7,14 @@
 import axios from "axios";
 
 require('./bootstrap');
+// import * as bootstrap from './bootstrap';
 import Vue from "vue";
 import MainComponent from "./components/MainComponent";
 import VueRouter from "vue-router";
 import { routes } from "./routes";
 import Vuex from 'vuex';
 import i18n from './components/plugins/i18n'
-import Cookies from "js-cookie";
 import * as types from './mutation-types';
-
 window.Vue = require('vue').default;
 
 /**
@@ -39,6 +38,13 @@ const router = new VueRouter({
     routes
 });
 
+axios.interceptors.request.use(function (config) {
+    config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+    return config;
+}, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -53,7 +59,7 @@ export const store = new Vuex.Store({
         cart: [],
         user: null,
         user_role: null,
-        token: Cookies.get('token'),
+        token: localStorage.getItem('token'),
         auth: false,
         messageGroup: {
             // messageClass: 'danger',
@@ -148,7 +154,7 @@ export const store = new Vuex.Store({
         },
         [types.SAVE_TOKEN] (state, { token, remember }) {
             state.token = token
-            Cookies.set('token', token, { expires: remember ? 365 : null })
+            localStorage.setItem('token', token, { expires: remember ? 365 : null })
         },
 
         [types.FETCH_USER_SUCCESS] (state, { user, user_role }) {
@@ -159,7 +165,7 @@ export const store = new Vuex.Store({
 
         [types.FETCH_USER_FAILURE] (state) {
             state.token = null
-            Cookies.remove('token')
+            localStorage.remove('token')
         },
 
         [types.LOGOUT] (state) {
@@ -168,7 +174,7 @@ export const store = new Vuex.Store({
             state.token = null
             state.user_role = null
 
-            Cookies.remove('token')
+            localStorage.remove('token')
         },
 
         [types.UPDATE_USER] (state, { user }) {

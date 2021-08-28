@@ -33,7 +33,7 @@
                         <div class="mb-3 row">
                             <label for="product_description" class="col-sm-6 col-form-label">Description</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" v-model="product.description" :class="validate.description === undefined ? '' : ' is-invalid'" id="product_description"
+                                <textarea type="text" class="form-control" v-model="product.description" :class="validate.description === undefined ? '' : ' is-invalid'" id="product_description"
                                        placeholder="Please enter name of category"/>
                                 <div v-for="error in validate.description" v-if="validate.description !== null" class="invalid-feedback">
                                     {{ error }}
@@ -71,6 +71,7 @@
                             <label class="col-sm-6 сol-form-label">Image</label>
                             <div class="col-sm-6">
                                 <input type="file" ref="file" @change="handleFileUpload" :class="validate.image === undefined ? '' : ' is-invalid'"/>
+                                <img v-if="product.id" :src="product.image" class="card-img-top" alt="ecommerce" height="100px" width="100px">
                                 <div v-for="error in validate.image" v-if="validate.image !== null" class="invalid-feedback">
                                     {{ error }}
                                 </div>
@@ -189,14 +190,17 @@ export default {
                 .finally(this.loading = false)
         },
         editProduct() {
+            const formData = new FormData();
+            formData.append('image', this.file);
+            for (const [key, value] of Object.entries(this.product)) {
+                formData.append(key, value);
+            }
             console.log(this.category_id)
             axios
-                .put('api/products/' + this.product.id, {
-                    name: this.product.name,
-                    price: this.product.price,
-                    description: this.product.description,
-                    category_id: this.product.category_id,
-                    manufacturer_id: this.product.manufacturer_id,
+                .put('api/products/' + this.product.id, formData, {
+                    headers: {
+                        'Content-type': 'multipart/form-data',
+                    }
                 })
                 .then(response => {
                     this.product.id = ""
