@@ -165,7 +165,7 @@ export const store = new Vuex.Store({
 
         [types.FETCH_USER_FAILURE] (state) {
             state.token = null
-            localStorage.remove('token')
+            localStorage.removeItem('token')
         },
 
         [types.LOGOUT] (state) {
@@ -174,7 +174,7 @@ export const store = new Vuex.Store({
             state.token = null
             state.user_role = null
 
-            localStorage.remove('token')
+            localStorage.removeItem('token')
         },
 
         [types.UPDATE_USER] (state, { user }) {

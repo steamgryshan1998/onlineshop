@@ -134,7 +134,7 @@
                                 <td scope="col">
                                     <div
                                         style="cursor: pointer">
-                                        Manufacturer_id
+                                        Manufacturer_name
                                     </div>
                                 </td>
                                 <td scope="col"></td>
@@ -284,8 +284,8 @@ export default {
     },
 
     mounted() {
-        this.loadCategories();
         this.loadManufacturers();
+        this.loadCategories();
         this.loadProducts();
     },
 
@@ -309,7 +309,7 @@ export default {
             })
                 .then((response) => {
                     this.products = response.data.data;
-                    this.loading = false;
+                    //this.loading = false;
                     console.log(response.data.data);
                 })
                 .catch(function (error) {
@@ -323,7 +323,7 @@ export default {
             })
                 .then((response) => {
                     this.manufacturers = response.data.data;
-                    this.loading = false;
+                    //this.loading = false;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -352,6 +352,7 @@ export default {
         closeCreateManufacturer() {
             this.isCreateManufacturerVisible = false;
             this.loadManufacturers();
+            this.loadProducts();
         },
         editCategory(category) {
             //console.log(contact);

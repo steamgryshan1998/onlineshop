@@ -10,6 +10,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -46,7 +47,7 @@ class ProductController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -56,21 +57,32 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ProductUpdateRequest $request
+     * @param Product $product
+     * @return ProductResource
      */
-    public function update(ProductUpdateRequest $request, Product $product)
+    public function update(ProductUpdateRequest $request, Product $product): ProductResource
     {
-        $product->update($request->validated());
-        return new ProductResource($product);
+        $data = $request->validated();
+        if($request->file('image')) {
+            Storage::disk('public')
+                ->delete($product->image);
+            $filePath = Storage::disk('public')
+                ->put('products', $request->file('image'));
+            $data['image'] = $filePath;
+        }
+
+        $product->update($data);
+        $addedProduct = Product::find($product->id);
+
+        return new ProductResource($addedProduct);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Product $product)
     {

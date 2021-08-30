@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" v-model="form.conf_password" :class="validate.password_confirmation === undefined ? '' : ' is-invalid'" id="conf_password" placeholder="Confirm password" required>
-            <div v-for="error in validate.password_confirmation" v-if="validate.password_confirmation !== null" class="invalid-feedback">
+            <input type="password" class="form-control" v-model="form.conf_password" :class="validate.conf_password === undefined ? '' : ' is-invalid'" id="conf_password" placeholder="Confirm password" required>
+            <div v-for="error in validate.conf_password" v-if="validate.conf_password !== null" class="invalid-feedback">
                 {{ error }}
             </div>
         </div>

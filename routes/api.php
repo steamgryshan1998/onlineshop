@@ -32,6 +32,7 @@ Route::group(['middleware' => 'guest:api'], function () {
 
 Route::apiResource('categories', 'Api\CategoryController');
 Route::apiResource('products', 'Api\ProductController');
+Route::post('products/{product}', 'Api\ProductController@update');
 Route::apiResource('manufacturers', 'Api\ManufacturerController');
 Route::apiResource('prices', 'Api\PriceController');
 

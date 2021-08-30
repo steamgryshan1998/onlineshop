@@ -118,7 +118,6 @@ export default {
             category: [],
             manufacturer: [],
             file: '',
-
             validate:{
             },
         };
@@ -197,7 +196,7 @@ export default {
             }
             console.log(this.category_id)
             axios
-                .put('api/products/' + this.product.id, formData, {
+                .post('api/products/' + this.product.id, formData, {
                     headers: {
                         'Content-type': 'multipart/form-data',
                     }
@@ -211,6 +210,7 @@ export default {
                     this.product.description = ""
                     this.category.id = ""
                     this.manufacturer.id = ""
+                    this.product.image = ""
                     this.closeModal()
                 })
                 .catch(error => {
