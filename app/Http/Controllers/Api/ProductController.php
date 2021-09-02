@@ -9,6 +9,7 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -64,6 +65,7 @@ class ProductController extends Controller
     public function update(ProductUpdateRequest $request, Product $product): ProductResource
     {
         $data = $request->validated();
+        $price = $request->price;
         if($request->file('image')) {
             Storage::disk('public')
                 ->delete($product->image);
@@ -71,7 +73,7 @@ class ProductController extends Controller
                 ->put('products', $request->file('image'));
             $data['image'] = $filePath;
         }
-
+        $product->price = $price;
         $product->update($data);
         $addedProduct = Product::find($product->id);
 
@@ -81,11 +83,13 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Product $product
+     * @return JsonResponse
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product): JsonResponse
     {
         $product->delete();
+
+        return response()->json();
     }
 }

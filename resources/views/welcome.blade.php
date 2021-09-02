@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-<div class="container" id="app">
+<div id="app">
     <main-component></main-component>
 
     {{--        <router-view></router-view>--}}
