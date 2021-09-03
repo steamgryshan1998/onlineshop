@@ -55,8 +55,5 @@ hr{
         max-width: none;
     }
 }
-.kartina {
-    max-width: 100%;
-    height: auto;
-}
+
 </style>
