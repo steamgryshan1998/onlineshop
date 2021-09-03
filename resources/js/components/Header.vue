@@ -22,7 +22,7 @@
             <div class="col-3" style="margin-top: 12px">
                 <router-link to="/"><span class="title" style="text-transform:uppercase"> Days a week from 9:00 am to 7:00 pm</span></router-link>
             </div>
-            <div class="col-6">
+            <div class="col-5">
             </div>
 
             <div class="col-1 " style="margin-right: 15px; margin-top: 10px" >
@@ -49,7 +49,7 @@
                 </div>
 
             </div>
-            <div class="col-1" style="margin-top: 10px">
+            <div class="col-2" style="margin-top: 10px">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span>Currency</span>
                 </button>
@@ -147,6 +147,7 @@ background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/H
 <!--                </router-link>-->
 <!--            </div>-->
 <!--        </div>-->
+            <div class="col-3"></div>
             <div class="col-4" style="padding: 25px; padding-left: 18px">
                 <router-link to="/basket"><i class="fas fa-shopping-cart" style="font-size: 30px; "></i>    <span v-text="'(' + $store.state.cart.length + ' items)'"></span>
                 </router-link>
@@ -161,14 +162,14 @@ background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/H
             <div class="col-1"></div>
 
             <div>
-            <ul class="nav justify-content-center" style="height: 64px; padding-left: 20px; padding-right: 20px; padding-bottom: 0;">
+            <ul class="nav justify-content-center" style="height: 70px; padding-left: 20px; padding-right: 20px; padding-bottom: 0;">
                 <li class="nav-item" >
                     <router-link to="/"><a class="nav-link">HOME</a></router-link>
                 </li>
 
                 <li class="nav-item dropdown mega-dropdown"> <a href="#" class="nav-link " data-toggle="dropdown">
                    COLLECTION</a>
-                    <ul class="dropdown-menu mega-dropdown-menu row justify-content-center">
+                    <ul class="dropdown-menu mega-dropdown-menu row justify-content-center" style="width: 1301px; margin-left: 642px">
                         <li class="col-md-3">
                             <ul>
                                 <li class="dropdown-header">Women's</li>
@@ -307,8 +308,8 @@ export default {
     }
 }
 .nav-link{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 24px;
+    padding-bottom: 23px;
     color: white
 }
 @media (max-width: 992px) {
@@ -345,11 +346,9 @@ a{
 
 }
 .row_2 a:hover {
-
     background: #5a4e38;
     text-decoration: none;
-    height: 63px;
-
+    height: 70px;
 }
 
 

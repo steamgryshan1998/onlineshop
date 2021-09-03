@@ -1,9 +1,9 @@
 <template>
-<div>
+<div class="container">
     <div class="col-md-12">
-        <img :src="require('../../../../public/reg.png').default" class="img-fluid" alt="" width="1080px" height="300px">
+        <img :src="require('../../../../public/reg.png').default" class="img-fluid" alt="" width="1300px" height="300px">
     </div>
-    <div class="container">
+    <div class="brd">
         <div class="form-group">
             <input type="text" class="form-control" v-model="form.name" :class="validate.name === undefined ? '' : ' is-invalid'" id="name" placeholder="Name">
             <div v-for="error in validate.name" v-if="validate.name !== null" class="invalid-feedback">
@@ -29,13 +29,6 @@
                 {{ error }}
             </div>
         </div>
-        <!--            <div class="form-group">-->
-        <!--                <div class="form-check">-->
-        <!--                    <label class="form-check-label">-->
-        <!--                        <input class="form-check-input" type="checkbox"> I accept the Terms of Use & Privacy Policy-->
-        <!--                    </label>-->
-        <!--                </div>-->
-        <!--            </div>-->
         <button @click.prevent="register" @keydown="form.onKeydown($event)" type="submit" style="width: 100%" class="btn btn-primary">Sign in</button>
     </div>
 </div>
@@ -89,7 +82,7 @@ export default {
 </script>
 
 <style scoped>
-.container{
+.brd{
     padding-top: 50px;
 }
 </style>

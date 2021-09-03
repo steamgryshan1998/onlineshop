@@ -71,7 +71,7 @@
                             <label class="col-sm-6 сol-form-label">Image</label>
                             <div class="col-sm-6">
                                 <input type="file" ref="file" @change="handleFileUpload" :class="validate.image === undefined ? '' : ' is-invalid'"/>
-                                <img v-if="product.id" :src="product.image" class="card-img-top" alt="ecommerce" height="100px" width="100px">
+                                <img v-if="product.id" :src="product.image" v-model="product.image"  class="card-img-top" alt="ecommerce" height="100px" width="100px">
                                 <div v-for="error in validate.image" v-if="validate.image !== null" class="invalid-feedback">
                                     {{ error }}
                                 </div>
@@ -135,6 +135,7 @@ export default {
             this.product.description = ""
             this.category.id = ""
             this.manufacturer.id = ""
+            this.product.image = ""
             this.$emit('close');
         },
         loadCategories: function () {

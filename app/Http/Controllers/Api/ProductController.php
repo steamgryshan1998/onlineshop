@@ -65,7 +65,6 @@ class ProductController extends Controller
     public function update(ProductUpdateRequest $request, Product $product): ProductResource
     {
         $data = $request->validated();
-        $price = $request->price;
         if($request->file('image')) {
             Storage::disk('public')
                 ->delete($product->image);
@@ -73,7 +72,6 @@ class ProductController extends Controller
                 ->put('products', $request->file('image'));
             $data['image'] = $filePath;
         }
-        $product->price = $price;
         $product->update($data);
         $addedProduct = Product::find($product->id);
 

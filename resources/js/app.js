@@ -13,7 +13,7 @@ import MainComponent from "./components/MainComponent";
 import VueRouter from "vue-router";
 import { routes } from "./routes";
 import Vuex from 'vuex';
-import i18n from './components/plugins/i18n'
+
 import * as types from './mutation-types';
 window.Vue = require('vue').default;
 
@@ -52,6 +52,10 @@ axios.interceptors.request.use(function (config) {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+//todo pizdez raznesty/ use mixins
+    //vuex config mutators getters
+    // move api functions to the service
 export const store = new Vuex.Store({
     state: {
         products: [],
@@ -134,15 +138,6 @@ export const store = new Vuex.Store({
         'AUTH_STATUS_CHANGE' (state, {user}) {
             state.isLoggedIn = user != null;
         },
-        // addToCart(state, product){
-        //     let productInCartIndex = state.cart.findIndex(item => item.slug === product.slug);
-        //     if(productInCartIndex !== -1){
-        //         state.cart[productInCartIndex].quantity++;
-        //         return;
-        //     }
-        //     product.quantity = 1;
-        //     state.cart.push(product);
-        // },
         removeFromCart(state, index){
             state.cart.splice(index, 1);
         },
@@ -231,7 +226,6 @@ export const store = new Vuex.Store({
         },
 
         updateCart ({ commit }, {product, quantity, isAdd}) {
-            // TODO: Call service
             commit('UPDATE_CART', {product, quantity, isAdd});
             if (isAdd) {
                 let message_obj = {
@@ -292,6 +286,5 @@ const app = new Vue({
     el: '#app',
     components: {MainComponent},
     store,
-    i18n,
     router
 })

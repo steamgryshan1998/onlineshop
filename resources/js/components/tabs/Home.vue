@@ -3,9 +3,9 @@
         <div id="overlay">
             <div class="popup">
 
-                <ul class="nav row " style="height: 520px; width: 1050px">
-                <li class="col-5" >
-                    <img :src="require('../../../../public/images/images/callback-img.png').default" class="d-block w-100" style="height: 150px; width: 300px" alt="...">
+                <ul class="nav row " style="height: 220px; width: 1050px">
+                <li class="col-2" >
+                    <img :src="require('../../../../public/images/images/callback-img.png').default" class="d-block" style="height: 150px; width: 150px" alt="...">
                 </li>
                 <li class="col-7">
                     <h2 style="font-size: 50px;font-weight: 600; ">50% off</h2>
@@ -47,20 +47,23 @@
                 <button class="close" title="Закрыть" onclick="document.getElementById('overlay').style.display='none';"></button>
             </div>
         </div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="padding-left: 0px; margin: 0px; width: 1818px; height:620px">
-            <ol class="carousel-indicators">
-                <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#blogCarousel" data-slide-to="1"></li>
-            </ol>
-            <div class="carousel-inner" >
-                <div class="carousel-item active">
+        <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel" style="padding-left: 0px; margin: 0px; width: 1818px; height:620px">
 
-                    <img :src="require('../../../../public/images/ban.jpg').default" class="d-block w-100" height="494px" width="100%" alt="...">
+            <div class="carousel-inner" style="padding-left: 35px">
+                <div class="carousel-item active">
+                    <a href="#">
+                    <img :src="require('../../../../public/images/ban.jpg').default" class="d-block w-100" height="564px" width="100%" alt="...">
+                    </a>
                 </div>
                 <div class="carousel-item">
-                    <img :src="require('../../../../public/images/ban2.jpg').default" class="d-block w-100" height="494px" alt="...">
+                    <a href="#">
+                    <img :src="require('../../../../public/images/ban2.jpg').default" class="d-block w-100" height="564px" alt="...">
+                    </a>
                 </div>
-
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleControlss" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleControlss" data-slide-to="1"></li>
+                </ol>
             </div>
 
         </div>
@@ -91,7 +94,7 @@
         </div>
 
         <div class="col-md-12 scale">
-            <img :src="require('../../../../public/images/store.jpg').default" class="img-fluid scale" alt="" width="1080px" height="300px">
+            <img :src="require('../../../../public/images/store.jpg').default" class="img-fluid scale" alt="" width="1300px" height="300px">
         </div>
         </div>
     </div>
