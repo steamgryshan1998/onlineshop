@@ -190,79 +190,79 @@
 <!--}-->
 <!--</style>-->
 <template>
-    <div >
+    <div>
 
 
-        <div class="row_1" style="border-bottom: 3px double #FF0000;">
+<!--        <div class="row_1 header_hr">-->
+<!--            <div class="row header_1">-->
+<!--            <div class="col-6">-->
+<!--                <router-link to="/"><i class="fas fa-battery-three-quarters"></i><span class="title"> Days a week from 9:00 am to 7:00 pm</span></router-link>-->
+<!--            </div>-->
+<!--            <div class="col-2">-->
+<!--            </div>-->
 
-            <div class="col-3">
-                <router-link to="/"><i class="fas fa-battery-three-quarters"></i><span class="title"> Days a week from 9:00 am to 7:00 pm</span></router-link>
-            </div>
-            <div class="col-6">
-            </div>
+<!--            <div class="col-1 " style="margin-right: 15px; " >-->
+<!--                <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    <span v-if="!user" >My account</span>-->
+<!--                    <span v-else>{{ user.name }}</span>-->
+<!--                </button>-->
+<!--                <div class="dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton" >-->
+<!--                    <router-link v-if="!user" to="/login"><a class="dropdown-item" href="#">Login</a></router-link>-->
+<!--                    <router-link v-if="!user" to="/register"><a class="dropdown-item" href="#">Register</a></router-link>-->
+<!--                    <router-link v-if="user_role === 'admin'" to="/admin"><a class="dropdown-item" href="#">Admin Dashboard</a></router-link>-->
+<!--                    <a v-if="user" class="dropdown-item" href="#" @click.prevent="logout">Logout</a>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="col-1 " style="margin-right: 15px; " >
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span v-if="!user" >My account</span>
-                    <span v-else>{{ user.name }}</span>
-                </button>
-                <div class="dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton" >
-                    <router-link v-if="!user" to="/login"><a class="dropdown-item" href="#">Login</a></router-link>
-                    <router-link v-if="!user" to="/register"><a class="dropdown-item" href="#">Register</a></router-link>
-                    <router-link v-if="user_role === 'admin'" to="/admin"><a class="dropdown-item" href="#">Admin Dashboard</a></router-link>
-                    <a v-if="user" class="dropdown-item" href="#" @click.prevent="logout">Logout</a>
-                </div>
-            </div>
+<!--            <div class="col-1 ">-->
+<!--                <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    <span>Language</span>-->
+<!--                </button>-->
+<!--                <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">-->
+<!--                    <a class="dropdown-item" href="#">English</a>-->
+<!--                    <a class="dropdown-item" href="#">French</a>-->
+<!--                    <a class="dropdown-item" href="#">German</a>-->
+<!--                </div>-->
 
-            <div class="col-1 ">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span>Language</span>
-                </button>
-                <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">English</a>
-                    <a class="dropdown-item" href="#">French</a>
-                    <a class="dropdown-item" href="#">German</a>
-                </div>
-
-            </div>
-            <div class="col-1">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span>Currency</span>
-                </button>
-                <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">€ Euro</a>
-                    <a class="dropdown-item" href="#">£ Pound Sterling</a>
-                    <a class="dropdown-item" href="#">$ US Dollar</a>
-                </div>
-            </div>
-
-        </div>
-
-
+<!--            </div>-->
+<!--            <div class="col-1">-->
+<!--                <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    <span>Currency</span>-->
+<!--                </button>-->
+<!--                <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">-->
+<!--                    <a class="dropdown-item" href="#">€ Euro</a>-->
+<!--                    <a class="dropdown-item" href="#">£ Pound Sterling</a>-->
+<!--                    <a class="dropdown-item" href="#">$ US Dollar</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
 
-        <div class="row_1"  style="height: 110px; padding: 20px; margin-bottom: 30px">
-            <form action="/search/" target="_blank" style="padding: 30px;padding-left: 0px;">
-                <input type="hidden" name="searchid" value="808327">
-                <input type="search" name="text" required placeholder="Поиск по сайту" style="
-padding: 5px 2px 5px 25px;
-background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/Hu2poBOPx3g/s25/search.png') no-repeat scroll 0 50%;
-">
-            </form>
 
-            <div class="col-2">
-            </div>
-            <a class="navbar-brand" > <img :src="require('../../../public/logo.onlineshop.loc.png').default" width="220px" height="90px" style="padding-bottom: 10px;"> </a>
 
-            <div class="col-3">
-            </div>
+<!--        <div class="row_1"  style="height: 110px; padding: 20px; margin-bottom: 30px">-->
+<!--            <form action="/search/" target="_blank" style="padding: 30px;padding-left: 0px;">-->
+<!--                <input type="hidden" name="searchid" value="808327">-->
+<!--                <input type="search" name="text" required placeholder="Поиск по сайту" style="-->
+<!--padding: 5px 2px 5px 25px;-->
+<!--background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/Hu2poBOPx3g/s25/search.png') no-repeat scroll 0 50%;-->
+<!--">-->
+<!--            </form>-->
 
-            <div class="col-4" style="padding: 25px">
-                <router-link to="/basket"><i class="fas fa-shopping-cart"
-                                             v-text="'(' + $store.state.cart.length + ' items)'" ></i><span></span>
-                </router-link>
-            </div>
-        </div>
+<!--            <div class="col-2">-->
+<!--            </div>-->
+<!--            <a class="navbar-brand" > <img :src="require('../../../public/logo.onlineshop.loc.png').default" width="220px" height="90px" style="padding-bottom: 10px;"> </a>-->
+
+<!--            <div class="col-3">-->
+<!--            </div>-->
+
+<!--            <div class="col-4" style="padding: 25px">-->
+<!--                <router-link to="/basket"><i class="fas fa-shopping-cart"-->
+<!--                                             v-text="'(' + $store.state.cart.length + ' items)'" ></i><span></span>-->
+<!--                </router-link>-->
+<!--            </div>-->
+<!--        </div>-->
 
 
         <div class="row_2"  style="width: 1000px; padding-left: 100px">
@@ -389,6 +389,14 @@ export default {
 <style scoped>
 
 .title{
+
+}
+
+
+.header_1{
+    margin-left: 370px;
+    margin-right: 370px;
+    width: 100%;
 
 }
 .container{

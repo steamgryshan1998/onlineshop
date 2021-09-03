@@ -48,6 +48,10 @@
             </div>
         </div>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="padding-left: 0px; margin: 0px; width: 1818px; height:620px">
+            <ol class="carousel-indicators">
+                <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#blogCarousel" data-slide-to="1"></li>
+            </ol>
             <div class="carousel-inner" >
                 <div class="carousel-item active">
 
@@ -58,20 +62,11 @@
                 </div>
 
             </div>
-            <div style="max-width: 1095px">
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Предыдущий</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Следующий</span>
-                </a>
-            </div>
+
         </div>
 
 
-
+        <div class="container">
         <div class="row pointers" style="padding: 10px; margin-left: 40px">
             <div class="col-3" >
                 <i class="fas fa-truck-loading"></i>
@@ -95,10 +90,10 @@
             </div>
         </div>
 
-        <div class="col-md-12">
-            <img :src="require('../../../../public/images/images/cart.1GucY.jpg').default" class="img-fluid" alt="" width="1080px" height="300px">
+        <div class="col-md-12 scale">
+            <img :src="require('../../../../public/images/store.jpg').default" class="img-fluid scale" alt="" width="1080px" height="300px">
         </div>
-
+        </div>
     </div>
 </template>
 
@@ -209,6 +204,29 @@ h1{
 /* кнопка закрытия при наведении */
 .close:hover {
     background-color: rgba(252, 20, 0, 0.8);
+}
+
+.scale {
+    display: inline-block; /* Строчно-блочный элемент */
+    overflow: hidden; /* Скрываем всё за контуром */
+}
+.scale img {
+    transition: 1s; /* Время эффекта */
+    display: block; /* Убираем небольшой отступ снизу */
+}
+.scale img:hover {
+    transform: scale(1.2); /* Увеличиваем масштаб */
+}
+
+.carousel-indicators li {
+    background: #a3a3a3;
+    border-radius: 100%;
+    width: 23px;
+
+}
+
+.blog .carousel-indicators .active {
+    background: #707070;
 }
 
 </style>
