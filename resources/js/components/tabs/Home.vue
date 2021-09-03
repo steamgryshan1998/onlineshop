@@ -3,7 +3,7 @@
         <div id="overlay">
             <div class="popup">
 
-                <ul class="nav row " style="margin-top: 20px">
+                <ul class="nav row " style="height: 520px; width: 1050px">
                 <li class="col-5" >
                     <img :src="require('../../../../public/images/images/callback-img.png').default" class="d-block w-100" style="height: 150px; width: 300px" alt="...">
                 </li>
@@ -146,9 +146,7 @@ h1{
     top: 25%;
     left: 0;
     right: 0;
-    font-size: 14px;
     margin: auto;
-    width: 1150px;
     min-width: 320px;
     max-width: 600px;
     position: absolute;
@@ -158,12 +156,12 @@ h1{
     z-index: 1000;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
+
     border-radius: 4px;
     font: 14px/18px 'Tahoma', Arial, sans-serif;
     -webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
     -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
-    -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+
     box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
     -webkit-animation: fade .6s;
     -moz-animation: fade .6s;
