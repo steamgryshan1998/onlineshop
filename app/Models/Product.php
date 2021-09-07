@@ -13,10 +13,10 @@ class Product extends Model
     protected $fillable = ['category_id', 'name', 'description', 'price', 'manufacturer_id', 'image'];
 
     const PRICES = [
-        'Less than 50',
-        'From 50 to 100',
-        'From 100 to 500',
-        'More than 500',
+        'Less than 5000',
+        'From 5000 to 10000',
+        'From 10000 to 50000',
+        'More than 50000',
     ];
 
     public function category(): ?BelongsTo

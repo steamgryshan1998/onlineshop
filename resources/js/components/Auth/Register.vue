@@ -1,35 +1,72 @@
 <template>
 <div class="container">
     <div class="col-md-12">
-        <img :src="require('../../../../public/reg.png').default" class="img-fluid" alt="" width="1300px" height="300px">
+        <img
+            :src="require('../../../../public/reg.png').default"
+             class="img-fluid"
+             alt=""
+             width="1300px"
+             height="300px">
     </div>
     <div class="brd">
         <div class="form-group">
-            <input type="text" class="form-control" v-model="form.name" :class="validate.name === undefined ? '' : ' is-invalid'" id="name" placeholder="Name">
+            <input
+                   type="text"
+                   class="form-control"
+                   v-model="form.name"
+                   :class="validate.name === undefined ? '' : ' is-invalid'"
+                   id="name"
+                   placeholder="Name">
             <div v-for="error in validate.name" v-if="validate.name !== null" class="invalid-feedback">
                 {{ error }}
             </div>
         </div>
 
         <div class="form-group">
-            <input type="email" class="form-control" v-model="form.email" :class="validate.email === undefined ? '' : ' is-invalid'" id="email" placeholder="Email">
+            <input
+                   type="email"
+                   class="form-control"
+                   v-model="form.email"
+                   :class="validate.email === undefined ? '' : ' is-invalid'"
+                   id="email"
+                   placeholder="Email">
             <div v-for="error in validate.email" v-if="validate.email !== null" class="invalid-feedback">
                 {{ error }}
             </div>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" v-model="form.password" :class="validate.password === undefined ? '' : ' is-invalid'" id="password" placeholder="Password">
+            <input
+                   type="password"
+                   class="form-control"
+                   v-model="form.password"
+                   :class="validate.password === undefined ? '' : ' is-invalid'"
+                   id="password"
+                   placeholder="Password">
             <div v-for="error in validate.password" v-if="validate.password !== null" class="invalid-feedback">
                 {{ error }}
             </div>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" v-model="form.conf_password" :class="validate.conf_password === undefined ? '' : ' is-invalid'" id="conf_password" placeholder="Confirm password" required>
-            <div v-for="error in validate.conf_password" v-if="validate.conf_password !== null" class="invalid-feedback">
+            <input
+                   type="password"
+                   class="form-control"
+                   v-model="form.conf_password"
+                   :class="validate.conf_password === undefined ? '' : ' is-invalid'"
+                   id="conf_password"
+                   placeholder="Confirm password"
+                   required>
+            <div v-for="error in validate.conf_password"
+                 v-if="validate.conf_password !== null"
+                 class="invalid-feedback">
                 {{ error }}
             </div>
         </div>
-        <button @click.prevent="register" @keydown="form.onKeydown($event)" type="submit" style="width: 100%" class="btn btn-primary">Sign in</button>
+        <button
+                @click.prevent="register"
+                @keydown="form.onKeydown($event)"
+                type="submit"
+                style="width: 100%"
+                class="btn btn-primary">Sign in</button>
     </div>
 </div>
 </template>
@@ -39,12 +76,6 @@ import Form from 'vform'
 
 
 export default {
-    middleware: 'guest',
-
-    metaInfo () {
-        return { title: this.$t('register') }
-    },
-
     data: () => ({
         form: new Form({
             name: '',
@@ -54,7 +85,6 @@ export default {
         }),
         validate:{
         },
-        mustVerifyEmail: false
     }),
 
     methods: {
@@ -73,7 +103,7 @@ export default {
                 // Fetch the user
                 await this.$store.dispatch('fetchUser')
 
-                // Redirect home.
+                // Redirect to the shop page.
                 this.$router.push({ name: 'Shop' })
             }
         }

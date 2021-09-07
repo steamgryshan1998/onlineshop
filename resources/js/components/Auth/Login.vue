@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-md-12">
             <!--        пиздец-->
-            <img :src="require('../../../../public/log.png').default" class="img-fluid" alt="" width="1300px"
+            <img src="../../../../public/log.png" class="img-fluid" alt="" width="1300px"
                  height="300px">
         </div>
         <div class="brd align-middle">
@@ -13,7 +13,8 @@
                         <input
                             type="email"
                             class="form-control"
-                            id="email" :class="validate.email === undefined ? '' : ' is-invalid'"
+                            id="email"
+                            :class="validate.email === undefined ? '' : ' is-invalid'"
                             v-model="form.email"
                             placeholder="Your e-mail"
                         >
@@ -47,21 +48,12 @@ import Form from 'vform'
 
 export default {
 
-
-    middleware: 'guest',
-
-    metaInfo() {
-        //pizdec
-        return {title: this.$t('login')}
-    },
-
     data: () => ({
         form: new Form({
             email: '',
             password: ''
         }),
         validate: {},
-        remember: false
     }),
 
     methods: {
@@ -75,7 +67,6 @@ export default {
             // Save the token.
             this.$store.dispatch('saveToken', {
                 token: data.token,
-                remember: this.remember
             })
 
             // Fetch the user.
@@ -85,25 +76,11 @@ export default {
             this.$router.push({name: 'Shop'})
         },
 
-        // redirect () {
-        //     const intendedUrl = Cookies.get('intended_url')
-        //
-        //     if (intendedUrl) {
-        //         Cookies.remove('intended_url')
-        //         this.$router.push({ name: 'Shop' })
-        //     } else {
-        //         this.$router.push({ name: 'Home' })
-        //     }
-        // }
     }
 }
 </script>
 
 <style scoped>
-.container {
-
-}
-
 .brd {
     padding-top: 40px;
 }

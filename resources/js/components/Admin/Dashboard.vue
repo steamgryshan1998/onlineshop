@@ -1,23 +1,21 @@
 <template>
-    <div>
+    <div class="container">
         <div class="row">
             <h2>Admin Dashboard</h2>
         </div>
-        <div class="row">
-                <div class="nav nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="row nav nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-categories-tab" data-toggle="pill" href="#v-pills-categories" role="tab" aria-controls="v-pills-categories" aria-selected="true">Categories</a>
                     <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="false">Products</a>
                     <a class="nav-link" id="v-pills-manufacturers-tab" data-toggle="pill" href="#v-pills-manufacturers" role="tab" aria-controls="v-pills-manufacturers" aria-selected="false">Manufacturers</a>
             </div>
-            <div class="col-9">
+            <div class="row">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-categories" role="tabpanel" aria-labelledby="v-pills-categories-tab">
+                    <div class="tab-pane fade show active tab_category" id="v-pills-categories" role="tabpanel" aria-labelledby="v-pills-categories-tab">
 
                         <div class="col-2">
-                            <button type="button" class="btn contact_button btn-primary " @click="showCreateCategory">
-                                <!--                todo font awesome-->
+                            <button type="button" class="btn contact_button btn-primary adding" @click="showCreateCategory">
                                 <i class="fas fa-user-plus"></i>
-                                Add new
+                                Add
                             </button>
                         </div>
                         <table class="table table-bordered">
@@ -75,10 +73,9 @@
                     </div>
                     <div class="tab-pane fade" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-products-tab">
                         <div class="col-2">
-                            <button type="button" class="btn contact_button btn-primary " @click="showCreateProduct">
-                                <!--                todo font awesome-->
+                            <button type="button" class="btn contact_button btn-primary adding" @click="showCreateProduct">
                                 <i class="fas fa-user-plus"></i>
-                                Add new
+                                Add
                             </button>
                         </div>
                         <table class="table table-bordered">
@@ -169,12 +166,11 @@
                             />
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-manufacturers" role="tabpanel" aria-labelledby="v-pills-manufacturers-tab">
+                    <div class="tab-pane fade tab_manufacture" id="v-pills-manufacturers" role="tabpanel" aria-labelledby="v-pills-manufacturers-tab">
                         <div class="col-2">
-                            <button type="button" class="btn contact_button btn-primary " @click="showCreateManufacturer">
-                                <!--                todo font awesome-->
+                            <button type="button" class="btn contact_button btn-primary adding" @click="showCreateManufacturer">
                                 <i class="fas fa-user-plus"></i>
-                                Add new
+                                Add
                             </button>
                         </div>
                         <table class="table table-bordered">
@@ -427,6 +423,20 @@ export default {
 }
 h4{
     align-content: center;
+}
+.tab-content{
+    margin-top: 30px;
+}
+.tab_category{
+    width: 1170px;
+}
+.tab_manufacture{
+    width: 1170px;
+}
+.adding{
+    height: 37px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 table{
     background-color: white;

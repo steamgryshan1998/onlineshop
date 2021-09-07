@@ -6,6 +6,17 @@
         </div>
         <div class="row">
             <div class="col-lg-3 mb-4 sidebar">
+                <h1 class="mt-4">Categories</h1>
+                <hr>
+                <div class="form-check" v-for="category in categories">
+                    <div :id="category.id" @click="selectCategory(category)">
+                        <h6>{{ category.name }}</h6>
+                    </div>
+                    <hr>
+                </div>
+
+
+
                 <h1 class="mt-4">Filters</h1>
                 <hr>
                 <h3 class="mt-2">Price</h3>
@@ -17,14 +28,14 @@
                     </label>
                 </div>
 
-                <h3 class="mt-2">Categories</h3>
-                <hr class="hr-dashed-bg">
-                <div class="form-check" v-for="(category, index) in categories">
-                    <input class="form-check-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="selected.categories">
-                    <label class="form-check-label option" :for="'category' + index">
-                        {{ category.name }} ({{ category.products_count }})
-                    </label>
-                </div>
+<!--                <h3 class="mt-2">Categories</h3>-->
+<!--                <hr class="hr-dashed-bg">-->
+<!--                <div class="form-check" v-for="(category, index) in categories">-->
+<!--                    <input class="form-check-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="selected.categories">-->
+<!--                    <label class="form-check-label option" :for="'category' + index">-->
+<!--                        {{ category.name }} ({{ category.products_count }})-->
+<!--                    </label>-->
+<!--                </div>-->
 
                 <h3 class="mt-2">Manufacturers</h3>
                 <hr class="hr-dashed-bg">
@@ -37,7 +48,7 @@
             </div>
             <div class="col-lg-9">
                 <div class="row mt-4">
-                    <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0" v-for="product in products" :key="product.id">
+                    <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0" v-for="product in FilteredProducts" :key="product.id">
                         <div class="card h-100 our-team">
                             <div class="team_img">
                             <a href="#">
@@ -112,6 +123,14 @@ export default {
     },
 
     methods: {
+        selectCategory(category){
+            this.SortedProducts = [];
+            this.products.map(function (item) {
+                if(item.category === category.name){
+                    this.SortedProducts.push(item);
+                }
+            })
+        },
         loadCategories: function () {
             axios.get('/api/categories', {
                 params: _.omit(this.selected, 'categories')
@@ -168,11 +187,16 @@ export default {
             return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
         }
     },
-    // computed: {
-    //     products() {
-    //         return this.$store.state.products;
-    //     }
-    // }
+    computed: {
+        FilteredProducts() {
+            let l = this.SortedProducts
+            if (l) {
+                return this.SortedProducts;
+            }  else {
+                return this.products;
+            }
+        }
+    }
 }
 </script>
 <style scoped>

@@ -71,6 +71,8 @@ class ProductController extends Controller
             $filePath = Storage::disk('public')
                 ->put('products', $request->file('image'));
             $data['image'] = $filePath;
+        } else {
+            unset($data['image']);
         }
         $product->update($data);
         $addedProduct = Product::find($product->id);
