@@ -7,7 +7,7 @@
 
 
             <li class="col-9">
-                <img :src="require('../../../../../public/images/ab2.png').default"  alt="" width="792px" style="margin-bottom: 20px;">
+                <img :src="require('../../../../../public/images/ab2.png').default" alt="" width="792px" style="margin-bottom: 20px;">
 
 
                 <div class="about-heading-wrap" style="    -webkit-text-size-adjust: 100%;
@@ -89,7 +89,7 @@
 
 <script>
 
-import Sidebar from "../../Sidebar";
+import Sidebar from "../ Global_sidebar/Sidebar";
 import Skills_about from "./Skills";
 import Accordion_about from "./Accordion_about";
 

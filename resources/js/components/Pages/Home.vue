@@ -47,62 +47,21 @@
                 <button class="close" title="Закрыть" onclick="document.getElementById('overlay').style.display='none';"></button>
             </div>
         </div>
-        <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel" style="padding-left: 0px; margin: 0px; width: 1818px; height:620px">
-
-            <div class="carousel-inner" style="padding-left: 35px">
-                <div class="carousel-item active">
-                    <a href="#">
-                    <img :src="require('../../../../public/images/ban.jpg').default" class="d-block w-100" height="564px" width="100%" alt="...">
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <a href="#">
-                    <img :src="require('../../../../public/images/ban2.jpg').default" class="d-block w-100" height="564px" alt="...">
-                    </a>
-                </div>
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleControlss" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleControlss" data-slide-to="1"></li>
-                </ol>
-            </div>
-
-        </div>
 
 
-        <div class="container">
-        <div class="row pointers" style="padding: 10px; margin-left: 40px">
-            <div class="col-3" >
-                <i class="fas fa-truck-loading"></i>
-                <a   class="learnMore" style="font-weight:bold"> FREE SHIPPING</a><br>
-                Free dedlivery worldwide
-            </div>
-            <div class="col-3">
-                <i class="fas fa-globe"></i>
-                <a   class="learnMore" style="font-weight:bold">ORDER ONLINE</a><br>
-                Hours : 8am - 11pm
-            </div>
-            <div class="col-3">
-                <i class="fas fa-wallet"></i>
-                <a   class="learnMore" style="font-weight:bold">SHOP AND SAVE</a><br>
-                For All Spices & Herbs
-            </div>
-            <div class="col-3">
-                <i class="fas fa-user-shield"></i>
-                <a   class="learnMore"  style="font-weight:bold">SAFE SHOPPING</a><br>
-                Ensure genuine 100%
-            </div>
-        </div>
+<Banner_carousel />
 
-        <div class="col-md-12 scale">
-            <img :src="require('../../../../public/images/store.jpg').default" class="img-fluid scale" alt="" width="1300px" height="300px">
-        </div>
-        </div>
+
+<Cont_homepage />
     </div>
 </template>
 
 <script>
+import Cont_homepage from "./Home/Container_homepage";
+import Banner_carousel from "./Home/Banner_carousel";
 export default {
-    name: "Home"
+    name: "Home",
+    components: {Banner_carousel, Cont_homepage}
 }
 let delay_popup = 0;
 setTimeout("document.getElementById('overlay').style.display='block'", delay_popup);
@@ -118,7 +77,6 @@ h1{
 }
 
 .learnMore {
-    background-color: none;
     color:white;
 }
 .learnMore:hover {

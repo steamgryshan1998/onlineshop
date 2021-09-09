@@ -1,41 +1,52 @@
 <template>
     <div class="container" :class="{'loading': loading}">
         <div class="col-md-12 head">
-            <img :src="require('../../../../public/header.jpg').default" class="img-fluid" alt="" width="1080px">
+            <img :src="require('../../../../../public/header.jpg').default" class="img-fluid" alt="" width="1080px">
 
         </div>
         <div class="row">
             <div class="col-lg-3 mb-4 sidebar">
                 <h1 class="mt-4">Categories</h1>
                 <hr>
-                <div class="form-check" v-for="category in categories">
-                    <div :id="category.id" @click="selectCategory(category)">
-                        <h6>{{ category.name }}</h6>
-                    </div>
+<!--             как было :-->
+<!--                <div class="form-check" v-for="category in categories">-->
+<!--                    <div :id="category.id" @click="selectCategory(category)" class="learnMore">-->
+<!--                        <h5>{{ category.name }}</h5>-->
+<!--                    </div>-->
+<!--                    <hr>-->
+<!--                </div>-->
+
+                <div class="form-check" v-for="(category, index) in categories" >
+                    <input class="form-check-input" type="checkbox" :value="index" :id="'category'+index" v-model="selected.categories">
+                    <label class="form-check-label option" :for="'category' + index">
+                        <h5> {{ category.name }} , ({{ category.products_count }}) </h5>
+                    </label>
                     <hr>
                 </div>
 
 
 
-                <h1 class="mt-4">Filters</h1>
+
+
+
+
+
+
+
+
+
+                <h1 class="mt-4" style="padding-top: 20px">Filters</h1>
                 <hr>
                 <h3 class="mt-2">Price</h3>
                 <hr class="hr-dashed-bg">
-                <div class="form-check" v-for="(price, index) in prices">
+                <div class="form-check" v-for="(price, index) in prices" >
                     <input class="form-check-input" type="checkbox" :value="index" :id="'price'+index" v-model="selected.prices">
                     <label class="form-check-label option" :for="'price' + index">
                         {{ price.name }} ({{ price.products_count }})
                     </label>
                 </div>
 
-<!--                <h3 class="mt-2">Categories</h3>-->
-<!--                <hr class="hr-dashed-bg">-->
-<!--                <div class="form-check" v-for="(category, index) in categories">-->
-<!--                    <input class="form-check-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="selected.categories">-->
-<!--                    <label class="form-check-label option" :for="'category' + index">-->
-<!--                        {{ category.name }} ({{ category.products_count }})-->
-<!--                    </label>-->
-<!--                </div>-->
+
 
                 <h3 class="mt-2">Manufacturers</h3>
                 <hr class="hr-dashed-bg">
@@ -45,6 +56,12 @@
                         {{ manufacturer.name }} ({{ manufacturer.products_count }})
                     </label>
                 </div>
+
+                <h1 class="mt-4">Filters</h1>
+                <hr>
+                <br>
+<Slider_range_shop />
+
             </div>
             <div class="col-lg-9">
                 <div class="row mt-4">
@@ -64,7 +81,6 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title" align="center">
-
                                     <router-link
                                         class="block relative h-48 rounded overflow-hidden"
                                         :to="{name: 'Show', params: {'productId': product.id}}"
@@ -73,21 +89,26 @@
                                     </router-link>
 
                                 </h4>
-<!--                                <h5>$ {{ product.price }}</h5>-->
                                 <p  align="center" class="card-text" v-text="formatCurrency(product.price)"></p>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
+
             </div>
         </div>
     </div>
 </template>
 
 <script>
+
+import Slider_range_shop from "./slider_range_shop";
 import Show from "../product/Show";
 
 export default {
+    components: {Slider_range_shop},
     data: function () {
         return {
             prices: [],
@@ -206,6 +227,14 @@ export default {
 .sidebar{
     color: white;
 }
+
+.learnMore:hover {
+    /*background-color:purple;*/
+    color: #fa880b;
+    text-decoration: none;
+}
+
+
 h1{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;

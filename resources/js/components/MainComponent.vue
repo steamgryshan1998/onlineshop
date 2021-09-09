@@ -1,14 +1,13 @@
 <template>
 <div class="flex-fill">
     <Header />
-<!--    <hr>-->
     <message></message>
     <router-view></router-view>
 </div>
 </template>
 
 <script>
-import Header from "./Header";
+import Header from "./Pages/Header/Header";
 import Message from "./Modal/Message";
 
 export default {

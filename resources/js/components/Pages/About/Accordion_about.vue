@@ -55,7 +55,7 @@
 <script>
 
 export default {
-    name: "Accordion_about"
+    name: "Accordion_about",
 }
 
 </script>

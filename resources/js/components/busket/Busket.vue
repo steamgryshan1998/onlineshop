@@ -1,11 +1,14 @@
 <template>
     <div>
-        <div class="col-md-12">
-            <img :src="require('../../../../public/busket.png').default" class="img-fluid" alt="" width="1080px" height="300px">
+
+        <div class="col-md-12" style="padding-left: 274px">
+            <img :src="require('../../../../public/busket.png').default" class="img-fluid" alt="" width="1300px" >
         </div>
+
+
     <div class="w-full">
         <div class="lg:w-2/3 w-full mx-auto mt-8 overflow-auto container">
-            <table class="table-auto w-full text-left whitespace-no-wrap table-responsive-sm">
+            <table class="table-auto w-full text-left whitespace-no-wrap table-responsive-sm" style="background-color: #fca901">
                 <thead>
                 <tr>
                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl">Item</th>
@@ -38,10 +41,15 @@
                     <td class="p-4 font-bold"></td>
                     <td class="w-10 text-right">
                         <div class="submit">
-                            <button class="btn btn-success" @click="checkout">
-              <span class="text-nowrap"
-              >Checkout <i class="fa fa-angle-right d-inline"></i
-              ></span>
+                            <button class="
+                                    btn btn-success"
+                                    @click="checkout"
+                                    style="background-color: #e36663; border-color: #e36663"
+                            >
+                                    <span class="text-nowrap">
+                                        Checkout
+                                        <i class="fa fa-angle-right d-inline"></i>
+                                    </span>
                             </button>
                         </div>
 
@@ -111,7 +119,5 @@ table{
     padding-top: 50px;
     align-content: center;
 }
-.submit{
 
-}
 </style>

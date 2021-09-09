@@ -1,12 +1,12 @@
-import Home from "./components/tabs/Home";
-import Collection from "./components/tabs/Collection";
-import Shop from "./components/tabs/Shop";
-import About from "./components/tabs/About/About";
-import Contact from "./components/tabs/Contact";
-import Show from "./components/product/Show";
+import Home from "./components/Pages/Home";
+import Collection from "./components/Pages/Collection";
+import Shop from "./components/Pages/Shop/Shop";
+import About from "./components/Pages/About/About";
+import Contact from "./components/Pages/Contact";
+import Show from "./components/Pages/product/Show";
 import Login from "./components/Auth/Login";
 import Register from './components/Auth/Register';
-import Basket from "./components/busket/Basket";
+import Basket from "./components/busket/Busket";
 import Dashboard from "./components/Admin/Dashboard";
 
 export const routes = [

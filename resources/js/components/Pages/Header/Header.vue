@@ -1,16 +1,6 @@
 
 <template>
     <div>
-
-
-<!--        <div class="row_1 header_hr">-->
-<!--            <div class="row header_1">-->
-<!--            <div class="col-6">-->
-<!--                <router-link to="/"><i class="fas fa-battery-three-quarters"></i><span class="title"> Days a week from 9:00 am to 7:00 pm</span></router-link>-->
-<!--            </div>-->
-<!--            <div class="col-2">-->
-<!--            </div>-->
-
     <div >
         <div style="    color: white;
     max-width: 1320px;
@@ -69,42 +59,6 @@
     height: 1px; ">
             <div class="container">
 
-<!--            <div class="col-1 " style="margin-right: 15px; " >-->
-<!--                <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                    <span v-if="!user" >My account</span>-->
-<!--                    <span v-else>{{ user.name }}</span>-->
-<!--                </button>-->
-<!--                <div class="dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton" >-->
-<!--                    <router-link v-if="!user" to="/login"><a class="dropdown-item" href="#">Login</a></router-link>-->
-<!--                    <router-link v-if="!user" to="/register"><a class="dropdown-item" href="#">Register</a></router-link>-->
-<!--                    <router-link v-if="user_role === 'admin'" to="/admin"><a class="dropdown-item" href="#">Admin Dashboard</a></router-link>-->
-<!--                    <a v-if="user" class="dropdown-item" href="#" @click.prevent="logout">Logout</a>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="col-1 ">-->
-<!--                <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                    <span>Language</span>-->
-<!--                </button>-->
-<!--                <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">-->
-<!--                    <a class="dropdown-item" href="#">English</a>-->
-<!--                    <a class="dropdown-item" href="#">French</a>-->
-<!--                    <a class="dropdown-item" href="#">German</a>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div class="col-1">-->
-<!--                <button class="btn btn-secondary dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                    <span>Currency</span>-->
-<!--                </button>-->
-<!--                <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">-->
-<!--                    <a class="dropdown-item" href="#">€ Euro</a>-->
-<!--                    <a class="dropdown-item" href="#">£ Pound Sterling</a>-->
-<!--                    <a class="dropdown-item" href="#">$ US Dollar</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            </div>-->
-<!--        </div>-->
 
         <div class="row_1"  style=" color: white;
     max-width: 1320px;
@@ -121,32 +75,10 @@ background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/H
 
             <div class="col-3">
             </div>
-            <a class="navbar-brand" > <img :src="require('../../../public/images/darklook.png').default" width="220px" height="90px" style="padding-bottom: 10px;"> </a>
+            <a class="navbar-brand" > <img :src="require('../../../../../public/images/darklook.png').default" width="220px" height="90px" style="padding-bottom: 10px;"> </a>
 
 
 
-<!--        <div class="row_1"  style="height: 110px; padding: 20px; margin-bottom: 30px">-->
-<!--            <form action="/search/" target="_blank" style="padding: 30px;padding-left: 0px;">-->
-<!--                <input type="hidden" name="searchid" value="808327">-->
-<!--                <input type="search" name="text" required placeholder="Поиск по сайту" style="-->
-<!--padding: 5px 2px 5px 25px;-->
-<!--background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/Hu2poBOPx3g/s25/search.png') no-repeat scroll 0 50%;-->
-<!--">-->
-<!--            </form>-->
-
-<!--            <div class="col-2">-->
-<!--            </div>-->
-<!--            <a class="navbar-brand" > <img :src="require('../../../public/logo.onlineshop.loc.png').default" width="220px" height="90px" style="padding-bottom: 10px;"> </a>-->
-
-<!--            <div class="col-3">-->
-<!--            </div>-->
-
-<!--            <div class="col-4" style="padding: 25px">-->
-<!--                <router-link to="/basket"><i class="fas fa-shopping-cart"-->
-<!--                                             v-text="'(' + $store.state.cart.length + ' items)'" ></i><span></span>-->
-<!--                </router-link>-->
-<!--            </div>-->
-<!--        </div>-->
             <div class="col-3"></div>
             <div class="col-4" style="padding: 25px; padding-left: 18px">
                 <router-link to="/basket"><i class="fas fa-shopping-cart" style="font-size: 30px; "></i>    <span v-text="'(' + $store.state.cart.length + ' items)'"></span>
@@ -212,10 +144,10 @@ background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/H
                                     <div class="carousel-inner" >
                                         <div class="carousel-item active">
 
-                                            <img :src="require('../../../public/1.jpeg').default" class="d-block w-100" height="200px" alt="...">
+                                            <img :src="require('../../../../../public/1.jpeg').default" class="d-block w-100" height="200px" alt="...">
                                         </div>
                                         <div class="carousel-item">
-                                            <img :src="require('../../../public/2.jpg').default" class="d-block w-100" height="200px" alt="...">
+                                            <img :src="require('../../../../../public/2.jpg').default" class="d-block w-100" height="200px" alt="...">
                                         </div>
 
                                     </div>
@@ -227,25 +159,6 @@ background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/H
                 </li>
 
 
-
-                <!--                <li class="nav-item dropdown mega-dropdown">-->
-                <!--                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton"-->
-                <!--                            data-toggle="modal" data-target="#staticBackdrop">-->
-                <!--                        COLLECTION-->
-                <!--                    </button>-->
-                <!--                    <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-                <!--                        <div class="modal-dialog modal-dialog-centered">-->
-                <!--                            <div class="modal-content">-->
-                <!--                                <img :src="require('../../../public/images/some-tips-for-creating-effective-promotion-banner-for-your-website-1024x614.jpg').default" class="img-fluid" alt="" width="1080px" height="300px">-->
-
-                <!--                                <router-link to="/shop" class="btn modal-btn btn-success" data-dismiss="modal">Yes, I'm interested</router-link>-->
-                <!--                                <button type="button" class="btn modal-btn btn-danger" data-dismiss="modal">No, thanks</button>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-
-
-                <!--                </li>-->
                 <li class="nav-item">
                     <router-link to="/shop"><a class="nav-link">SHOP</a></router-link>
                 </li>
@@ -346,7 +259,7 @@ a{
 
 }
 .row_2 a:hover {
-    background: #5a4e38;
+    background: #fa4250;
     text-decoration: none;
     height: 70px;
 }

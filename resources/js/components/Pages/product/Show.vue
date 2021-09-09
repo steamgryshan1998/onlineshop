@@ -5,24 +5,8 @@
 <template>
     <div class="page">
         <div class="col-md-12 head">
-            <img :src="require('../../../../public/header.jpg').default" class="img-fluid" alt="" width="1080px">
+            <img :src="require('../../../../../public/header.jpg').default" class="img-fluid" alt="" width="1080px">
         </div>
-<!--        <div class="card mx-auto" style="width: 500px;">-->
-<!--            <img :src="product.image" class="card-img-top" alt="ecommerce">-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title" v-text="product.name"></h5>-->
-<!--                <p class="card-text" v-text="product.description"></p>-->
-<!--                <span-->
-<!--                    class="title-font font-medium text-2xl text-gray-900"-->
-<!--                    v-text="formatCurrency(product.price)"-->
-<!--                ></span>-->
-<!--                <button v-if="user"-->
-<!--                        class="flex add ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"-->
-<!--                        @click.prevent="addProduct"-->
-<!--                ><i class="bi bi-bag-plus"></i>Add To Cart</button>-->
-<!--                <div v-else>You need to <a href="#"><router-link to="/login">log in</router-link></a> firstly!</div>-->
-<!--            </div>-->
-<!--        </div>-->
         <div class="card mx-auto" style="max-width: 840px;">
             <div class="row no-gutters">
                 <div class="col-md-6">
