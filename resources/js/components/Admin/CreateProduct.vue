@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="product_description" class="col-sm-6 col-form-label">Description</label>
+                            <label class="col-sm-6 col-form-label">Description</label>
                             <div class="col-sm-6">
                                 <textarea type="text" class="form-control" v-model="product.description" :class="validate.description === undefined ? '' : ' is-invalid'" id="product_description"
                                        placeholder="Please enter name of category"/>

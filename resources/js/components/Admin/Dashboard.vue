@@ -1,26 +1,26 @@
 <template>
     <div class="container">
-        <div class="row">
-            <h2>Admin Dashboard</h2>
+        <div class="row" style="padding-top: 20px">
+                <h2>Admin Dashboard <i class="fas fa-chess-king"></i></h2>
         </div>
-                <div class="row nav nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-categories-tab" data-toggle="pill" href="#v-pills-categories" role="tab" aria-controls="v-pills-categories" aria-selected="true">Categories</a>
-                    <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="false">Products</a>
-                    <a class="nav-link" id="v-pills-manufacturers-tab" data-toggle="pill" href="#v-pills-manufacturers" role="tab" aria-controls="v-pills-manufacturers" aria-selected="false">Manufacturers</a>
+                <div class="row nav nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical" >
+                    <a class="nav-link active" id="v-pills-categories-tab" data-toggle="pill" href="#v-pills-categories" role="tab" aria-controls="v-pills-categories" aria-selected="true" style="background-color: #7d7e7e; color: whitesmoke ">Categories</a>
+                    <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="false" style="background-color: #7d7e7e; color: whitesmoke">Products</a>
+                    <a class="nav-link" id="v-pills-manufacturers-tab" data-toggle="pill" href="#v-pills-manufacturers" role="tab" aria-controls="v-pills-manufacturers" aria-selected="false"  style="background-color: #7d7e7e; color: whitesmoke">Manufacturers</a>
             </div>
             <div class="row">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active tab_category" id="v-pills-categories" role="tabpanel" aria-labelledby="v-pills-categories-tab">
 
                         <div class="col-2">
-                            <button type="button" class="btn contact_button btn-primary adding" @click="showCreateCategory">
-                                <i class="fas fa-user-plus"></i>
+                            <button type="button" class="btn contact_button btn-primary adding" @click="showCreateCategory" style="background-color: #fa4250; border-color: #fa4250">
+                                <i class="fas fa-user-plus" ></i>
                                 Add
                             </button>
                         </div>
                         <table class="table table-bordered">
                             <tr>
-                                <td class="col-lg-3" scope="col">
+                                <td class="col-lg-3" scope="col" style="width: 50px">
                                     <div
                                         style="cursor: pointer">
                                         Id
@@ -49,11 +49,11 @@
                                 <td scope="col"></td>
                             </tr>
                             <tr v-for="category in categories" :key="category.id">
-                                <td>{{category.id}}</td>
+                                <td style="width: 50px">{{category.id}}</td>
                                 <td>{{category.name}}</td>
                                 <td>{{category.created_at}}</td>
                                 <td>{{category.updated_at}}</td>
-                                <td>
+                                <td >
                                     <button type="button" class="btn contact_button btn-warning " @click="editCategory(category)">
                                         Edit
                                     </button>
@@ -73,14 +73,14 @@
                     </div>
                     <div class="tab-pane fade" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-products-tab">
                         <div class="col-2">
-                            <button type="button" class="btn contact_button btn-primary adding" @click="showCreateProduct">
+                            <button type="button" class="btn contact_button btn-primary adding" @click="showCreateProduct" style="background-color: #fa4250; border-color: #fa4250">
                                 <i class="fas fa-user-plus"></i>
                                 Add
                             </button>
                         </div>
                         <table class="table table-bordered">
                             <tr>
-                                <td scope="col">
+                                <td scope="col" style="width: 50px">
                                     <div
                                         style="cursor: pointer">
                                         Id
@@ -128,7 +128,7 @@
                                         Updated at
                                     </div>
                                 </td>
-                                <td scope="col">
+                                <td scope="col" >
                                     <div
                                         style="cursor: pointer">
                                         Manufacturer_name
@@ -137,7 +137,7 @@
                                 <td scope="col"></td>
                             </tr>
                             <tr v-for="product in products" :key="product.id">
-                                <td>{{product.id}}</td>
+                                <td style="width: 50px">{{product.id}}</td>
                                 <td>{{product.category_name}}</td>
                                 <td>{{product.name}}</td>
                                 <td>{{product.description}}</td>
@@ -147,7 +147,9 @@
                                 </td>
                                 <td>{{product.updated_at}}</td>
                                 <td>{{product.manufacturer}}</td>
-                                <td>
+                                <td style="
+                                        max-width:100%;
+                                        white-space:nowrap;">
                                     <button type="button" class="btn contact_button btn-warning " @click="editProduct(product)">
                                         Edit
                                     </button>
@@ -168,14 +170,14 @@
                     </div>
                     <div class="tab-pane fade tab_manufacture" id="v-pills-manufacturers" role="tabpanel" aria-labelledby="v-pills-manufacturers-tab">
                         <div class="col-2">
-                            <button type="button" class="btn contact_button btn-primary adding" @click="showCreateManufacturer">
+                            <button type="button" class="btn contact_button btn-primary adding" @click="showCreateManufacturer" style="background-color: #fa4250; border-color: #fa4250">
                                 <i class="fas fa-user-plus"></i>
                                 Add
                             </button>
                         </div>
                         <table class="table table-bordered">
                             <tr>
-                                <td class="col-lg-3" scope="col">
+                                <td class="col-lg-3" scope="col" style="width: 50px">
                                     <div
                                         style="cursor: pointer">
                                         Id
@@ -205,11 +207,13 @@
                                 <td scope="col"></td>
                             </tr>
                             <tr v-for="manufacturer in manufacturers" :key="manufacturer.id">
-                                <td>{{manufacturer.id}}</td>
+                                <td style="width: 50px">{{manufacturer.id}}</td>
                                 <td>{{manufacturer.name}}</td>
                                 <td>{{manufacturer.created_at}}</td>
                                 <td>{{manufacturer.updated_at}}</td>
-                                <td>
+                                <td style="
+                                        max-width:100%;
+                                        white-space:nowrap;">
                                     <button type="button" class="btn contact_button btn-warning " @click="editManufacture(manufacturer)">
                                         Edit
                                     </button>
@@ -231,7 +235,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 </template>
 
 <script>
@@ -440,5 +444,8 @@ h4{
 }
 table{
     background-color: white;
+}
+.nav-link a:hover {
+    background-color: #227dc7;
 }
 </style>
