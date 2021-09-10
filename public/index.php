@@ -1,4 +1,4 @@
-<?php
+<?php //    ТОЧКА ВХОДА В ПРИЛОЖЕНИЕ
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
