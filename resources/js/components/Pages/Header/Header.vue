@@ -305,18 +305,7 @@ export default {
     mounted() {
         console.log('Header mounted.')
     },
-    computed: mapGetters({
-        user: 'user',
-        user_role: 'user_role'
-    }),
-    methods: {
-        async logout() {
-            // Log out the user.
-            await this.$store.dispatch('logout')
-            // Redirect to login.
-            this.$router.push({name: 'Home'})
-        }
-    }
+
 }
 </script>
 <style scoped>

@@ -55,8 +55,22 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
-    name: "first_level_header"
+    name: "first_level_header",
+    computed: mapGetters({
+        user: 'user',
+        user_role: 'user_role'
+    }),
+    methods: {
+        async logout() {
+            // Log out the user.
+            await this.$store.dispatch('logout')
+            // Redirect to login.
+            this.$router.push({name: 'Home'})
+        }
+    }
 }
 </script>
 
