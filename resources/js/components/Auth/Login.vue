@@ -2,11 +2,9 @@
     <div class="container">
         <div class="col-md-12">
             <!--        пиздец-->
-            <img src="../../../../public/images/log.png" class="img-fluid" alt="" width="1300px"
-                 height="300px">
+            <img src="/images/log.png" class="img-fluid" alt="" width="1300px">
         </div>
         <div class="brd align-middle">
-
             <div>
                 <div class="form-group">
                     <div class="form-group">
@@ -38,22 +36,22 @@
                 </div>
                 <button @click.prevent="login" style="width: 100%" type="button" class="btn btn-primary">Log in</button>
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
-import Form from 'vform'
+import Form from 'vform'//vform - маленькая библиотека для форм с валидацией на Laravel+vue
 
 export default {
 
-    data: () => ({
-        form: new Form({
+    data: () => ({//сокращенное описание функции по ES6
+        form: new Form({//form - объект импортированного Form
             email: '',
             password: ''
         }),
         validate: {},
+        log_img: '/images/log.png'
     }),
 
     methods: {

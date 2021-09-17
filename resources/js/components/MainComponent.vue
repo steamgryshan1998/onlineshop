@@ -1,23 +1,23 @@
 <template>
 <div class="flex-fill">
-    <Header />
+    <Header/><!--Подключаем хедер-->
     <message></message>
-    <router-view></router-view>
+    <router-view></router-view><!--компонент для отображения компонента, для которого совпадает маршрут-->
 </div>
 </template>
 
 <script>
-import Header from "./Pages/Header/Header";
+import Header from "./Pages/Header/Header";//импортируем компонент Header
 import Message from "./Modal/Message";
 
 export default {
     name: "MainComponent",
     components: {
-        Header, Message
+        Header, Message//определяем дочерние компоненты, импортированный в текущий(родительский)
     },
-    created() {
+    created() {//хук, позволяющий получить доступ к реактивным данным(автоматическая реакция на изменение состояния), в данном случае к состоянию корзины(state из vuex)
         // cart() {
-            return this.$store.state.cart;
+            return this.$store.state.cart;//возвращаем текущее состояние корзины из vuex($ - спецификатор доступа к vuex store)
         // }
     }
 }
@@ -27,32 +27,4 @@ export default {
 div{
     color: white;
 }
-hr{
-    border: 1px solid white;
-    margin-top: 0;
-}
-.container{
-    color: white;
-    max-width: 1200px;
-    margin: 0px auto;
-    padding: 0px 15px;
-}
-@media (max-width: 1200px) {
-    .container {
-        max-width: 970px;
-    }
-}
-
-@media (max-width: 992px) {
-    .container {
-        max-width: 750px;
-    }
-}
-
-@media (max-width: 767px) {
-    .container {
-        max-width: none;
-    }
-}
-
 </style>
