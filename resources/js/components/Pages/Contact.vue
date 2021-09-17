@@ -1,22 +1,23 @@
-
 <template>
-    <div class="container" style="width: 1095px">
-        <ul class="nav " style=" padding-left: 0px; padding-right: 20px">
-            <li class="col-3" style="padding-left: 0px">
-                <sidebar></sidebar></li>
-
-
-            <li class="col-9">
+    <div style="width: 1095px">
+        <ul class="nav " style=" padding-left: 47px; padding-right: 0px; padding-top: 42px">
+            <div class="col-3"></div>
+            <li class="col-4" style="padding-left: 20px; max-width: 303px; padding-top: 6px">
+                <sidebar></sidebar>
+            </li>
+            <li class="col-5" style="padding-top: 5px">
                 <ul class="nav " style=" padding-left: 0px; padding-right: 0px">
-                    <li class="col-4" style="padding-left: 0px">
-                        <h4 style="padding-bottom: 5px"> Our Location</h4>
-                        Office address
-                        124,Lorem Ipsum has been
-                        text ever since the 1500<br>
-                        <i class="fas fa-phone-alt"></i> +91-9987-654-321
+                    <li class="col-7" style="padding-left: 0px; ">
+                        <h4 style="padding-bottom: 5px; padding-top: 4px; "> Our Location</h4>
+                        <p style="line-height: 180%;">Office address <br>
+                            124,Lorem Ipsum has been<br>
+                        text ever since the 1500
+                            <div style="line-height: 200%;"><i class="fas fa-phone-alt"></i>+91-9987-654-321</div></p>
 
-                        <h4 style="padding-bottom: 5px; padding-top: 60px"> Careers </h4>
-                        dummy text ever since the 1500s, simply dummy text of the typesetting industry.
+                        <h5 style="padding-bottom: 13px; padding-top: 22px"> Careers </h5>
+                        <h6 style="line-height: 180%;">dummy text ever since the 1500s,<br>
+                            simply dummy text of the<br>
+                            typesetting industry.</h6>
                         <a href="mailto:careers@yourdomain.com" target="_top" style="color: rgb(214, 142, 47)"><br><i class="fas fa-envelope"></i>  careers@yourdomain.com</a>
 
                         <h4 style="padding-bottom: 5px;padding-top: 60px">Say Hello </h4>
@@ -25,15 +26,15 @@
 
 
                     </li>
-                    <li class="col-5" style="padding-left: 0px">
+                    <li class="col-3" style="padding-left: 0px">
                         <form action="#">
 
-                            <fieldset style="padding-bottom: 20px">
-                                <input id="name"  placeholder="Name" ><p style="padding: 10px"></p>
-                                <input id="email" placeholder="Email"><p style="padding: 10px"></p>
-                                <input id="telephone" placeholder="Phone number"><p style="padding: 10px"></p>
-                                <input id="subject" placeholder="Subject"><p style="padding: 10px"></p>
-                                <textarea id="comments" placeholder="Message" ></textarea>
+                            <fieldset style="padding-bottom: 20px; padding-left: 58px; padding-top: 4px;">
+                                <input id="name"  placeholder="Name" style="width: 575px"><p style="padding: 10px 10px 5px 0px; height: 0px; "></p>
+                                <input id="email" placeholder="Email"style="width: 575px"><p style="padding: 0px 10px 12px 0px"></p>
+                                <input id="telephone" placeholder="Phone number"style="width: 575px"><p style="padding: 2px 10px 10px 0px"></p>
+                                <input id="subject" placeholder="Subject"style="width: 575px; "><p style="padding: 0px 10px 14px 0px"></p>
+                                <textarea id="comments" placeholder="Message" style="width: 575px;height: 143px; padding: 0px 10px 10px 0px"></textarea>
                             </fieldset>
 
 

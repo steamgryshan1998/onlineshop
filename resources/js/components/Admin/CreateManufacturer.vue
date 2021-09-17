@@ -5,7 +5,8 @@
                 <div class="modal-header">
                     <h5 v-if="!manufacturer.id" class="modal-title">Create Manufacturer</h5>
                     <h5 v-else class="modal-title">Edit Manufacturer</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            @click="closeModal"></button>
                 </div>
                 <form>
                     <div class="modal-body">
@@ -14,22 +15,31 @@
                                 <div class="mb-3 row">
                                     <label for="name" class="col-sm-4 col-form-label">Name</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" v-model="manufacturer && manufacturer.name" :class="validate.name === undefined ? '' : ' is-invalid'" id="name" placeholder="Please enter name of manufacture" />
-                                        <div v-for="error in validate.name" v-if="validate.name !== null" class="invalid-feedback">
+                                        <input type="text" class="form-control"
+                                               v-model="manufacturer && manufacturer.name"
+                                               :class="validate.name === undefined ? '' : ' is-invalid'" id="name"
+                                               placeholder="Please enter name of manufacture"/>
+                                        <div v-for="error in validate.name" v-if="validate.name !== null"
+                                             class="invalid-feedback">
                                             {{ error }}
                                         </div>
                                     </div>
                                 </div>
 
 
-
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
-                        <button v-if="!manufacturer.id" type="button" class="btn btn-primary" @click.prevent="addManufacture">Create</button>
-                        <button v-else type="button" class="btn btn-primary" @click.prevent="editManufacturer"><i class="fas fa-check"></i>Edit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">
+                            Close
+                        </button>
+                        <button v-if="!manufacturer.id" type="button" class="btn btn-primary"
+                                @click.prevent="addManufacture">Create
+                        </button>
+                        <button v-else type="button" class="btn btn-primary" @click.prevent="editManufacturer"><i
+                            class="fas fa-check"></i>Edit
+                        </button>
                     </div>
                 </form>
             </div>
@@ -38,7 +48,7 @@
 </template>
 <script>
 export default {
-    props:{
+    props: {
         manufacturer: {
             type: Object,
             default: null,
@@ -46,12 +56,11 @@ export default {
         }
     },
     name: "CreateManufacturer",
-    data () {
+    data() {
         return {
             name: '',
 
-            validate:{
-            },
+            validate: {},
         };
     },
     methods: {
@@ -62,7 +71,7 @@ export default {
         },
         addManufacture() {
             axios
-                .post('api/manufacturers',  {
+                .post('api/manufacturers', {
                     name: this.manufacturer.name,
                 })
                 .then(response => {
@@ -77,7 +86,7 @@ export default {
         },
         editManufacturer() {
             axios
-                .put('api/manufacturers/' + this.manufacturer.id,  {
+                .put('api/manufacturers/' + this.manufacturer.id, {
                     name: this.manufacturer.name,
                 })
                 .then(response => {

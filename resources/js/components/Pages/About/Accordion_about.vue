@@ -1,11 +1,15 @@
 <template>
-    <div>
+    <div style="">
 
-        <h2>WHAT WE DO?</h2>
-        <hr>
+        <h4 style="padding-top: 8px; font-size: 140%">WHAT WE DO?<hr style="margin: 4px 0;
+	padding: 0;
+	height: 0;
+	border: none;
+	border-top: 2px solid #333;"></h4>
 
-        <div class="accordion" id="accordionExample">
-            <div class="card">
+
+        <div class="accordion" id="accordionExample" style="padding-top: 18px">
+            <div class="card" >
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left" style="color: black" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

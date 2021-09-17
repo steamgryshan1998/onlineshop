@@ -2,7 +2,7 @@
     <div>
 
         <div class="col-md-12" style="padding-left: 274px">
-            <img :src="require('../../../../public/busket.png').default" class="img-fluid" alt="" width="1300px" >
+            <img :src="require('../../../../public/images/busket.png').default" class="img-fluid" alt="" width="1300px" >
         </div>
 
 

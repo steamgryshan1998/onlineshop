@@ -1,284 +1,325 @@
 <template>
-    <div style="max-width: 1833px">
-            <div class="whole_header">
-                <div class="row_1">
-                    <div class="col-3 title_container">
-                        <router-link to="/">
-                            <span class="title"> Days a week from 9:00 am to 7:00 pm</span>
-                        </router-link>
-                    </div>
-                    <div class="col-5">
-                    </div>
-                    <div class="col-1 authorization">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="account"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span v-if="!user">My account</span><!--v-if отвечает за условный рендеринг, в зависимости от значения переменной user-->
-                            <span v-else>{{ user.name }}</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">
-                            <router-link v-if="!user" to="/login">
-                                <a class="dropdown-item" href="#">
-                                    Login
-                                </a>
-                            </router-link>
-                            <router-link v-if="!user" to="/register">
-                                <a class="dropdown-item" href="#">
-                                    Register
-                                </a>
-                            </router-link>
-                            <router-link v-if="user_role === 'admin'" to="/admin">
-                                <a class="dropdown-item" href="#">
-                                    Admin Dashboard
-                                </a>
-                            </router-link>
-                            <a v-if="user" class="dropdown-item" href="#" @click.prevent="logout"><!--директива @click
-                                запускает метод logout по клику на ссылку, prevent - модификатор, не допускающий перезагрузку страницы-->
-                                Logout
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-1 language">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="account"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span>Language</span>
-                        </button>
-                        <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">
-                                English
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                French
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                German
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-2 currency">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="account"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span>Currency</span>
-                        </button>
-                        <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">
-                                € Euro
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                £ Pound Sterling
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                $ US Dollar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
+<!--    <div style="max-width: 1833px">-->
+<!--            <div class="whole_header">-->
+<!--                <div class="row_1">-->
+<!--                    <div class="col-3 title_container">-->
+<!--                        <router-link to="/">-->
+<!--                            <span class="title"> Days a week from 9:00 am to 7:00 pm</span>-->
+<!--                        </router-link>-->
+<!--                    </div>-->
+<!--                    <div class="col-5">-->
+<!--                    </div>-->
+<!--                    <div class="col-1 authorization">-->
+<!--                        <button class="btn btn-secondary dropdown-toggle" type="button" id="account"-->
+<!--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            <span v-if="!user">My account</span>&lt;!&ndash;v-if отвечает за условный рендеринг, в зависимости от значения переменной user&ndash;&gt;-->
+<!--                            <span v-else>{{ user.name }}</span>-->
+<!--                        </button>-->
+<!--                        <div class="dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">-->
+<!--                            <router-link v-if="!user" to="/login">-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    Login-->
+<!--                                </a>-->
+<!--                            </router-link>-->
+<!--                            <router-link v-if="!user" to="/register">-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    Register-->
+<!--                                </a>-->
+<!--                            </router-link>-->
+<!--                            <router-link v-if="user_role === 'admin'" to="/admin">-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    Admin Dashboard-->
+<!--                                </a>-->
+<!--                            </router-link>-->
+<!--                            <a v-if="user" class="dropdown-item" href="#" @click.prevent="logout">&lt;!&ndash;директива @click-->
+<!--                                запускает метод logout по клику на ссылку, prevent - модификатор, не допускающий перезагрузку страницы&ndash;&gt;-->
+<!--                                Logout-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-1 language">-->
+<!--                        <button class="btn btn-secondary dropdown-toggle" type="button" id="account"-->
+<!--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            <span>Language</span>-->
+<!--                        </button>-->
+<!--                        <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">-->
+<!--                            <a class="dropdown-item" href="#">-->
+<!--                                English-->
+<!--                            </a>-->
+<!--                            <a class="dropdown-item" href="#">-->
+<!--                                French-->
+<!--                            </a>-->
+<!--                            <a class="dropdown-item" href="#">-->
+<!--                                German-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-2 currency">-->
+<!--                        <button class="btn btn-secondary dropdown-toggle" type="button" id="account"-->
+<!--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            <span>Currency</span>-->
+<!--                        </button>-->
+<!--                        <div class="drop dropdown-menu dropdown-menu_2" aria-labelledby="dropdownMenuButton">-->
+<!--                            <a class="dropdown-item" href="#">-->
+<!--                                € Euro-->
+<!--                            </a>-->
+<!--                            <a class="dropdown-item" href="#">-->
+<!--                                £ Pound Sterling-->
+<!--                            </a>-->
+<!--                            <a class="dropdown-item" href="#">-->
+<!--                                $ US Dollar-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <hr>-->
+<!--            <div class="container">-->
+<!--                <div class="row_1 search_container">-->
+<!--                    <form action="/search/" class="search" target="_blank">-->
+<!--                        <input type="hidden" name="searchid" value="808327">-->
+<!--                        <input type="search" name="text" required placeholder="Search" class="search_input">-->
+<!--                    </form>-->
+<!--                    <div class="col-3">-->
+<!--                    </div>-->
+<!--                    <a class="navbar-brand">-->
+<!--                        <img :src="img_header" class="header_img" width="220px" height="90px">-->
+<!--                    </a>-->
+<!--                    <div class="col-3"></div>-->
+<!--                    <div class="col-4 busket_indicator">-->
+<!--                        <router-link to="/basket">-->
+<!--                            <i class="fas fa-shopping-cart"></i>-->
+<!--                            <span v-text="'(' + $store.state.cart.length + ' items)'"></span>&lt;!&ndash;v-text - обновляет-->
+<!--                            текстовое содержимое элемента, в котором проходит как атрибут;  вылавливаем из vuex-->
+<!--                            количество элементов в корзине, знак $ используется для получения доступа к объекту store,-->
+<!--                            в котором хранится vuex, length - встроенный js метод для нахождения длины массива ибо-->
+<!--                            cart это массив корзины&ndash;&gt;-->
+<!--                        </router-link>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row_2 menu">-->
+<!--                    <div class="col-1"></div>-->
+<!--                    <div>-->
+<!--                        <ul class="nav justify-content-center menu_list">-->
+<!--                            <li class="nav-item">-->
+<!--                                <router-link to="/">&lt;!&ndash;router-link - компонент для навигации, параметр to - -->
+<!--                                    определяет URL для перехода&ndash;&gt;-->
+<!--                                    <a class="nav-link">-->
+<!--                                        HOME-->
+<!--                                    </a>-->
+<!--                                </router-link>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item dropdown mega-dropdown">-->
+<!--                                <a href="#" class="nav-link" data-toggle="dropdown">-->
+<!--                                    COLLECTION-->
+<!--                                </a>-->
+<!--                                <ul class="dropdown-menu mega-dropdown-menu row justify-content-center"-->
+<!--                                    style="width: 1301px; margin-left: 642px">-->
+<!--                                    <li class="col-md-3">-->
+<!--                                        <ul>-->
+<!--                                            <li class="dropdown-header">Women's</li>-->
+<!--                                            <li class="item"><a href="#">Unique Features</a></li>-->
+<!--                                            <li class="item"><a href="#">Image Responsive</a></li>-->
+<!--                                            <li class="item"><a href="#">Auto Carousel</a></li>-->
+<!--                                            <li class="item"><a href="#">Newsletter Form</a></li>-->
+<!--                                            <li class="item"><a href="#">Four columns</a></li>-->
+<!--                                            <li class="item"><a href="#">Four columns</a></li>-->
+<!--                                            <li class="item"><a href="#">Good Typography</a></li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                    <li class="col-md-3">-->
+<!--                                        <ul>-->
+<!--                                            <li class="dropdown-header">Man's</li>-->
+<!--                                            <li class="item"><a href="#">Unique Features</a></li>-->
+<!--                                            <li class="item"><a href="#">Image Responsive</a></li>-->
+<!--                                            <li class="item"><a href="#">Four columns</a></li>-->
+<!--                                            <li class="item"><a href="#">Auto Carousel</a></li>-->
+<!--                                            <li class="item"><a href="#">Newsletter Form</a></li>-->
+<!--                                            <li class="item"><a href="#">Four columns</a></li>-->
+<!--                                            <li class="item"><a href="#">Good Typography</a></li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                    <li class="col-md-3">-->
+<!--                                        <ul>-->
+<!--                                            <li class="dropdown-header">Children's</li>-->
+<!--                                            <li class="item"><a href="#">Unique Features</a></li>-->
+<!--                                            <li class="item"><a href="#">Four columns</a></li>-->
+<!--                                            <li class="item"><a href="#">Image Responsive</a></li>-->
+<!--                                            <li class="item"><a href="#">Auto Carousel</a></li>-->
+<!--                                            <li class="item"><a href="#">Newsletter Form</a></li>-->
+<!--                                            <li class="item"><a href="#">Four columns</a></li>-->
+<!--                                            <li class="item"><a href="#">Good Typography</a></li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                    <li class="col-md-3">-->
+<!--                                        <ul>-->
+<!--                                            <div id="carouselExampleControls" class="carousel collection_carousel slide"-->
+<!--                                                 data-ride="carousel">-->
+<!--                                                <div class="carousel-inner">-->
+<!--                                                    <div class="carousel-item active">-->
+<!--                                                        <img :src="carousel_img_1"-->
+<!--                                                             class="d-block w-100" height="200px" alt="...">-->
+<!--                                                    </div>-->
+<!--                                                    <div class="carousel-item">-->
+<!--                                                        <img :src="carousel_img_2"-->
+<!--                                                             class="d-block w-100" height="200px" alt="...">-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item">-->
+<!--                                <router-link to="/shop">-->
+<!--                                    <a class="nav-link">-->
+<!--                                        SHOP-->
+<!--                                    </a>-->
+<!--                                </router-link>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item">-->
+<!--                                <router-link to="/about">-->
+<!--                                    <a class="nav-link">-->
+<!--                                        ABOUT US-->
+<!--                                    </a>-->
+<!--                                </router-link>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item">-->
+<!--                                <router-link to="/contact">-->
+<!--                                    <a class="nav-link">-->
+<!--                                        CONTACT US-->
+<!--                                    </a>-->
+<!--                                </router-link>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--</template>-->
+<!--<script>-->
+<!--import {mapGetters} from 'vuex'//импорт геттеров из Vuex-->
+
+<!--export default {//экспорт компонента-->
+<!--    name: "Header",//имя текущего компонента-->
+<!--    data: function () {//опция компонента, возвращающая значения всех его компонентов и объектов для дальнейшего их-->
+<!--        // использования в рамках данного компонента-->
+<!--        return {-->
+<!--            img_header: '/images/darklook.png',//присвоение абсолютного пути картинке и дальнейший вызов этой переменной в атрибуте :src-->
+<!--            carousel_img_1: '/images/1.jpeg',-->
+<!--            carousel_img_2: '/images/2.jpg',-->
+<!--        }-->
+<!--    },-->
+<!--    // mounted() {  - это хук жизненного цикла vue, вызывающийся при добавлении компонента в шаблон DOM-->
+<!--    //     console.log('Header mounted.')-->
+<!--    // },-->
+<!--    computed: mapGetters({//вычисляемое свойство, реагирует на изменение состояния переменных user и user_role во vue-компоненте-->
+<!--        user: 'user',//вылавливаем геттер состояния пользователя-->
+<!--        user_role: 'user_role'// вылавливаем геттер роли текущего пользователя-->
+<!--    }),-->
+<!--    methods: {// методы vue компонента, вызывающиеся в шаблоне-->
+<!--        async logout() {//асинхронная функция для выхода из учетной записи, async-->
+<!--            // Выход из учетной записи-->
+<!--            await this.$store.dispatch('logout')-->
+<!--            // Редирект на страницу Home, $router - объект, в котором хранятся маршруты к компонентам-->
+<!--            this.$router.push({name: 'Home'})-->
+<!--        }-->
+<!--    }-->
+<!--}-->
+<!--</script>-->
+
+<!--<style scoped>/*scoped означает, что стили будут применяться только в данном текущем компонента а не передаваться в дочерний*/-->
+
+<!--.whole_header{-->
+<!--    color: white;-->
+<!--    max-width: 1320px;-->
+<!--    margin: 0px auto;-->
+<!--    padding: 0px 13px;-->
+<!--    padding-bottom: 0px-->
+<!--}-->
+
+<!--.title_container{-->
+<!--    margin-top: 12px;-->
+<!--}-->
+
+<!--.title{-->
+<!--    text-transform:uppercase;-->
+<!--}-->
+
+<!--.authorization{-->
+<!--    margin-right: 15px;-->
+<!--    margin-top: 10px;-->
+<!--}-->
+
+<!--.language{-->
+<!--    margin-top: 10px;-->
+<!--}-->
+
+<!--.currency{-->
+<!--    margin-top: 10px;-->
+<!--}-->
+
+<!--hr{-->
+<!--    border: none;-->
+<!--    color: white;-->
+<!--    background-color: #7e7e7f;-->
+<!--    height: 1px;-->
+<!--}-->
+
+<!--.search_container{-->
+<!--    color: white;-->
+<!--    max-width: 1320px;-->
+<!--    margin: 0px auto;-->
+<!--    padding: 0px 15px;-->
+<!--    padding-bottom: 18px;-->
+<!--}-->
+
+<!--.search{-->
+<!--    margin-top: 20px;-->
+<!--    padding-left: 0px;-->
+<!--=======-->
+    <div>
+        <div>
+            <first_level_header/>
+            <hr style="
+        border: none;
+        color: #7e7e7f;
+        background-color: #7e7e7f;
+        height: 1px; padding-top: 0px; margin-top: 5px">
             <div class="container">
-                <div class="row_1 search_container">
-                    <form action="/search/" class="search" target="_blank">
-                        <input type="hidden" name="searchid" value="808327">
-                        <input type="search" name="text" required placeholder="Search" class="search_input">
-                    </form>
-                    <div class="col-3">
-                    </div>
-                    <a class="navbar-brand">
-                        <img :src="img_header" class="header_img" width="220px" height="90px">
-                    </a>
-                    <div class="col-3"></div>
-                    <div class="col-4 busket_indicator">
-                        <router-link to="/basket">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span v-text="'(' + $store.state.cart.length + ' items)'"></span><!--v-text - обновляет
-                            текстовое содержимое элемента, в котором проходит как атрибут;  вылавливаем из vuex
-                            количество элементов в корзине, знак $ используется для получения доступа к объекту store,
-                            в котором хранится vuex, length - встроенный js метод для нахождения длины массива ибо
-                            cart это массив корзины-->
-                        </router-link>
-                    </div>
-                </div>
-                <div class="row_2 menu">
-                    <div class="col-1"></div>
-                    <div>
-                        <ul class="nav justify-content-center menu_list">
-                            <li class="nav-item">
-                                <router-link to="/"><!--router-link - компонент для навигации, параметр to -
-                                    определяет URL для перехода-->
-                                    <a class="nav-link">
-                                        HOME
-                                    </a>
-                                </router-link>
-                            </li>
-                            <li class="nav-item dropdown mega-dropdown">
-                                <a href="#" class="nav-link" data-toggle="dropdown">
-                                    COLLECTION
-                                </a>
-                                <ul class="dropdown-menu mega-dropdown-menu row justify-content-center"
-                                    style="width: 1301px; margin-left: 642px">
-                                    <li class="col-md-3">
-                                        <ul>
-                                            <li class="dropdown-header">Women's</li>
-                                            <li class="item"><a href="#">Unique Features</a></li>
-                                            <li class="item"><a href="#">Image Responsive</a></li>
-                                            <li class="item"><a href="#">Auto Carousel</a></li>
-                                            <li class="item"><a href="#">Newsletter Form</a></li>
-                                            <li class="item"><a href="#">Four columns</a></li>
-                                            <li class="item"><a href="#">Four columns</a></li>
-                                            <li class="item"><a href="#">Good Typography</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <ul>
-                                            <li class="dropdown-header">Man's</li>
-                                            <li class="item"><a href="#">Unique Features</a></li>
-                                            <li class="item"><a href="#">Image Responsive</a></li>
-                                            <li class="item"><a href="#">Four columns</a></li>
-                                            <li class="item"><a href="#">Auto Carousel</a></li>
-                                            <li class="item"><a href="#">Newsletter Form</a></li>
-                                            <li class="item"><a href="#">Four columns</a></li>
-                                            <li class="item"><a href="#">Good Typography</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <ul>
-                                            <li class="dropdown-header">Children's</li>
-                                            <li class="item"><a href="#">Unique Features</a></li>
-                                            <li class="item"><a href="#">Four columns</a></li>
-                                            <li class="item"><a href="#">Image Responsive</a></li>
-                                            <li class="item"><a href="#">Auto Carousel</a></li>
-                                            <li class="item"><a href="#">Newsletter Form</a></li>
-                                            <li class="item"><a href="#">Four columns</a></li>
-                                            <li class="item"><a href="#">Good Typography</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <ul>
-                                            <div id="carouselExampleControls" class="carousel collection_carousel slide"
-                                                 data-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <img :src="carousel_img_1"
-                                                             class="d-block w-100" height="200px" alt="...">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img :src="carousel_img_2"
-                                                             class="d-block w-100" height="200px" alt="...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <router-link to="/shop">
-                                    <a class="nav-link">
-                                        SHOP
-                                    </a>
-                                </router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link to="/about">
-                                    <a class="nav-link">
-                                        ABOUT US
-                                    </a>
-                                </router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link to="/contact">
-                                    <a class="nav-link">
-                                        CONTACT US
-                                    </a>
-                                </router-link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <second_level_header/>
+                <third_level_header/>
             </div>
         </div>
+    </div>
 </template>
 <script>
-import {mapGetters} from 'vuex'//импорт геттеров из Vuex
+import {mapGetters} from 'vuex'
+import First_level_header from "./first_level_header";
+import Second_level_header from "./second_level_header";
+import Third_level_header from "./third_level_header";
 
-export default {//экспорт компонента
-    name: "Header",//имя текущего компонента
-    data: function () {//опция компонента, возвращающая значения всех его компонентов и объектов для дальнейшего их
-        // использования в рамках данного компонента
-        return {
-            img_header: '/images/darklook.png',//присвоение абсолютного пути картинке и дальнейший вызов этой переменной в атрибуте :src
-            carousel_img_1: '/images/1.jpeg',
-            carousel_img_2: '/images/2.jpg',
-        }
+export default {
+    name: "Header",
+    components: {Third_level_header, Second_level_header, First_level_header},
+    mounted() {
+        console.log('Header mounted.')
     },
-    // mounted() {  - это хук жизненного цикла vue, вызывающийся при добавлении компонента в шаблон DOM
-    //     console.log('Header mounted.')
-    // },
-    computed: mapGetters({//вычисляемое свойство, реагирует на изменение состояния переменных user и user_role во vue-компоненте
-        user: 'user',//вылавливаем геттер состояния пользователя
-        user_role: 'user_role'// вылавливаем геттер роли текущего пользователя
+    computed: mapGetters({
+        user: 'user',
+        user_role: 'user_role'
     }),
-    methods: {// методы vue компонента, вызывающиеся в шаблоне
-        async logout() {//асинхронная функция для выхода из учетной записи, async
-            // Выход из учетной записи
+    methods: {
+        async logout() {
+            // Log out the user.
             await this.$store.dispatch('logout')
-            // Редирект на страницу Home, $router - объект, в котором хранятся маршруты к компонентам
+            // Redirect to login.
             this.$router.push({name: 'Home'})
         }
     }
 }
 </script>
-
-<style scoped>/*scoped означает, что стили будут применяться только в данном текущем компонента а не передаваться в дочерний*/
-
-.whole_header{
-    color: white;
-    max-width: 1320px;
-    margin: 0px auto;
-    padding: 0px 13px;
-    padding-bottom: 0px
-}
-
-.title_container{
-    margin-top: 12px;
-}
-
-.title{
-    text-transform:uppercase;
-}
-
-.authorization{
-    margin-right: 15px;
-    margin-top: 10px;
-}
-
-.language{
-    margin-top: 10px;
-}
-
-.currency{
-    margin-top: 10px;
-}
-
-hr{
-    border: none;
-    color: white;
-    background-color: #7e7e7f;
-    height: 1px;
-}
-
-.search_container{
-    color: white;
-    max-width: 1320px;
-    margin: 0px auto;
-    padding: 0px 15px;
-    padding-bottom: 18px;
-}
-
-.search{
-    margin-top: 20px;
-    padding-left: 0px;
-}
-
+<style scoped>
 .search_input{
     height: 47px;
     width: 240px;
@@ -320,6 +361,8 @@ hr{
     max-width: 1095px;
 }
 
+=======
+>>>>>>> c5b50b1cf2978177b35922422cbd2487a22cdb08
 .header_1 {
     margin-left: 370px;
     margin-right: 370px;
@@ -441,6 +484,10 @@ h1 div, p {
     margin: 0 auto;
 }
 
+.nav-item {
+
+}
+
 .dropdown-header {
     color: #fff;
     font-size: 18px;
@@ -484,11 +531,17 @@ h1 div, p {
     background-color: #424242;
 }
 
+hr {
+    border: none; /* Убираем границу */
+    background-color: red; /* Цвет линии */
+    color: red; /* Цвет линии для IE6-7 */
+    height: 2px; /* Толщина линии */
+}
+
+
 .fa-shopping-cart:hover {
     color: #fa880b;
     text-decoration: none;
 }
 
 </style>
-
-
