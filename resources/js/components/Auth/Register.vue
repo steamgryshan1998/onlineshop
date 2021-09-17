@@ -2,7 +2,7 @@
 <div class="container">
     <div class="col-md-12">
         <img
-            :src="require('../../../../public/reg.png').default"
+            :src="reg_img"
              class="img-fluid"
              alt=""
              width="1300px"
@@ -85,6 +85,7 @@ export default {
         }),
         validate:{
         },
+        reg_img: '/images/reg.png'
     }),
 
     methods: {

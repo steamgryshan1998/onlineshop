@@ -1,7 +1,7 @@
 <template>
     <div class="container" :class="{'loading': loading}">
         <div class="col-md-12 head">
-            <img :src="require('../../../../../public/header.jpg').default" class="img-fluid" alt="" width="1080px">
+            <img :src="img_src" class="img-fluid" alt="" width="1080px">
 
         </div>
         <div class="row">
@@ -60,7 +60,6 @@
                 <h1 class="mt-4">Filters</h1>
                 <hr>
                 <br>
-<Slider_range_shop />
 
             </div>
             <div class="col-lg-9">
@@ -104,11 +103,10 @@
 
 <script>
 
-import Slider_range_shop from "./slider_range_shop";
+
 import Show from "../product/Show";
 
 export default {
-    components: {Slider_range_shop},
     data: function () {
         return {
             prices: [],
@@ -120,7 +118,8 @@ export default {
                 prices: [],
                 categories: [],
                 manufacturers: []
-            }
+            },
+            img_src: '/images/header.jpg',
         }
     },
 
@@ -152,16 +151,25 @@ export default {
                 }
             })
         },
-        loadCategories: function () {
-            axios.get('/api/categories', {
-                params: _.omit(this.selected, 'categories')
-            })
-                .then((response) => {
-                    this.categories = response.data.data;
+        async loadCategories () {
+            // axios.get('/api/categories', {
+            //     params: _.omit(this.selected, 'categories')
+            // })
+            //     .then((response) => {
+            //         this.categories = response.data.data;
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
+            try {
+
+                const result = await axios.get('/api/categories', {
+                    params: _.omit(this.selected, 'categories')
                 })
-                .catch(function (error) {
-                    console.log(error);
-                });
+                this.categories = result.data.data;
+            } catch (e) {
+                console.log(e);
+            }
         },
 
         loadProducts: function () {

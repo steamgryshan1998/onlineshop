@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
     <style>
         html, body{
-            background-color: black;
+            background-color: black;/* Делаем фон шаблона черного цвета*/
         }
     </style>
 </head>
 <body>
-<div id="app">
-    <main-component></main-component>
+<div id="app"><!--Контейнер, в котором будет рендериться vue-компонент, его id указан во vue объекте в app.js-->
+    <main-component></main-component><!--Подключение главного компонента MainComponent-->
 </div>
-<script defer src="{{ mix('js/app.js') }}"></script>
+<script defer src="{{ mix('js/app.js') }}"></script><!--импортируем app.js - основу фронтенд-функционала-->
 </body>
 </html>
 

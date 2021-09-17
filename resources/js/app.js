@@ -8,14 +8,17 @@ import axios from "axios";
 
 require('./bootstrap');
 // import * as bootstrap from './bootstrap';
-import Vue from "vue";
-import MainComponent from "./components/MainComponent";
-import VueRouter from "vue-router";
-import { routes } from "./routes";
+import Vue from "vue";//подключаем фреймворк Vue.js для дальнейшей работы с ним(создание компонентов и т.д.)
+import MainComponent from "./components/MainComponent";//импортируем созданный vue-компонент
+import VueRouter from "vue-router";//импортируем vue-router
+import { routes } from "./routes";//импортируем файл, где прописаны маршруты к нашим компонентам
 import Vuex from 'vuex';
 
 import * as types from './mutation-types';
-window.Vue = require('vue').default;
+//window.Vue = require('vue').default;
+/* Window - глобальный объект, его функции и переменные доступны в любом месте программы(
+   то есть делаем Vue глобальным); require - импортирует объект полностью сво всеми его методами и свойствами,
+   если установлен default - то импортируется только лишь функция с одноименным режимом    */
 
 /**
  * The following block of code may be used to automatically register your
@@ -24,18 +27,14 @@ window.Vue = require('vue').default;
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
-Vue.use(VueRouter)
+Vue.use(VueRouter)//вызываем импортированный vue-router
 
 Vue.use(Vuex)
 
 
-Vue.component('app', require("./components/MainComponent").default)
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-const router = new VueRouter({
-    mode: 'history',
-    routes
+const router = new VueRouter({//создаем экземпляр маршрутизатора
+    mode: 'history',//позволяет избежать перезагрузки страницы при смене url без хеша URL
+    routes//кладем в этот экземпляр массив с нашими маршрутами
 });
 
 axios.interceptors.request.use(function (config) {
@@ -75,8 +74,8 @@ export const store = new Vuex.Store({
     },
     getters: {
         isAuth: state => state.auth,
-        user: state => state.user,
-        user_role: state => state.user_role,
+        user: state => state.user,//извлекает текущий статус наличия пользователя(либо есть, либо нет)
+        user_role: state => state.user_role,//извлекает роль текущего пользователя(админ, юзер или неавторизирован)
         token: state => state.token,
         isLoggedIn: state => state.user !== null,
         cart: state => state.cart,
@@ -282,9 +281,9 @@ router.beforeEach( async(to, from, next) => {
     next();
 });
 
-const app = new Vue({
-    el: '#app',
-    components: {MainComponent},
+const app = new Vue({// Создание объекта Vue, с которого начинается выполнение приложения
+    el: '#app',//связь с div-контейнером в DOM шаблоне .blade.php по id этого контейнера
+    components: {MainComponent},//определение главного Vue-компонента MainComponent, components - это объект, поэтому в фигурных скобках
     store,
-    router
+    router//передаем экземпляр маршрутизатора в качестве опции
 })

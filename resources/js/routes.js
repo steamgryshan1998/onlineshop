@@ -1,3 +1,4 @@
+//импортируем наши компоненты
 import Home from "./components/Pages/Home";
 import Collection from "./components/Pages/Collection";
 import Shop from "./components/Pages/Shop/Shop";
@@ -9,11 +10,11 @@ import Register from './components/Auth/Register';
 import Basket from "./components/busket/Busket";
 import Dashboard from "./components/Admin/Dashboard";
 
-export const routes = [
+export const routes = [//создаем массив с маршрутами компонентов и экспортируем его в app.js
         {
-            path: '/',
-            component: Home,
-            name: 'Home',
+            path: '/',//гет-параметр компонента
+            component: Home,// подтягиваем сам компонент
+            name: 'Home',//имя компонента
         },
         {
             path: '/collection',
