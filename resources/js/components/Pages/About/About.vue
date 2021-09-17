@@ -1,28 +1,38 @@
 <template>
-    <div class="container" style="width: 1095px">
-        <ul class="nav " style=" padding-left: 0px; padding-right: 0px">
-            <li class="col-3" style="padding-left: 0px">
+    <div style="width: 1095px">
+        <ul class="nav " style=" padding-left: 47px; padding-right: 0px; padding-top: 42px">
+            <div class="col-3"></div>
+            <li class="col-4" style="padding-left: 20px; max-width: 303px; padding-top: 6px">
                 <sidebar></sidebar>
             </li>
 
 
-            <li class="col-9">
-                <img :src="require('../../../../../public/images/ab2.png').default" alt="" width="792px" style="margin-bottom: 20px;">
+            <li class="col-4">
+                <img :src="require('../../../../../public/images/about-page-gaando.jpg').default" alt="" width="870px" style="margin-bottom: 20px;padding-top: 10px">
 
-
-                <div class="about-heading-wrap" style="    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    line-height: 24px;
-    color: #9E9E9E;
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    box-sizing: border-box; margin-bottom: 20px;">
-                    <h2 class="about-heading mb_20 mt_40 ptb_10" style="font-weight:bold">THEMINI DESIGN IS BEST PART OF
+                <div style="width: 894px; padding-left: 0px; padding-top: 3px" >
+<!--                <div class="about-heading-wrap" style="width: 600px;    -webkit-text-size-adjust: 100%;-->
+<!--    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);-->
+<!--    line-height: 24px;-->
+<!--    color: #9E9E9E;-->
+<!--    font-size: 14px;-->
+<!--    font-family: 'Poppins', sans-serif;-->
+<!--    font-weight: 400;-->
+<!--    letter-spacing: 0.5px;-->
+<!--    box-sizing: border-box; margin-bottom: 20px;">-->
+                    <h2 class="about-heading mb_20 mt_40 ptb_10"
+                            style="
+                                font-weight:bold;
+                                margin-top: 30px;
+                                font-weight:bold;
+                                color: #9d9d9d;
+                                font-family:'Verdana', Geneva, sans-serif;
+                                  ">THEMINI DESIGN IS BEST PART OF
                         <span style="font-weight: normal"> MY LIFE </span></h2>
+<!--                </div>-->
                 </div>
-                <h6 style="color: #8e9398">here are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                <div style="width: 880px; padding-left: 0px; padding-top: 26px;  text-indent: 10px; " >
+                <h5 style="color: #9d9d9d; font-size: 115%;line-height: 147%;">  here are many variations of passages of Lorem Ipsum available, but the majority have suffered
                     alteration in some form, by injected humour, or randomised words which don't look even slightly
                     believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
                     anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet
@@ -31,9 +41,9 @@
                     to generate Lorem Ipsum which looks reasonable. The generated Lorem of text. All the Lorem Ipsum
                     generators on the Internet tend to repeat predefined chunks as necessary, making this the first true
                     generator on the Internet. It uses a Ipsum is therefore always free from repetition, injected
-                    humour, or non-characteristic words etc.</h6>
-
-                <p><button class="btn mt_30" type="submit" style="
+                    humour, or non-characteristic words </h5>
+                </div>
+                <p style="padding-top: 12px;"><button class="btn mt_30" type="submit" style="
      -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     box-sizing: border-box;
@@ -62,15 +72,15 @@
 
 
 
-                <ul class="nav " style="margin-top: 60px">
-                    <li class="col-5">
+                <ul class="nav " style="margin-top: 40px;width: 880px ">
+                    <li class="col-6" style="width: 100px; padding-left: 0px ">
                         <Accordion_about />
 
                     </li>
 
 
 
-                    <li class="col-4">
+                    <li class="col-6" style="margin-left: 0px; padding-left: 6px">
                         <Skills_about />
 
 

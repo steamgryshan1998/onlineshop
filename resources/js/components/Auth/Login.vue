@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-md-12">
             <!--        пиздец-->
-            <img src="../../../../public/log.png" class="img-fluid" alt="" width="1300px"
+            <img src="../../../../public/images/log.png" class="img-fluid" alt="" width="1300px"
                  height="300px">
         </div>
         <div class="brd align-middle">
@@ -27,9 +27,9 @@
                             type="password"
                             class="form-control"
                             id="password"
-                               :class="validate.password === undefined ? '' : ' is-invalid'"
-                               v-model="form.password"
-                               placeholder="Password">
+                            :class="validate.password === undefined ? '' : ' is-invalid'"
+                            v-model="form.password"
+                            placeholder="Password">
                         <div v-for="error in validate.password" v-if="validate.password !== null"
                              class="invalid-feedback">
                             {{ error }}

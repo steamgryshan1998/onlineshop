@@ -1,7 +1,7 @@
 <template>
     <div class="container" :class="{'loading': loading}">
         <div class="col-md-12 head">
-            <img :src="require('../../../../../public/header.jpg').default" class="img-fluid" alt="" width="1080px">
+            <img :src="require('../../../../../public/images/header.jpg').default" class="img-fluid" alt="" width="1080px">
 
         </div>
         <div class="row">
@@ -24,17 +24,6 @@
                     <hr>
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
                 <h1 class="mt-4" style="padding-top: 20px">Filters</h1>
                 <hr>
                 <h3 class="mt-2">Price</h3>
@@ -45,7 +34,6 @@
                         {{ price.name }} ({{ price.products_count }})
                     </label>
                 </div>
-
 
 
                 <h3 class="mt-2">Manufacturers</h3>
@@ -61,7 +49,6 @@
                 <hr>
                 <br>
 <Slider_range_shop />
-
             </div>
             <div class="col-lg-9">
                 <div class="row mt-4">

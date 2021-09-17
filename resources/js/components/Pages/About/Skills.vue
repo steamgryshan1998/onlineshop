@@ -1,40 +1,45 @@
 <template>
     <div>
 
-        <h2>SKILLS</h2>
-        <hr>
+
+        <h4 style="padding-top: 8px; font-size: 140%">SKILLS<hr style="margin: 4px 0;
+	padding: 0;
+	height: 0;
+	border: none;
+	border-top: 2px solid #333;"></h4>
         <!-- Индикатор выполнения с темой success -->
-        <div class="progress" style="width: 520px; height: 30px; background-color: white;">
+        <div style="padding-top: 18px">
+        <div class="progress" >
             <div class="progress-bar bg-success" role="progressbar" style=" text-align: left; padding-left: 10px;width: 60%; font-weight:bold" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" >HTML / HTML5</div>
             <div class="progress-bar bg-white" role="progressbar" style="text-align: left; padding-left: 10px;width: 20%; font-weight:bold; color: #1d2124" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" ></div>
             <div class="progress-bar bg-white" role="progressbar" style="width: 20%; font-weight:bold; color: #1d2124" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" >60%</div>
         </div>
-        <br>
-        <div class="progress" style="width: 520px; height: 30px; background-color: white;">
+
+        <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="text-align: left; padding-left: 10px;width: 40%; font-weight:bold" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" >ASP.Net</div>
             <div class="progress-bar bg-white" role="progressbar" style="text-align: left; padding-left: 10px;width: 40%; font-weight:bold; color: #1d2124" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" ></div>
             <div class="progress-bar bg-white" role="progressbar" style="width: 20%; font-weight:bold; color: #1d2124" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" >40%</div>
         </div>
-        <br>
-        <div class="progress" style="width: 520px; height: 30px; background-color: white;">
+
+        <div class="progress" >
             <div class="progress-bar " role="progressbar" style=" text-align: left; padding-left: 10px; background-color: orange; width: 20%; font-weight:bold" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" >Java</div>
             <div class="progress-bar bg-white" role="progressbar" style="width: 60%; font-weight:bold; color: #1d2124" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" ></div>
             <div class="progress-bar bg-white" role="progressbar" style="width: 20%; font-weight:bold; color: #1d2124" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" >60%</div>
         </div>
-        <br>
-        <div class="progress" style="width: 520px; height: 30px; background-color: white;">
+
+        <div class="progress" >
             <div class="progress-bar bg-danger" role="progressbar" style="text-align: left; padding-left: 10px;width: 60%; font-weight:bold" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" >JavaScript / jQuery</div>
             <div class="progress-bar bg-white" role="progressbar" style="text-align: left; padding-left: 10px;width: 20%; font-weight:bold; color: #1d2124" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" ></div>
             <div class="progress-bar bg-white" role="progressbar" style="width: 20%; font-weight:bold; color: #1d2124" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" >60%</div>
         </div>
-        <br>
-        <div class="progress" style="width: 520px; height: 30px; background-color: white;">
+
+        <div class="progress" >
             <div class="progress-bar " role="progressbar" style="text-align: left; padding-left: 10px;width: 80%;background-color: orchid; font-weight:bold" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" >CSS / CSS3</div>
             <div class="progress-bar bg-white" role="progressbar" style="width: 20%; font-weight:bold; color: #1d2124" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> 80%</div>
         </div>
 
 
-        </li>
+        </div>
 
     </div>
 
@@ -52,7 +57,13 @@ export default {
 
 
 <style scoped>
+.progress {
+    width: 429px;
+    height: 26px;
+    background-color: white;
+    margin-bottom: 29px;
 
+}
 .card-body{
     color: #696969;
 }

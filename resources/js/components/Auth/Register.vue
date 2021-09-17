@@ -2,7 +2,7 @@
 <div class="container">
     <div class="col-md-12">
         <img
-            :src="require('../../../../public/reg.png').default"
+            :src="require('../../../../public/images/reg.png').default"
              class="img-fluid"
              alt=""
              width="1300px"

@@ -1,28 +1,32 @@
 <template>
-    <div>
-        <h3>TOP CATEGORY</h3>
-        <hr>
-        <a class="learnMore" style="font-weight:bold">
-            Office & School Supplies</a>
-        <hr class='dotted'/>
-        <a class="learnMore" style="font-weight:bold">
+    <div style="line-height: 80%;">
+        <h5 style="font-weight: bold;padding-bottom: 20px">TOP CATEGORY        <hr style="margin: 4px 0;
+	padding: 0;
+	height: 0;
+	border: none;
+	border-top: 2px solid #333;">
+            </h5>
+
+
+
+        <a class="learnMore" style="font-weight:bold; ">
             Office Furniture & Lighting</a>
         <hr class='dotted'/>
         <a class="learnMore" style="font-weight:bold">
             Kitchen & Dining</a>
-        <hr class='dotted'/>
+        <hr class='dotted' />
         <a class="learnMore" style="font-weight:bold">
             Cell Phone Accessories</a>
         <hr class='dotted'/>
         <a class="learnMore" style="font-weight:bold">
             Computers & Accessories</a>
-        <hr class='dotted'/>
-        <a class="learnMore" style="font-weight:bold">
+        <hr class='dotted' />
+        <a class="learnMore" style="font-weight:bold; ">
             Gardening Pots </a>
         <hr class='dotted'/>
         <a class="learnMore" style="font-weight:bold">
             Planters & Accessories</a>
-        <hr class='dotted'/>
+        <hr class='dotted' style="padding-bottom: 2px"/>
         <a class="learnMore" style="font-weight:bold">
             Lighting & Ceiling Fans </a>
         <hr class='dotted'/>
@@ -43,6 +47,9 @@
         <hr class='dotted'/>
         <a class="learnMore" style="font-weight:bold">
             Sports & Outdoors</a>
+<div style="padding-top: 74px">
+        <img :src="require('../../../../../public/images/left1.jpg').default" alt="" width="278px" style="margin-bottom: 20px;">
+    </div>
     </div>
 </template>
 
@@ -57,15 +64,17 @@ export default {
 
 <style scoped>
 .dotted {
-    border: 1px dotted #ff0000;
-    border-style: none none dotted;
-    color: #fff;
-    background-color: #fff;
+    /*border: 1px dotted #ff0000;*/
+    /*border-style: none none dotted;*/
+    border-width: 0px 0px 1px 0px; border-style: dashed; border-color: #424242;
 }
 
 .learnMore {
-    background-color: none;
+    /*background-color: none;*/
     color: white;
+}
+.learnMore hr {
+
 }
 
 .learnMore:hover {
@@ -73,4 +82,5 @@ export default {
     color: #fa880b;
     text-decoration: none;
 }
+
 </style>

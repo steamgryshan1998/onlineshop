@@ -1,0 +1,208 @@
+<template>
+
+    <div class="row_1"  style=" color: white;
+    max-width: 1320px;
+    margin: 0px auto;
+    padding: 0px 15px; padding-bottom: 24px">
+
+        <form action="/search/" target="_blank" style="margin-top: 20px;padding-left: 56px;">
+            <input type="hidden" name="searchid" value="808327">
+            <input type="search" name="text" required placeholder="Search" style=" height: 42px; width: 220px;
+padding: 0px 2px 5px 25px;
+background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/Hu2poBOPx3g/s25/search.png') no-repeat scroll 0 50%;
+">
+        </form>
+
+        <div class="col-2">
+        </div>
+        <a class="navbar-brand" > <img :src="require('../../../../../public/images/darklook.png').default" width="240px"  style="margin-top: 6px; margin-left: 29px"> </a>
+
+        <div class="col-2"></div>
+        <div class="col-2" style="padding: 25px; padding-left: 81px; margin-top: 5px">
+            <router-link to="/basket"><i class="fas fa-shopping-cart" style="font-size: 30px; "></i>    <span v-text="'(' + $store.state.cart.length + ' items)'"></span>
+            </router-link>
+        </div>
+    </div>
+
+
+</template>
+
+<script>
+export default {
+    name: "second_level_header"
+}
+</script>
+
+<style scoped>
+
+.title{
+
+}
+
+
+.header_1{
+    margin-left: 370px;
+    margin-right: 370px;
+    width: 100%;
+
+}
+.container{
+    color: #58503d;
+    max-width: 1800px;
+    margin: 0px auto;
+    padding: 0px 15px;
+}
+@media (max-width: 1200px) {
+    .container {
+        max-width: 970px;
+    }
+}
+.nav-link{
+    padding-top: 24px;
+    padding-bottom: 23px;
+    color: white
+}
+@media (max-width: 992px) {
+    .container {
+        max-width: 750px;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        max-width: none;
+    }
+}
+div{
+    padding-left: 0;
+    padding-right: 0;
+}
+.row_1{
+    /*margin-top: 0.5rem;*/
+    /*margin-bottom: 0.5rem;*/
+    display: flex;
+    text-decoration: none;
+}
+.row_1 a:hover{
+    text-decoration: none;
+}
+.row_2{
+    background-color: #424242;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+a{
+    color: #7d7e7e;
+
+}
+.row_2 a:hover {
+    background: #fa4250;
+    text-decoration: none;
+    height: 70px;
+}
+
+
+.drop {
+    background-color: #424242;
+}
+#dropdownMenuButton, #account{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    border-radius: 0 0 0 0;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    box-shadow: none;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-top: 0px;
+    padding-bottom: 8px;
+}
+#dropdownMenuButton:hover{
+    background: #FB4251;
+    text-decoration: none;
+    box-shadow: none;
+}
+#dropdownMenuButton:active, #dropdownMenuButton:focus{
+    outline: none !important;;
+    background: #FB4251;
+}
+#dropdownMenuButton::-moz-focus-inner{
+    border: 0 !important;;
+    background: #FB4251;
+}
+#account{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+#account:hover{
+    box-shadow: none;
+}
+
+h1 div, p {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.nav-item{
+
+}
+
+.dropdown-header{
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.item{
+    display: block;
+    padding: 5px 20px;
+    clear: both;
+    font-weight: 500;
+    white-space: normal;
+}
+
+.mega-dropdown{
+    position: static !important;
+}
+.dropdown-menu.show{
+    border-radius: unset;
+    border-top: 0;
+    border-left-width: 0px;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 370px;
+    width: 1081px;
+    display: flex;
+    background-color: #424242;
+}
+
+.dropdown-menu_2.show{
+    border-radius: unset;
+    border-top: 0;
+    border-left-width: 0px;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 363px;
+    width: 50px;
+    display: block;
+    background-color: #424242;
+}
+
+hr {
+    border: none; /* Убираем границу */
+    background-color: red; /* Цвет линии */
+    color: red; /* Цвет линии для IE6-7 */
+    height: 2px; /* Толщина линии */
+}
+
+
+
+.fa-shopping-cart:hover {
+    color: #fa880b;
+    text-decoration: none;
+}
+
+</style>

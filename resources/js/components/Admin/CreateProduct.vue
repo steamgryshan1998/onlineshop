@@ -13,9 +13,11 @@
                         <div class="mb-3 row">
                             <label for="product_name" class="col-sm-6 col-form-label">Name</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" v-model="product.name" :class="validate.name === undefined ? '' : ' is-invalid'" id="product_name"
+                                <input type="text" class="form-control" v-model="product.name"
+                                       :class="validate.name === undefined ? '' : ' is-invalid'" id="product_name"
                                        placeholder="Please enter name of category"/>
-                                <div v-for="error in validate.name" v-if="validate.name !== null" class="invalid-feedback">
+                                <div v-for="error in validate.name" v-if="validate.name !== null"
+                                     class="invalid-feedback">
                                     {{ error }}
                                 </div>
                             </div>
@@ -23,9 +25,11 @@
                         <div class="mb-3 row">
                             <label for="product_price" class="col-sm-6 col-form-label">Price</label>
                             <div class="col-sm-6">
-                                <input type="number" class="form-control" v-model="product.price" :class="validate.price === undefined ? '' : ' is-invalid'" id="product_price"
+                                <input type="number" class="form-control" v-model="product.price"
+                                       :class="validate.price === undefined ? '' : ' is-invalid'" id="product_price"
                                        placeholder="Please enter price of product"/>
-                                <div v-for="error in validate.price" v-if="validate.price !== null" class="invalid-feedback">
+                                <div v-for="error in validate.price" v-if="validate.price !== null"
+                                     class="invalid-feedback">
                                     {{ error }}
                                 </div>
                             </div>
@@ -33,9 +37,12 @@
                         <div class="mb-3 row">
                             <label class="col-sm-6 col-form-label">Description</label>
                             <div class="col-sm-6">
-                                <textarea type="text" class="form-control" v-model="product.description" :class="validate.description === undefined ? '' : ' is-invalid'" id="product_description"
-                                       placeholder="Please enter name of category"/>
-                                <div v-for="error in validate.description" v-if="validate.description !== null" class="invalid-feedback">
+                                <textarea type="text" class="form-control" v-model="product.description"
+                                          :class="validate.description === undefined ? '' : ' is-invalid'"
+                                          id="product_description"
+                                          placeholder="Please enter name of category"/>
+                                <div v-for="error in validate.description" v-if="validate.description !== null"
+                                     class="invalid-feedback">
                                     {{ error }}
                                 </div>
                             </div>
@@ -43,13 +50,15 @@
                         <div class="mb-3 row">
                             <label class="col-sm-6 сol-form-label">Category</label>
                             <div class="col-sm-6">
-                                <select class="form-control" v-model="product.category_id" :class="validate.category_id === undefined ? '' : ' is-invalid'">
+                                <select class="form-control" v-model="product.category_id"
+                                        :class="validate.category_id === undefined ? '' : ' is-invalid'">
                                     <option v-bind:value="category.id" v-for="category in categories">{{
                                             category.name
                                         }}
                                     </option>
                                 </select>
-                                <div v-for="error in validate.category_id" v-if="validate.category_id !== null" class="invalid-feedback">
+                                <div v-for="error in validate.category_id" v-if="validate.category_id !== null"
+                                     class="invalid-feedback">
                                     {{ error }}
                                 </div>
                             </div>
@@ -57,12 +66,14 @@
                         <div class="row mb-3">
                             <label class="col-sm-6 сol-form-label">Manufacturer</label>
                             <div class="col-sm-6">
-                                <select class="form-control" v-model="product.manufacturer_id" :class="validate.manufacturer_id === undefined ? '' : ' is-invalid'">
+                                <select class="form-control" v-model="product.manufacturer_id"
+                                        :class="validate.manufacturer_id === undefined ? '' : ' is-invalid'">
                                     <option v-bind:value="manufacturer.id" v-for="manufacturer in manufacturers">
                                         {{ manufacturer.name }}
                                     </option>
                                 </select>
-                                <div v-for="error in validate.manufacturer_id" v-if="validate.manufacturer_id !== null" class="invalid-feedback">
+                                <div v-for="error in validate.manufacturer_id" v-if="validate.manufacturer_id !== null"
+                                     class="invalid-feedback">
                                     {{ error }}
                                 </div>
                             </div>
@@ -70,10 +81,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-6 сol-form-label">Image</label>
                             <div class="col-sm-6">
-                                <input type="file" ref="file" @change="handleFileUpload" />
-<!--                                <div v-for="error in validate.image" v-if="validate.image !== null" class="invalid-feedback">-->
-<!--                                    {{ error }}-->
-<!--                                </div>-->
+                                <input type="file" ref="file" @change="handleFileUpload"/>
                             </div>
                         </div>
                     </div>
@@ -81,8 +89,11 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
-                    <button v-if="!product.id" type="button" class="btn btn-primary" @click.prevent="addProduct">Create</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close
+                    </button>
+                    <button v-if="!product.id" type="button" class="btn btn-primary" @click.prevent="addProduct">
+                        Create
+                    </button>
                     <button v-else type="button" class="btn btn-primary" @click.prevent="editProduct"><i
                         class="fas fa-check"></i>Edit
                     </button>
@@ -117,13 +128,12 @@ export default {
             category: [],
             manufacturer: [],
             file: '',
-            validate:{
-            },
+            validate: {},
         };
     },
     methods: {
         handleFileUpload() {
-          this.file = this.$refs.file.files[0];
+            this.file = this.$refs.file.files[0];
         },
         closeModal() {
             this.product.name = "";
@@ -218,8 +228,6 @@ export default {
                 .catch(error => {
                     this.validate = error.response.data.errors;
                 })
-            // .finally(this.contact.id = null // fixed bug with button add new after edit
-            //     )
         }
     },
 };
