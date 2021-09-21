@@ -5,7 +5,8 @@
 <template>
     <div class="page">
         <div class="col-md-12 head">
-            <img :src="require('../../../../../public/images/header.jpg').default" class="img-fluid" alt="" width="1080px">
+<!--            <img :src="require('../../../../../public/images/header.jpg').default" class="img-fluid" alt="" width="1080px">-->
+            <img src="/images/header.jpg"  class="img-fluid" alt="" width="1080px">
         </div>
         <div class="card mx-auto" style="max-width: 840px;">
             <div class="row no-gutters">

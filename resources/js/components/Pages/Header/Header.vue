@@ -285,7 +285,7 @@
         border: none;
         color: #7e7e7f;
         background-color: #7e7e7f;
-        height: 1px; padding-top: 0px; margin-top: 5px">
+        height: 1px; padding-top: 0px; margin-top: 7px">
             <div class="container">
                 <second_level_header/>
                 <third_level_header/>
@@ -295,9 +295,9 @@
 </template>
 <script>
 import {mapGetters} from 'vuex'
-import First_level_header from "./first_level_header";
-import Second_level_header from "./second_level_header";
-import Third_level_header from "./third_level_header";
+import First_level_header from "./First_level_header";
+import Second_level_header from "./Second_level_header";
+import Third_level_header from "./Third_level_header";
 
 export default {
     name: "Header",

@@ -48,7 +48,7 @@
         <a class="learnMore" style="font-weight:bold">
             Sports & Outdoors</a>
 <div style="padding-top: 74px">
-        <img :src="require('../../../../../public/images/left1.jpg').default" alt="" width="278px" style="margin-bottom: 20px;">
+        <img src="/images/left1.jpg"  alt="" width="278px" style="margin-bottom: 20px;">
     </div>
     </div>
 </template>

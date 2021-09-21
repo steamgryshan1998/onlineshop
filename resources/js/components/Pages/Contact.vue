@@ -35,10 +35,7 @@
                                 <input id="telephone" placeholder="Phone number"style="width: 575px"><p style="padding: 2px 10px 10px 0px"></p>
                                 <input id="subject" placeholder="Subject"style="width: 575px; "><p style="padding: 0px 10px 14px 0px"></p>
                                 <textarea id="comments" placeholder="Message" style="width: 575px;height: 143px; padding: 0px 10px 10px 0px"></textarea>
-                            </fieldset>
-
-
-                            <p><button class="btn mt_30" type="submit" style="
+                                <p><button class="btn mt_30" type="submit" style="
      -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     box-sizing: border-box;
@@ -64,6 +61,10 @@
     padding: 10px 20px;
     text-transform: uppercase;
     font-weight: 500;">Send Message</button></p>
+                            </fieldset>
+
+
+
                         </form>
 
                     </li>

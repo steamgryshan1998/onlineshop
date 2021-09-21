@@ -89,9 +89,9 @@ body {
 
 }
 
-button:hover{
-    background-color: #b49543;
-}
+/*button:hover{*/
+/*    background-color: #b49543;*/
+/*}*/
 
 .client h3 {
     font-size: 16px;
