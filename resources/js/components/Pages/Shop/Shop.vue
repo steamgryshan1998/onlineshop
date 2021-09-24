@@ -51,6 +51,7 @@
                             <a href="#">
                                 <img class="card-img-top" :src="product.image" alt="" width="200px" height="300px">
 
+
                                 <ul class="social">
                                     <li><a href="#"><i class="fas fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fas fa-eye"></i></a></li>

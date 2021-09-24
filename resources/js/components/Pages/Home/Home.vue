@@ -5,7 +5,9 @@
 
                 <ul class="nav row " style="height: 220px; width: 1050px">
                 <li class="col-2" >
-                    <img :src="require('../../../../../public/images/callback-img.png').default" class="d-block" style="height: 150px; width: 150px" alt="...">
+<!--                   <img src="/public/images/callback-img.png"  class="d-block" style="height: 150px; width: 150px" alt="...">-->
+                    <img src="/images/header.jpg"  class="img-fluid" alt="" width="1080px">
+
                 </li>
                 <li class="col-7">
                     <h2 style="font-size: 50px;font-weight: 600; ">50% off</h2>

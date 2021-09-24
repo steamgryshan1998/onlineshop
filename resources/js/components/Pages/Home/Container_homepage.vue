@@ -28,6 +28,8 @@
 
             <div class="col-md-12 scale">
                 <img src="/images/store.jpg" class="img-fluid scale" alt="" width="1300px" height="300px">
+                <img src="/images/store.jpg"  class="img-fluid scale" alt="" width="1170px" height="298px">
+
             </div>
         </div>
 

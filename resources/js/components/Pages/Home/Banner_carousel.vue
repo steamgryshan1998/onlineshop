@@ -8,11 +8,13 @@
                 <div class="carousel-item active">
                     <a href="#">
                         <img src="/images/ban.jpg" class="d-block w-100" height="564px" width="100%" alt="...">
+                        <img src="/images/ban.jpg"  class="d-block w-100" height="564px" width="100%" alt="...">
                     </a>
                 </div>
                 <div class="carousel-item">
                     <a href="#">
                         <img src="/images/ban2.jpg" class="d-block w-100" height="564px" alt="...">
+                        <img src="/images/ban2.jpg"  class="d-block w-100" height="564px" width="100%" alt="...">
                     </a>
                 </div>
                 <ol class="carousel-indicators">

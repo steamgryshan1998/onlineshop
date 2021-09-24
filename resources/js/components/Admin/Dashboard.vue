@@ -260,6 +260,8 @@
 import CreateCategory from "./CreateCategory";
 import CreateManufacturer from "./CreateManufacturer";
 import CreateProduct from "./CreateProduct";
+import modalMixin from '../../mixins/modal-mixin';
+import category from "../../store/modules/category";
 
 export default {
     components: {
@@ -267,7 +269,8 @@ export default {
         CreateManufacturer,
         CreateProduct
     },
-    data: function () {
+    mixins: [modalMixin],
+    data() {
         return {
             categories: [],
             category: {
@@ -294,10 +297,6 @@ export default {
                 updated_at: '',
                 manufacturer_id: ''
             },
-            isCreateCategoryVisible: false,
-            isCreateManufacturerVisible: false,
-            isCreateProductVisible: false,
-            mode: {}
         }
     },
 
@@ -309,16 +308,10 @@ export default {
 
 
     methods: {
-        loadCategories: function () {
-            axios.get('/api/categories', {
-                params: _.omit(this.selected, 'categories')
-            })
-                .then((response) => {
-                    this.categories = response.data.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+        loadCategories() {
+            category.loadCategories().then(response => {
+                this.categories = response.data.categories;
+            }).catch(error => { console.error(error)});
         },
 
         loadProducts: function () {
@@ -347,56 +340,11 @@ export default {
                     console.log(error);
                 });
         },
-        showCreateCategory() {
-            this.isCreateCategoryVisible = true;
-        },
-        closeCreateCategory() {
-            this.isCreateCategoryVisible = false;
-            this.loadCategories();
+        async deleteCategory(id) {
+            await this.$store.dispatch('category/deleteCategory', id)
+            await this.loadCategories();
             this.loadProducts();
-        },
-        showCreateProduct() {
-            this.isCreateProductVisible = true;
-            this.loadCategories();
-            this.loadManufacturers()
-        },
-        closeCreateProduct() {
-            this.isCreateProductVisible = false;
-            this.loadProducts();
-        },
-        showCreateManufacturer() {
-            this.isCreateManufacturerVisible = true;
-        },
-        closeCreateManufacturer() {
-            this.isCreateManufacturerVisible = false;
             this.loadManufacturers();
-            this.loadProducts();
-        },
-        editCategory(category) {
-            //console.log(contact);
-            this.mode = category;
-            this.isCreateCategoryVisible = true;
-        },
-        deleteCategory(id) {
-            axios
-                .post(`api/categories/${id}`, {
-                    _method: 'DELETE'
-                })
-                .then(response => {
-                    this.categories = []
-                    this.loadCategories();
-                    this.loadProducts();
-                    this.loadManufacturers();
-                    console.log(this.categories, 'aaaaaaaaaaaaaaaaaaaaaaa');
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        },
-        editManufacture(manufacturer) {
-            //console.log(contact);
-            this.mode = manufacturer;
-            this.isCreateManufacturerVisible = true;
         },
         deleteManufacture(id) {
             axios
@@ -412,11 +360,6 @@ export default {
                 .catch(error => {
                     console.log(error)
                 })
-        },
-        editProduct(product) {
-            //console.log(contact);
-            this.mode = product;
-            this.isCreateProductVisible = true;
         },
         deleteProduct(id) {
             axios

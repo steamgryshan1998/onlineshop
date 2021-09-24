@@ -16,6 +16,8 @@ import {store} from "./store";
 
 
 
+import * as types from './mutation-types';
+import {store} from "./store";
 //window.Vue = require('vue').default;
 /* Window - глобальный объект, его функции и переменные доступны в любом месте программы(
    то есть делаем Vue глобальным); require - импортирует объект полностью сво всеми его методами и свойствами,
