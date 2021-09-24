@@ -15,13 +15,10 @@ class PriceService
         $this->prices = $prices;
         $this->categories = $categories;
         $this->manufacturers = $manufacturers;
-        $formattedPrices = [];
+        $formattedPrices = Product::PRICES;
 
-        foreach(Product::PRICES as $index => $name) {
-            $formattedPrices[] = [
-                'name' => $name,
-                'products_count' => $this->getProductCount($index)
-            ];
+        foreach($formattedPrices as $index => $value) {
+            $formattedPrices[$index]['products_count'] = $this->getProductCount($index);
         }
 
         return $formattedPrices;

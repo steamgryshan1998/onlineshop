@@ -57,11 +57,11 @@
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
 
-                                    <img :src="require('../../../../../public/images/1.jpeg').default"
+                                    <img src="/images/1.jpeg"
                                          class="d-block w-100" height="200px" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img :src="require('../../../../../public/images/2.jpg').default"
+                                    <img src="/images/2.jpg"
                                          class="d-block w-100" height="200px" alt="...">
                                 </div>
 

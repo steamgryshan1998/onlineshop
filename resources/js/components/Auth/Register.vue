@@ -98,9 +98,6 @@ export default {
                 // Save the token.
                 this.$store.dispatch('saveToken', { token })
 
-                // Update the user.
-                await this.$store.dispatch('updateUser', { user: data })
-
                 // Fetch the user
                 await this.$store.dispatch('fetchUser')
 

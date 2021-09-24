@@ -14,16 +14,54 @@ class CategoryController extends Controller
 {
     public function index()
     {
+
+        //todo бизнес логика должна быть в одном месте, либо в модели либо в контроллере либо в сервисе.
+        // пренесем в сервис всю логику. Здесь оставим только вызов сервиса и вывод данных
+        // добавить валидацию запросов
+
         $categories = Category::withCount(['products' => function ($query) {
-            $query->withFilters(
-                request()->input('prices', []),
-                request()->input('categories', []),
-                request()->input('manufacturers', [])
-            );
+
+            $pricesArray =  request()->input('prices', []);
+            $categories = request()->input('categories', []);
+            $manufacturers = request()->input('manufacturers', []);
+
+            if (count($manufacturers) > 0) {
+                $query->whereIn('manufacturer_id', $manufacturers);
+            }
+
+//                ->when(count($categories), function ($query) use ($categories) {
+//                    $query->whereIn('category_id', $categories);
+//                })
+//                ->when(count($prices), function ($query) use ($prices) {
+            //todo передать выбранные цены массивом опций (цена от, цена до) и делать выборку в базе по этому массиву. Здесь и в Присе сревисе
+
+            if (count($pricesArray) > 0) {
+                $query->where(function ($query) use ($pricesArray) {
+
+                    foreach ($pricesArray as $prices) {
+                        $query->orWhereBetween('price', [$prices['from'], $prices['to']]);
+                    }
+                });
+            }
+                    $query->where(function ($query) use ($prices) {
+                        $query->when(in_array(0, $prices), function ($query) {
+                            $query->orWhere('price', '<', '5000');
+                        })
+                            ->when(in_array(1, $prices), function ($query){
+                                $query->orWhereBetween('price', ['5000', '10000']);
+                            })
+                            ->when(in_array(2, $prices), function ($query) {
+                                $query->orWhereBetween('price', ['10000', '50000']);
+                            })
+                            ->when(in_array(3, $prices), function ($query) {
+                                $query->orWhere('price', '>', '50000');
+                            });
+                    });
+                });
         }])
             ->get();
 
-        return CategoryResource::collection($categories);
+        return CategoryResource::collection($categories);//коллекции используют мен
     }
 
     /**
@@ -37,7 +75,7 @@ class CategoryController extends Controller
         $created_category = Category::create($request->validated());
 
 
-        return new CategoryResource($created_category);
+        return new CategoryResource($created_category);//в ресурсе все записывается в массив
     }
 
     /**

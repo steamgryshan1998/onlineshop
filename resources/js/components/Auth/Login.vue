@@ -51,7 +51,6 @@ export default {
             password: ''
         }),
         validate: {},
-        log_img: '/images/log.png'
     }),
 
     methods: {
@@ -62,13 +61,13 @@ export default {
             })
 
 
-            // Save the token.
+            // Сохранение токена для авторизации
             this.$store.dispatch('saveToken', {
                 token: data.token,
             })
 
             // Fetch the user.
-            await this.$store.dispatch('fetchUser')
+            await this.$store.dispatch('fetchUser')//dispatch - метод для запуска действия(action)
 
             // Redirect home.
             this.$router.push({name: 'Shop'})

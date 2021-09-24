@@ -8,18 +8,10 @@
                 <h1 class="mt-4">Categories</h1>
                 <hr>
 <!--             как было :-->
-<!--                <div class="form-check" v-for="category in categories">-->
-<!--                    <div :id="category.id" @click="selectCategory(category)" class="learnMore">-->
-<!--                        <h5>{{ category.name }}</h5>-->
-<!--                    </div>-->
-<!--                    <hr>-->
-<!--                </div>-->
-
-                <div class="form-check" v-for="(category, index) in categories" >
-                    <input class="form-check-input" type="checkbox" :value="index" :id="'category'+index" v-model="selected.categories">
-                    <label class="form-check-label option" :for="'category' + index">
-                        <h5> {{ category.name }} , ({{ category.products_count }}) </h5>
-                    </label>
+                <div class="form-check" v-for="category in categories">
+                    <div :id="category.id" @click="selectCategory(category)" class="learnMore">
+                        <h5>{{ category.name }}</h5>
+                    </div>
                     <hr>
                 </div>
 
@@ -49,6 +41,8 @@
                 <br>
             <Slider_range_shop />
             </div>
+
+
             <div class="col-lg-9">
                 <div class="row mt-4">
                     <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0" v-for="product in FilteredProducts" :key="product.id">

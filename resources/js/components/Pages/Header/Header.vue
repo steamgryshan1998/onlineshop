@@ -278,7 +278,7 @@
 <!--    margin-top: 20px;-->
 <!--    padding-left: 0px;-->
 <!--=======-->
-    <div>
+    <div style="max-width: 1833px">
         <div>
             <first_level_header/>
             <hr style="

@@ -15,6 +15,6 @@ class UserController extends Controller
      */
     public function current(Request $request)
     {
-        return response()->json(auth()->user());
+        return response()->json(auth()->user());//возвращаем на фронт текущий экземпляр аутентифицированного юзера в формате JSON
     }
 }

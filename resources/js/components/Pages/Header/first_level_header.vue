@@ -7,7 +7,9 @@
         <div class="row_1" >
 
             <div class="col-4" style="margin-top: 10px; padding-left: 63px; text-transform:uppercase" >
-                <h6>Days a week from 9:00 am to 7:00 pm</h6>
+                <router-link to="/">
+                    <h6>Days a week from 9:00 am to 7:00 pm</h6>
+                </router-link>
             </div>
             <div class="col-4">
             </div>

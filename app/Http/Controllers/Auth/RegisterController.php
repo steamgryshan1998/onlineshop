@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    use RegistersUsers;
+    use RegistersUsers;//в этом трейте находится метод для регистрации
 
     /**
      * Create a new controller instance.

@@ -16,21 +16,20 @@ use App\Http\Controllers\Auth\UserController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 //*/
-Route::group(['middleware' => 'auth:api'], function () {
-    Route::post('logout', [LoginController::class, 'logout']);
-    Route::get('user', [UserController::class, 'current']);
+Route::group(['middleware' => 'auth:api'], function () {//группа маршрутов для авторизированных пользователей
+    Route::post('logout', 'Auth\LoginController@logout');//1-название запроса 2 - путь к методу контроллера, где обрабатывается запрос
+    Route::get('user', 'Auth\UserController@current');
 });
 
-Route::group(['middleware' => 'guest:api'], function () {
+Route::group(['middleware' => 'guest:api'], function () {//группа маршрутов для неавторизированных пользователей
     Route::post('login', 'Auth\LoginController@login');
-    Route::post('register', [RegisterController::class, 'register']);
-
+    Route::post('register', 'Auth\RegisterController@register');
 });
 
 
 
 
-Route::apiResource('categories', 'Api\CategoryController');
+Route::apiResource('categories', 'Api\CategoryController');//apiResource - метод для привязки контроллера ресурсов API (--api), этот контроллер не включает методы create, edit
 Route::apiResource('products', 'Api\ProductController');
 Route::post('products/{product}', 'Api\ProductController@update');
 Route::apiResource('manufacturers', 'Api\ManufacturerController');
@@ -42,7 +41,7 @@ Route::apiResource('prices', 'Api\PriceController');
 //    'manufacturers' => [ManufacturerController::class, 'index'],
 //    'prices' => [PriceController::class, 'index'],
 //]);
-
-Route::get('/zalupa', function () {
-    return response()->json('privet', 201); //
-})->middleware('my-custom-middleware');
+//
+//Route::get('/zalupa', function () {
+//    return response()->json('privet', 201); //
+//})->middleware('my-custom-middleware');

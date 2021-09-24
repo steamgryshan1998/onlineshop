@@ -27,7 +27,7 @@
             </div>
 
             <div class="col-md-12 scale">
-                <img :src="require('../../../../../public/images/store.jpg').default" class="img-fluid scale" alt="" width="1300px" height="300px">
+                <img src="/images/store.jpg" class="img-fluid scale" alt="" width="1300px" height="300px">
             </div>
         </div>
 

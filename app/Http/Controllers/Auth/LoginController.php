@@ -12,7 +12,7 @@ use App\Providers\RouteServiceProvider;
 
 class LoginController extends Controller
 {
-    use AuthenticatesUsers;
+    use AuthenticatesUsers;//в этом трейте находится метод логина
 
     /**
      * Create a new controller instance.
@@ -101,8 +101,8 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        auth()->logout();
+        auth()->logout();//обнуляем текущий экземпляр аутентификации
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'Successfully logged out']);//возвращаем на фронт сообщение о выходе из учетной записи в формате JSON
     }
 }

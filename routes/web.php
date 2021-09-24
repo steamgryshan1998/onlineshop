@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any}', function () {  // to allow load tabs via vue-router(allow every URL)
-    return view('welcome');
-})->where('any', '.*');
+Route::get('/{any}', function () {  // чтобы позволить загружать страницы через vue-router(разрешает каждый URL)
+    return view('welcome');//view() - хелперская функция, с помощью которой выводится шаблон
+})->where('any', '.*');//where() - метод принимающий имя параметра и регулярку, которой он должен быть отформатирован

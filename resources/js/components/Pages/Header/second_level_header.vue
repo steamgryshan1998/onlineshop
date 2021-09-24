@@ -15,7 +15,7 @@ background: url('http://3.bp.blogspot.com/-4w14hQHr5yQ/Tgm6u7KwUkI/AAAAAAAACAI/H
 
         <div class="col-2">
         </div>
-        <a class="navbar-brand" > <img :src="require('../../../../../public/images/darklook.png').default" width="240px"  style="margin-top: 6px; margin-left: 29px"> </a>
+        <a class="navbar-brand" > <img src="/images/darklook.png" width="240px"  style="margin-top: 6px; margin-left: 29px"> </a>
 
         <div class="col-2"></div>
         <div class="col-2" style="padding: 25px; padding-left: 81px; margin-top: 5px">
