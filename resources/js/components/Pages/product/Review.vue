@@ -1,9 +1,5 @@
-
-
 <template>
     <div>
-
-
         <div class="review">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -68,8 +64,60 @@
 
 <script>
 
+import {mapActions} from "vuex";
+
 export default {
-    name: "Review"
+    name: "Review",
+    props: {
+        productId: {
+            type: String|Number,
+            required: true
+        }
+    },
+    mounted() {
+        this.loadProducts();
+    },
+    methods: {
+        ...mapActions(['updateCart']),
+        addProduct() {
+            const order = {
+                product: Object.assign({}, this.product),
+                quantity: 1,
+                isAdd: true
+            };
+            // console.log(order);
+            this.updateCart(order);
+        },
+        loadProducts: function () {
+            axios.get('/api/products', {
+                params: this.selected
+            })
+                .then((response) => {
+                    this.products = response.data.data;
+                    //this.loading = false;
+                    console.log(response.data.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        formatCurrency(amount) {
+            amount = (amount / 1);
+            return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+        }
+    },
+    computed: {
+        product () {
+            return this.$store.getters.product
+        },
+        user () {
+            return this.$store.getters.user;
+        }
+    },
+    created () {
+        this.$store.dispatch('getProductById', parseInt(this.productId))
+            .catch(() => {})
+    }
 }
 
 </script>
@@ -185,7 +233,8 @@ a{
 }
 
 .review{
-    margin-top: 50px;
+    margin-top: 20px;
+    width: 836px;
 }
 .input-group{
     margin-top: 30px;

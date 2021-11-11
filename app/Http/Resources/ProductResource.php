@@ -29,6 +29,7 @@ class ProductResource extends JsonResource
             'image' => $this->image
                 ? Storage::disk('public')->url($this->image)
                 : null,
+            'rating' => $this->rating,
         ];
     }
 }

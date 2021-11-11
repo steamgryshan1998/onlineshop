@@ -15,4 +15,6 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id');
     }
+/*метод hasMany позволяет получить доступ ко всем продуктам, внешний ключ category_id которых эквивалентен свойству id
+в таблице категорий*/
 }

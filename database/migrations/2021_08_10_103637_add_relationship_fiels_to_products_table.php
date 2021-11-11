@@ -14,12 +14,15 @@ class AddRelationshipFielsToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->foreignId('manufacturer_id')
-                ->references('id')
-                ->on('manufacturers')
+            $table->foreignId('manufacturer_id')//создаем внешний ключ manufacturer_id при помощи методы foreignId
+                ->references('id')//который должен соответствовать свойству id
+                ->on('manufacturers')//в таблице производителей
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
         });
+/*cascadeOnUpdate - метод, подтягивающий измененное значение имени производителя(через внешний ключ)
+cascadeOnDelete - метод, позволяющий удалить все продукты, если был удален производитель(через внешний ключ)
+*/
     }
 
     /**

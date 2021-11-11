@@ -9,6 +9,7 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\ProductService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -16,13 +17,16 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    protected $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
     public function index()
     {
-        $products = Product::with('category','manufacturer')->withFilters(
-            request()->input('prices', []),
-            request()->input('categories', []),
-            request()->input('manufacturers', [])
-        )->get();
+        $products = $this->productService->getAllProducts();
 
         return ProductResource::collection($products);
     }
@@ -35,24 +39,22 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request): ProductResource
     {
-        $filePath = Storage::disk('public')
-            ->put('products', $request->file('image'));
         $data = $request->validated();
-        $data['image'] = $filePath;
-        $createdProduct = Product::create($data);
+        $file = $request->file('image');
+        $created_product = $this->productService->addNewProduct($data, $file);
 
-        return new ProductResource($createdProduct);
+        return new ProductResource($created_product);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Product $product
+     * @return ProductResource
      */
-    public function show($id)
+    public function show(Product $product):ProductResource
     {
-        return new ProductResource(Product::find($id));
+        return new ProductResource($product);
     }
 
     /**
@@ -60,24 +62,13 @@ class ProductController extends Controller
      *
      * @param ProductUpdateRequest $request
      * @param Product $product
-     * @return ProductResource
+     * @return JsonResponse
      */
-    public function update(ProductUpdateRequest $request, Product $product): ProductResource
+    public function update(ProductUpdateRequest $request, Product $product): JsonResponse
     {
         $data = $request->validated();
-        if($request->file('image')) {
-            Storage::disk('public')
-                ->delete($product->image);
-            $filePath = Storage::disk('public')
-                ->put('products', $request->file('image'));
-            $data['image'] = $filePath;
-        } else {
-            unset($data['image']);
-        }
-        $product->update($data);
-        $addedProduct = Product::find($product->id);
-
-        return new ProductResource($addedProduct);
+        $updatedProduct = $this->productService->editProduct($data, $request, $product);
+        return response()->json($updatedProduct);
     }
 
     /**
@@ -89,7 +80,6 @@ class ProductController extends Controller
     public function destroy(Product $product): JsonResponse
     {
         $product->delete();
-
         return response()->json();
     }
 }

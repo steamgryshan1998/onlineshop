@@ -12,6 +12,7 @@ class CategoryResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+    //Resource соединяет все что нужно вернуть на фронт в виде одного массива
     public function toArray($request)
     {
         return [

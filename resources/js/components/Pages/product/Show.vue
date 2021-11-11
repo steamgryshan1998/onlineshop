@@ -6,8 +6,7 @@
     <div class="page container">
         <div class="col-md-12 head">
             <img src="/images/header.jpg" class="img-fluid" alt="" width="1080px">
-<!--            <img :src="require('../../../../../public/images/header.jpg').default" class="img-fluid" alt="" width="1080px">-->
-            <img src="/images/header.jpg"  class="img-fluid" alt="" width="1080px">
+
         </div>
         <div class="card mx-auto" style="max-width: 840px;">
             <div class="row no-gutters">
@@ -18,11 +17,8 @@
                     <div class="card-body">
                         <h4 class="card-title" v-text="product.name"></h4>
                         <div class="rating">
-                            <span class="fa fa-stack stars"><i class="fa fa-star fa-stack-1x red_star"></i></span>
-                            <span class="fa fa-stack stars"><i class="fa fa-star fa-stack-1x red_star"></i></span>
-                            <span class="fa fa-stack stars"><i class="fa fa-star fa-stack-1x red_star"></i></span>
-                            <span class="fa fa-stack stars"><i class="fa fa-star fa-stack-1x red_star"></i></span>
-                            <span class="fa fa-stack stars"><i class="fa fa-star-o fa-stack-1x red_star"></i></span>
+                            <span v-for="n in product.rating" class="fa fa-stack stars"><i class="fa fa-star fa-stack-1x red_star"></i></span>
+                            <span v-for="n in 5 - product.rating"class="fa fa-stack stars"><i class="fa fa-star-o fa-stack-1x red_star"></i></span>
                         </div>
                         <p class="card-text price" v-text="formatCurrency(product.price)"></p>
                         <hr>
@@ -63,77 +59,6 @@
             </div>
                 <div class="row blog">
                     <div class="col-md-6">
-                        <div id="blogCarousel" class="carousel slide" data-ride="carousel">
-
-                            <ol class="carousel-indicators">
-                                <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#blogCarousel" data-slide-to="1"></li>
-                            </ol>
-
-                            <!-- Carousel items -->
-                            <div class="carousel-inner">
-
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <a href="#">
-                                                <img :src="product.image" alt="Image" style="max-width:100%;">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <a href="#">
-                                                <img :src="product.image" alt="Image" style="max-width:100%;">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <a href="#">
-                                                <img :src="product.image" alt="Image" style="max-width:100%;">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <a href="#">
-                                                <img :src="product.image" alt="Image" style="max-width:100%;">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!--.row-->
-                                </div>
-                                <!--.item-->
-
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <a href="#">
-                                                <img :src="product.image" alt="Image" style="max-width:100%;">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <a href="#">
-                                                <img :src="product.image" alt="Image" style="max-width:100%;">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <a href="#">
-                                                <img :src="product.image" alt="Image" style="max-width:100%;">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <a href="#">
-                                                <img :src="product.image" alt="Image" style="max-width:100%;">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!--.row-->
-                                </div>
-                                <!--.item-->
-
-                            </div>
-                            <!--.carousel-inner-->
-                        </div>
-                        <!--.Carousel-->
-
-                    </div>
-                    <div class="col-md-6">
                         <ul class="icons">
                         <li class="icon_items"><a href="#"><i class="fas fa-heart"></i></a></li>
                         <li class="icon_items"><a href="#"><i class="fas fa-align-left"></i></a></li>
@@ -143,94 +68,8 @@
 
                 </div>
             <div>
-            <div class="review">
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Overview</a>
-                    <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Review</a>
-                    <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Solution</a>
-                </div>
-            </nav>
+            <Review/>
             </div>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">{{product.description}}</div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <h5>Write a review</h5>
-                    <div class="input-group flex-nowrap">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="addon-wrapping">@</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Usern@me" aria-label="Usern@me" aria-describedby="addon-wrapping">
-                    </div>
-                    <div class="rating">
-                        Rating:&nbsp;
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                            <label class="form-check-label" for="inlineRadio1">1</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                            <label class="form-check-label" for="inlineRadio2">2</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                            <label class="form-check-label" for="inlineRadio3">3</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                            <label class="form-check-label" for="inlineRadio4">4</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
-                            <label class="form-check-label" for="inlineRadio5">5</label>
-                        </div>
-
-                    </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Your review</span>
-                        </div>
-                        <textarea class="form-control" aria-label="Your review"></textarea>
-                    </div>
-                    <div class="row submit">
-
-                            <button type="button" class="btn btn-secondary continue">CONTINUE</button>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">{{product.description}}</div>
-            </div>
-            </div>
-<!--    <section class="text-gray-700 body-font overflow-hidden">-->
-<!--        <div class="container px-12 py-24 mx-auto">-->
-<!--            <div class="lg:w-3/5 mx-auto flex flex-wrap">-->
-<!--                <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/640x640">-->
-<!--                <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">-->
-<!--                    <h2-->
-<!--                        class="text-sm title-font text-gray-500 tracking-widest uppercase inline-block mr-2"-->
-<!--                    ></h2>-->
-<!--                    <h1-->
-<!--                        class="text-gray-900 text-3xl title-font font-medium mb-2"-->
-<!--                        v-text="product.name"-->
-<!--                    >{{product.length}}</h1>-->
-<!--                    <p-->
-<!--                        class="leading-relaxed"-->
-<!--                        v-text="product.description"-->
-<!--                    ></p>-->
-<!--                    <div class="flex mt-6 pt-4 border-t-2 border-gray-200">-->
-<!--                        <span-->
-<!--                            class="title-font font-medium text-2xl text-gray-900"-->
-<!--                            v-text="formatCurrency(product.price)"-->
-<!--                        ></span>-->
-<!--                        <button v-if="user"-->
-<!--                            class="flex add ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"-->
-<!--                            @click.prevent="addProduct"-->
-<!--                        ><i class="bi bi-bag-plus"></i>Add To Cart</button>-->
-<!--                        <div v-else>You need to <a href="#"><router-link to="/login">log in</router-link></a> firstly!</div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
     </div>
     </div>
     </div>
@@ -238,7 +77,9 @@
 
 <script>
 import { mapGetters,mapActions } from 'vuex';
+import Review from "./Review";
 export default {
+    components: {Review},
     props: {
         productId: {
             type: String|Number,
@@ -256,7 +97,6 @@ export default {
                 quantity: 1,
                 isAdd: true
             };
-            // console.log(order);
             this.updateCart(order);
         },
         loadProducts: function () {
@@ -265,11 +105,8 @@ export default {
             })
                 .then((response) => {
                     this.products = response.data.data;
-                    //this.loading = false;
-                    console.log(response.data.data);
                 })
                 .catch(function (error) {
-                    console.log(error);
                 });
         },
         formatCurrency(amount) {
@@ -403,10 +240,6 @@ a{
 }
 .icon_items:hover{
     background-color: red;
-}
-
-.review{
-    margin-top: 50px;
 }
 .input-group{
     margin-top: 30px;

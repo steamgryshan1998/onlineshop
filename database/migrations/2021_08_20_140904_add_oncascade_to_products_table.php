@@ -13,8 +13,9 @@ class AddOncascadeToProductsTable extends Migration
      */
     public function up()
     {
+//метод table позволяющий редактировать существующую таблицу
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
+            $table->dropForeign(['category_id']);//удаляем старый внешний ключ при помощи dropForeign
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')

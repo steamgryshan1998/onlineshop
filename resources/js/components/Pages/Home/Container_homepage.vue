@@ -1,41 +1,33 @@
-
 <template>
     <div>
-
         <div class="container">
             <div class="row pointers" style="padding: 10px; margin-left: 40px">
                 <div class="col-3" >
                     <i class="fas fa-truck-loading"></i>
-                    <a   class="learnMore" style="font-weight:bold"> FREE SHIPPING</a><br>
-                    Free dedlivery worldwide
+                    <a   class="learnMore" style="font-weight:bold">FREE SHOPPING</a><br>
+                    Free delivery worldwide
                 </div>
                 <div class="col-3">
                     <i class="fas fa-globe"></i>
-                    <a   class="learnMore" style="font-weight:bold">ORDER ONLINE</a><br>
+                    <a class="learnMore" style="font-weight:bold">ORDER ONLINE</a><br>
                     Hours : 8am - 11pm
                 </div>
                 <div class="col-3">
                     <i class="fas fa-wallet"></i>
-                    <a   class="learnMore" style="font-weight:bold">SHOP AND SAVE</a><br>
+                    <a class="learnMore" style="font-weight:bold">SHOP AND SAVE</a><br>
                     For All Spices & Herbs
                 </div>
                 <div class="col-3">
                     <i class="fas fa-user-shield"></i>
-                    <a   class="learnMore"  style="font-weight:bold">SAFE SHOPPING</a><br>
+                    <a class="learnMore" style="font-weight:bold">SAFE SHOPPING</a><br>
                     Ensure genuine 100%
                 </div>
             </div>
-
             <div class="col-md-12 scale">
                 <img src="/images/store.jpg" class="img-fluid scale" alt="" width="1300px" height="300px">
-                <img src="/images/store.jpg"  class="img-fluid scale" alt="" width="1170px" height="298px">
-
             </div>
         </div>
-
     </div>
-
-
 </template>
 
 
@@ -149,6 +141,8 @@ h1{
 }
 
 .scale {
+    padding-left: 0;
+    padding-right: 0;
     display: inline-block; /* Строчно-блочный элемент */
     overflow: hidden; /* Скрываем всё за контуром */
 }

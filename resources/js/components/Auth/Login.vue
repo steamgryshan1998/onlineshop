@@ -55,7 +55,7 @@ export default {
 
     methods: {
         async login() {
-            // Submit the form.
+            // Обработка формы(сбор и отправка введенных данных)
             const {data} = await this.form.post('/api/login').catch(error => {
                 this.validate = error.response.data.errors;
             })
@@ -66,10 +66,10 @@ export default {
                 token: data.token,
             })
 
-            // Fetch the user.
+            //
             await this.$store.dispatch('fetchUser')//dispatch - метод для запуска действия(action)
 
-            // Redirect home.
+            // Перенаправление пользователя на заданную страницу
             this.$router.push({name: 'Shop'})
         },
 

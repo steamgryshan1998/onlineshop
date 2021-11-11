@@ -1,5 +1,4 @@
-//import Home from "./components/Pages/Home";
-import Home from "./components/Pages/Home/Home";
+import Home from "./components/Pages/Home/Home";//импортируем наши компоненты из директорий, в которых они находяться
 import Collection from "./components/Pages/Collection";
 import Shop from "./components/Pages/Shop/Shop";
 import About from "./components/Pages/About/About";

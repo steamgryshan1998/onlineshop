@@ -7,12 +7,11 @@
             <div class="col-lg-3 mb-4 sidebar">
                 <h1 class="mt-4">Categories</h1>
                 <hr>
-<!--             как было :-->
-                <div class="form-check" v-for="category in categories">
-                    <div :id="category.id" @click="selectCategory(category)" class="learnMore">
-                        <h5>{{ category.name }}</h5>
-                    </div>
-                    <hr>
+                <div class="form-check" v-for="(category, index) in categories">
+                    <input class="form-check-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="selected.categories">
+                    <label class="form-check-label option" :for="'category' + index">
+                        {{ category.name }} ({{ category.products_count }})
+                    </label>
                 </div>
 
                 <h1 class="mt-4" style="padding-top: 20px">Filters</h1>
@@ -35,17 +34,12 @@
                         {{ manufacturer.name }} ({{ manufacturer.products_count }})
                     </label>
                 </div>
-
-                <h1 class="mt-4">Filters</h1>
-                <hr>
-                <br>
-            <Slider_range_shop />
             </div>
 
 
             <div class="col-lg-9">
                 <div class="row mt-4">
-                    <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0" v-for="product in FilteredProducts" :key="product.id">
+                    <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0" v-for="product in products" :key="product.id">
                         <div class="card h-100 our-team">
                             <div class="team_img">
                             <a href="#">
@@ -84,10 +78,6 @@
 </template>
 
 <script>
-
-
-import Show from "../product/Show";
-
 export default {
     data: function () {
         return {
@@ -125,33 +115,16 @@ export default {
     },
 
     methods: {
-        selectCategory(category){
-            this.SortedProducts = [];
-            this.products.map(function (item) {
-                if(item.category === category.name){
-                    this.SortedProducts.push(item);
-                }
+        loadCategories: function () {
+            axios.get('/api/categories', {
+                params: _.omit(this.selected, 'categories')
             })
-        },
-        async loadCategories () {
-            // axios.get('/api/categories', {
-            //     params: _.omit(this.selected, 'categories')
-            // })
-            //     .then((response) => {
-            //         this.categories = response.data.data;
-            //     })
-            //     .catch(function (error) {
-            //         console.log(error);
-            //     });
-            try {
-
-                const result = await axios.get('/api/categories', {
-                    params: _.omit(this.selected, 'categories')
+                .then((response) => {
+                    this.categories = response.data.data;
                 })
-                this.categories = result.data.data;
-            } catch (e) {
-                console.log(e);
-            }
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
 
         loadProducts: function () {
@@ -198,16 +171,6 @@ export default {
             return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
         }
     },
-    computed: {
-        FilteredProducts() {
-            let l = this.SortedProducts
-            if (l) {
-                return this.SortedProducts;
-            }  else {
-                return this.products;
-            }
-        }
-    }
 }
 </script>
 <style scoped>

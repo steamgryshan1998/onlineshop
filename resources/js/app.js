@@ -15,13 +15,10 @@ import { routes } from "./routes";//импортируем файл, где пр
 import {store} from "./store";
 
 
-
-import * as types from './mutation-types';
-import {store} from "./store";
 //window.Vue = require('vue').default;
 /* Window - глобальный объект, его функции и переменные доступны в любом месте программы(
-   то есть делаем Vue глобальным); require - импортирует объект полностью сво всеми его методами и свойствами,
-   если установлен default - то импортируется только лишь функция с одноименным режимом    */
+   то есть делаем Vue глобальным); require - импортирует объект полностью со всеми его методами и свойствами,
+   если установлен default - то импортируется только лишь функция с одноименным режимом (типа export default etc..)   */
 
 /**
  * The following block of code may be used to automatically register your
@@ -31,9 +28,6 @@ import {store} from "./store";
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 Vue.use(VueRouter)//вызываем импортированный vue-router
-
-
-
 
 const router = new VueRouter({//создаем экземпляр маршрутизатора
     mode: 'history',//позволяет избежать перезагрузки страницы при смене url без хеша URL

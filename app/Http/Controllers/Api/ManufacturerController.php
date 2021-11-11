@@ -6,22 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ManufacturerRequest;
 use App\Http\Requests\ManufacturerUpdateRequest;
 use App\Http\Resources\ManufacturerResource;
+use App\Services\ManufacturerService;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
 class ManufacturerController extends Controller
 {
+    protected $manufacturerService;
+
+    public function __construct(ManufacturerService $manufacturerService)
+    {
+        $this->manufacturerService = $manufacturerService;
+    }
+
     public function index()
     {
-        $manufacturers = Manufacturer::withCount(['products' => function ($query) {
-            $query->withFilters(
-                request()->input('prices', []),
-                request()->input('categories', []),
-                request()->input('manufacturers', [])
-            );
-        }])
-            ->get();
-
+        $manufacturers = $this->manufacturerService->getAllManufacturers();
         return ManufacturerResource::collection($manufacturers);
     }
 
@@ -31,11 +31,12 @@ class ManufacturerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ManufacturerRequest $request)
+    public function store(Request $request)
     {
-        $created_manufacturer = Manufacturer::create($request->validated());
-
-
+        $data = $request->only([
+            'name'
+        ]);
+        $created_manufacturer = $this->manufacturerService->addNewManufacturer($data);
         return new ManufacturerResource($created_manufacturer);
     }
 
@@ -47,7 +48,8 @@ class ManufacturerController extends Controller
      */
     public function show($id)
     {
-        return new ManufacturerResource(Manufacturer::find($id));
+        $manufacturer = $this->manufacturerService->getManufacturerById($id);
+        return new ManufacturerResource($manufacturer);
     }
 
     /**
@@ -57,10 +59,13 @@ class ManufacturerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ManufacturerUpdateRequest $request, Manufacturer $manufacturer)
+    public function update(Request $request, int $id)
     {
-        $manufacturer->update($request->validated());
-        return new ManufacturerResource($manufacturer);
+        $data = $request->only([
+            'name'
+        ]);
+        $updated_manufacturer = $this->manufacturerService->editManufacturer($data, $id);
+        return response()->json($updated_manufacturer, "200");
     }
 
     /**

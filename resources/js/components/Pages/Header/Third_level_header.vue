@@ -1,15 +1,8 @@
 <template>
-    <div class="container" style="padding-left: 7px; ">
-        <div class="row_2" style="
-                            color: white;
-                            max-width: 1170px;
-                            height:  64px;
-                            margin: 0px auto;
-                            padding: 0px 60px;
-                                ">
+    <div class="container" style="padding-left: 7px;">
+        <div class="row_2">
             <div class="col-1"></div>
-
-            <div class="mainmenu" style="max-width: 901px;margin-top: 3px;padding-bottom: 12px">
+            <div class="main_menu">
                 <Main_menu />
             </div>
         </div>
@@ -25,15 +18,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-.header_1 {
-    margin-left: 370px;
-    margin-right: 370px;
-    width: 100%;
-
-}
-
 .container {
     color: #58503d;
     max-width: 1800px;
@@ -83,8 +67,11 @@ div {
 
 .row_2 {
     background-color: #424242;
-    padding-bottom: 0;
-    padding-top: 0;
+    color: white;
+    max-width: 1170px;
+    height:  64px;
+    margin: 0 auto;
+    padding: 0 60px;
 }
 
 a {
@@ -98,6 +85,11 @@ a {
     height: 70px;
 }
 
+.main_menu{
+    max-width: 901px;
+    margin-top: 3px;
+    padding-bottom: 12px;
+}
 
 .drop {
     background-color: #424242;

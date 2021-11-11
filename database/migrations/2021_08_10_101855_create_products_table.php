@@ -19,9 +19,9 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->double('price');
             $table->timestamps();
-            $table->foreignId('category_id')
-                ->references('id')
-                ->on('categories');
+            $table->foreignId('category_id')//создаем внешний ключ category_id при помощи методы foreignId
+                ->references('id')//который должен соответствовать свойству id
+                ->on('categories');//в таблице категорий
         });
     }
 

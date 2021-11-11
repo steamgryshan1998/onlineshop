@@ -10,8 +10,6 @@
             <li class="col-4">
                 <img src="/images/about-page-gaando.jpg" alt="" width="870px" style="margin-bottom: 20px;padding-top: 10px">
 
-                <img src="/images/about-page-gaando.jpg"  alt="" width="870px" style="margin-bottom: 20px;padding-top: 10px">
-
                 <div style="width: 894px; padding-left: 0px; padding-top: 3px" >
 <!--                <div class="about-heading-wrap" style="width: 600px;    -webkit-text-size-adjust: 100%;-->
 <!--    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);-->

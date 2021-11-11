@@ -7,6 +7,12 @@ use App\Models\Product;
 class PriceService
 {
     private $prices;
+    protected $PRICES = [
+        'Less than 5000',
+        'From 5000 to 10000',
+        'From 10000 to 50000',
+        'More than 50000',
+    ];
     private $categories;
     private $manufacturers;
 
@@ -15,10 +21,13 @@ class PriceService
         $this->prices = $prices;
         $this->categories = $categories;
         $this->manufacturers = $manufacturers;
-        $formattedPrices = Product::PRICES;
+        $formattedPrices = [];
 
-        foreach($formattedPrices as $index => $value) {
-            $formattedPrices[$index]['products_count'] = $this->getProductCount($index);
+        foreach($this->PRICES as $index => $name) {
+            $formattedPrices[] = [
+                'name' => $name,
+                'products_count' => $this->getProductCount($index)
+            ];
         }
 
         return $formattedPrices;

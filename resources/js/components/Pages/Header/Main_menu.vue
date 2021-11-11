@@ -1,77 +1,12 @@
 <template>
-
-    <ul class="nav justify-content-center"
-        style="
-                        height: 70px;
-                        padding-left: 121px;
-                        padding-right: 20px;
-
-                        font-family: Geneva, Arial, Helvetica, sans-serif">
+    <ul class="nav main_menu justify-content-center">
         <li class="nav-item">
-            <router-link to="/"><a class="nav-link" style="">HOME</a></router-link>
+            <router-link to="/"><a class="nav-link">HOME</a></router-link>
+<!-- router-link - компонент для навигации, параметр to - определяет URL для перехода-->
         </li>
-        <li class="nav-item dropdown mega-dropdown" ><a href="#" class="nav-link " data-toggle="dropdown">
+        <li class="nav-item dropdown mega-dropdown"><a href="#" class="nav-link " data-toggle="dropdown">
             COLLECTION</a>
-            <ul class="dropdown-menu mega-dropdown-menu row justify-content-center"
-                style="width: 1171px; margin-left: 703px">
-                <li class="col-md-3">
-                    <ul>
-                        <li class="dropdown-header">Women's</li>
-                        <li class="item"><a href="#">Unique Features</a></li>
-                        <li class="item"><a href="#">Image Responsive</a></li>
-                        <li class="item"><a href="#">Auto Carousel</a></li>
-                        <li class="item"><a href="#">Newsletter Form</a></li>
-                        <li class="item"><a href="#">Four columns</a></li>
-                        <li class="item"><a href="#">Four columns</a></li>
-                        <li class="item"><a href="#">Good Typography</a></li>
-                    </ul>
-                </li>
-                <li class="col-md-3">
-                    <ul>
-                        <li class="dropdown-header">Man's</li>
-                        <li class="item"><a href="#">Unique Features</a></li>
-                        <li class="item"><a href="#">Image Responsive</a></li>
-                        <li class="item"><a href="#">Four columns</a></li>
-                        <li class="item"><a href="#">Auto Carousel</a></li>
-                        <li class="item"><a href="#">Newsletter Form</a></li>
-                        <li class="item"><a href="#">Four columns</a></li>
-                        <li class="item"><a href="#">Good Typography</a></li>
-                    </ul>
-                </li>
-                <li class="col-md-3">
-                    <ul>
-                        <li class="dropdown-header">Children's</li>
-                        <li class="item"><a href="#">Unique Features</a></li>
-                        <li class="item"><a href="#">Four columns</a></li>
-                        <li class="item"><a href="#">Image Responsive</a></li>
-                        <li class="item"><a href="#">Auto Carousel</a></li>
-                        <li class="item"><a href="#">Newsletter Form</a></li>
-                        <li class="item"><a href="#">Four columns</a></li>
-                        <li class="item"><a href="#">Good Typography</a></li>
-                    </ul>
-                </li>
-                <li class="col-md-3">
-                    <ul>
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
-                             style="padding-left: 15px; margin: 0px; max-width: 1095px">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-
-                                    <img src="/images/1.jpeg"
-                                         class="d-block w-100" height="200px" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="/images/2.jpg"
-                                         class="d-block w-100" height="200px" alt="...">
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </ul>
-                </li>
-            </ul>
-<Drop_page />
+            <Drop_page/>
         </li>
         <li class="nav-item">
             <router-link to="/shop"><a class="nav-link">SHOP</a></router-link>
@@ -89,11 +24,11 @@
             <router-link to="/contact"><a class="nav-link">CONTACT US</a></router-link>
         </li>
     </ul>
-
 </template>
 
 <script>
 import Drop_page from "./Drop_page";
+
 export default {
     name: "Main_menu",
     components: {Drop_page}
@@ -101,34 +36,45 @@ export default {
 </script>
 
 <style scoped>
+.main_menu{
+    height: 70px;
+    padding-left: 170px;
+    padding-right: 20px;
+    width: 1000px;
+    font-family: Geneva, Arial, Helvetica, sans-serif
+}
 
-.title{
+.title {
 
 }
 
 
-.header_1{
+.header_1 {
     margin-left: 370px;
     margin-right: 370px;
     width: 100%;
 
 }
-.container{
+
+.container {
     color: #58503d;
     max-width: 1800px;
     margin: 0px auto;
     padding: 0px 15px;
 }
+
 @media (max-width: 1200px) {
     .container {
         max-width: 970px;
     }
 }
-.nav-link{
+
+.nav-link {
     padding-top: 24px;
     padding-bottom: 23px;
     color: white
 }
+
 @media (max-width: 992px) {
     .container {
         max-width: 750px;
@@ -140,28 +86,34 @@ export default {
         max-width: none;
     }
 }
-div{
+
+div {
     padding-left: 0;
     padding-right: 0;
 }
-.row_1{
+
+.row_1 {
     /*margin-top: 0.5rem;*/
     /*margin-bottom: 0.5rem;*/
     display: flex;
     text-decoration: none;
 }
-.row_1 a:hover{
+
+.row_1 a:hover {
     text-decoration: none;
 }
-.row_2{
+
+.row_2 {
     background-color: #424242;
     padding-bottom: 0;
     padding-top: 0;
 }
-a{
+
+a {
     color: #7d7e7e;
 
 }
+
 .row_2 a:hover {
     background: #fa4250;
     text-decoration: none;
@@ -172,38 +124,44 @@ a{
 .drop {
     background-color: #424242;
 }
-#dropdownMenuButton, #account{
+
+#dropdownMenuButton, #account {
     background-color: Transparent;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     border: none;
     border-radius: 0 0 0 0;
-    cursor:pointer;
+    cursor: pointer;
     overflow: hidden;
-    outline:none;
+    outline: none;
     box-shadow: none;
     padding-right: 16px;
     padding-left: 16px;
     padding-top: 0px;
     padding-bottom: 8px;
 }
-#dropdownMenuButton:hover{
+
+#dropdownMenuButton:hover {
     background: #FB4251;
     text-decoration: none;
     box-shadow: none;
 }
-#dropdownMenuButton:active, #dropdownMenuButton:focus{
+
+#dropdownMenuButton:active, #dropdownMenuButton:focus {
     outline: none !important;;
     background: #FB4251;
 }
-#dropdownMenuButton::-moz-focus-inner{
+
+#dropdownMenuButton::-moz-focus-inner {
     border: 0 !important;;
     background: #FB4251;
 }
-#account{
+
+#account {
     padding-top: 0;
     padding-bottom: 0;
 }
-#account:hover{
+
+#account:hover {
     box-shadow: none;
 }
 
@@ -212,19 +170,19 @@ h1 div, p {
     margin: 0 auto;
 }
 
-.nav-item{
-        padding-left: 2px;
-        padding-right: 2px;
+.nav-item {
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
-.dropdown-header{
+.dropdown-header {
     color: #fff;
     font-size: 18px;
     font-weight: bold;
     text-transform: uppercase;
 }
 
-.item{
+.item {
     display: block;
     padding: 5px 20px;
     clear: both;
@@ -232,10 +190,11 @@ h1 div, p {
     white-space: normal;
 }
 
-.mega-dropdown{
+.mega-dropdown {
     position: static !important;
 }
-.dropdown-menu.show{
+
+.dropdown-menu.show {
     border-radius: unset;
     border-top: 0;
     border-left-width: 0px;
@@ -247,7 +206,7 @@ h1 div, p {
     background-color: #424242;
 }
 
-.dropdown-menu_2.show{
+.dropdown-menu_2.show {
     border-radius: unset;
     border-top: 0;
     border-left-width: 0px;
@@ -265,7 +224,6 @@ hr {
     color: red; /* Цвет линии для IE6-7 */
     height: 2px; /* Толщина линии */
 }
-
 
 
 .fa-shopping-cart:hover {

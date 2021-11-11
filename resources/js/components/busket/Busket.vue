@@ -1,11 +1,8 @@
 <template>
-    <div>
-
-        <div class="col-md-12" style="padding-left: 274px">
-            <img src="/images/busket.png" class="img-fluid" alt="" width="1300px" >
+    <div class="container">
+        <div class="col-md-12 head">
+            <img :src="img_src" class="img-fluid" alt="" width="1080px">
         </div>
-
-
     <div class="w-full">
         <div class="lg:w-2/3 w-full mx-auto mt-8 overflow-auto container">
             <table class="table-auto w-full text-left whitespace-no-wrap table-responsive-sm" style="background-color: #fca901">
@@ -64,12 +61,19 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+
 export default {
+    data: function () {
+        return {
+            img_src: '/images/header.jpg',
+        }
+    },
      methods: {
          ...mapActions([
              'addMessage',
              'clearCart',
          ]),
+
         cartLineTotal(item) {
             let amount = item.price * item.quantity;
             amount = (amount / 1);
@@ -93,14 +97,14 @@ export default {
         }
     },
     computed: {
-        cart() {
-            return this.$store.state.cart;
-        },
+        ...mapGetters({
+            cart: 'cart'
+        }),
         cartQuantity() {
-            return this.$store.state.cart.reduce((acc, item) => acc + item.quantity, 0);
+            return this.cart.reduce((acc, item) => acc + item.quantity, 0);
         },
         cartTotal() {
-            let amount = this.$store.state.cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            let amount = this.cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
             amount = (amount / 1);
             return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
         }
@@ -109,14 +113,19 @@ export default {
 </script>
 
 <style scoped>
+.head{
+    padding-right: 0;
+    padding-left: 0;
+}
 table{
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
     color: black;
 }
 .container{
-    padding-top: 50px;
+    padding-top: 0;
     align-content: center;
 }
 

@@ -292,6 +292,7 @@ export default {
                 category_id: '',
                 name: '',
                 description: '',
+                rating: 0,
                 price: '',
                 created_at: '',
                 updated_at: '',
@@ -310,7 +311,7 @@ export default {
     methods: {
         loadCategories() {
             category.loadCategories().then(response => {
-                this.categories = response.data.categories;
+                this.categories = response.data.data;
             }).catch(error => { console.error(error)});
         },
 
@@ -340,11 +341,21 @@ export default {
                     console.log(error);
                 });
         },
-        async deleteCategory(id) {
-            await this.$store.dispatch('category/deleteCategory', id)
-            await this.loadCategories();
-            this.loadProducts();
-            this.loadManufacturers();
+        deleteCategory(id) {
+            axios
+                .post(`api/categories/${id}`, {
+                    _method: 'DELETE'
+                })
+                .then(response => {
+                    this.categories = []
+                    this.loadCategories();
+                    this.loadProducts();
+                    this.loadManufacturers();
+                    console.log(this.categories, 'aaaaaaaaaaaaaaaaaaaaaaa');
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         },
         deleteManufacture(id) {
             axios
@@ -392,14 +403,15 @@ h4 {
 
 .tab-content {
     margin-top: 30px;
+    width: 1100px;
 }
 
 .tab_category {
-    width: 1170px;
+    width: 1100px;
 }
 
 .tab_manufacture {
-    width: 1170px;
+    width: 1100px;
 }
 
 .adding {

@@ -15,4 +15,6 @@ class Manufacturer extends Model
     {
         return $this->hasMany(Product::class, 'manufacturer_id');
     }
+/*метод hasMany позволяет получить доступ ко всем производителям, внешний ключ manufacturer_id которых эквивалентен
+свойству id в таблице производителей*/
 }

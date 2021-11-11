@@ -15,12 +15,12 @@
                                 <div class="mb-3 row">
                                     <label for="category_name" class="col-sm-4 col-form-label">Name</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" v-model="category.name"
-                                               :class="validate.name === undefined ? '' : ' is-invalid'"
+                                        <input type="text" class="form-control" v-model="category && category.name"
+                                               :class="validate.message === null ? '' : ' is-invalid'"
                                                id="category_name" placeholder="Please enter name of category"/>
-                                        <div v-for="error in validate.name" v-if="validate.name !== null"
+                                        <div v-if="validate.message !== null"
                                              class="invalid-feedback">
-                                            {{ error }}
+                                            {{ validate.message }}
                                         </div>
                                     </div>
                                 </div>
@@ -63,13 +63,16 @@ export default {
         return {
             name: '',
 
-            validate: {},
+            validate: {
+                message: null
+            },
         };
     },
     methods: {
         closeModal() {
-            this.category.name = "";
-            this.category.id = "";
+            this.category.name = null;
+            this.category.id = null;
+            this.validate.message = null;
             this.$emit('close');
         },
         addCategory() {
@@ -79,11 +82,12 @@ export default {
                 })
                 .then(response => {
                     this.category.id = ""
-                    this.category.name = ""
+                    this.category.name = "null"
                     this.closeModal()
                 })
                 .catch(error => {
-                    this.validate = error.response.data.errors;
+                    this.validate.message = error.response.data.message;
+                    console.log(error.response.data.message)
                 })
                 .finally(this.loading = false)
         },
@@ -98,7 +102,7 @@ export default {
                     this.closeModal()
                 })
                 .catch(error => {
-                    this.validate = error.response.data.errors;
+                    this.validate.message = error.response.data.message;
                 })
             // .finally(this.contact.id = null // fixed bug with button add new after edit
             //     )

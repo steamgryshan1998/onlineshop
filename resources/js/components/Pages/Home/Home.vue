@@ -6,7 +6,7 @@
                 <ul class="nav row " style="height: 220px; width: 1050px">
                 <li class="col-2" >
 <!--                   <img src="/public/images/callback-img.png"  class="d-block" style="height: 150px; width: 150px" alt="...">-->
-                    <img src="/images/header.jpg"  class="img-fluid" alt="" width="1080px">
+                    <img src="/images/newsbg.jpg"  class="img-fluid" alt="" width="200px" height="200px">
 
                 </li>
                 <li class="col-7">
@@ -14,7 +14,9 @@
                     <hr style="color: #5a6268">
                     <h6 style="margin: 10px">SIGN UP AND GET 50% OFF YOUR NEXT ORDER</h6>
                     <hr style="color: #5a6268">
-                    <input placeholder="Enter Your Email">
+                    <div class="input">
+                        <input placeholder="Enter Your Email">
+                    </div>
                     <button type="submit" class="btn btn-default btn-lg" id="email-popup-submit" style="    -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     box-sizing: border-box;
@@ -105,6 +107,7 @@ h1{
     overflow: auto;
 }
 .popup {
+    background-color: #F0F0F0;
     color: black;
     top: 25%;
     left: 0;
@@ -115,7 +118,6 @@ h1{
     position: absolute;
     padding: 15px 20px;
     border: 1px solid #383838;
-    background: #fefefe;
     z-index: 1000;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -190,4 +192,7 @@ h1{
     background: #707070;
 }
 
+.input{
+    border: 0;
+}
 </style>
